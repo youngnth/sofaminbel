@@ -7,6 +7,7 @@ import { useShop } from '../context/ShopContext';
 export default function ProductCard({ product }) {
   const {
     addToCart,
+    buyNow,
     isEditMode,
     updateProduct,
     deleteProduct,
@@ -153,8 +154,17 @@ export default function ProductCard({ product }) {
               aria-label={`Add ${product.name} to cart`}
               title="Add to Cart"
             >
-              <ShoppingBag size={16} />
+              <ShoppingBag size={15} />
               <span>Add</span>
+            </button>
+            <button
+              type="button"
+              className="btn-card-buy-now"
+              onClick={() => buyNow(product, 1)}
+              aria-label={`Buy ${product.name} now`}
+              title="Buy Now"
+            >
+              <span>Buy Now</span>
             </button>
           </div>
         </div>

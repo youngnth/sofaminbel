@@ -54,9 +54,25 @@ const initialAbout = {
 const ShopContext = createContext(null);
 
 export function ShopProvider({ children }) {
-  // Cart & Consultation State
-  const [cartItems, setCartItems] = useState([]);
+  // Cart & Consultation State (persisted in LocalStorage)
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem('perfa_react_cart');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [orders, setOrders] = useState(() => {
+    try {
+      const saved = localStorage.getItem('perfa_react_orders');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartView, setCartView] = useState('cart'); // 'cart' | 'checkout' | 'success' | 'orders'
   const [consultationProduct, setConsultationProduct] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
 
@@ -151,10 +167,12 @@ export function ShopProvider({ children }) {
       localStorage.setItem('perfa_react_services', JSON.stringify(services));
       localStorage.setItem('perfa_react_materials', JSON.stringify(materials));
       localStorage.setItem('perfa_react_testimonials', JSON.stringify(testimonials));
+      localStorage.setItem('perfa_react_cart', JSON.stringify(cartItems));
+      localStorage.setItem('perfa_react_orders', JSON.stringify(orders));
     } catch (e) {
       console.warn('LocalStorage save failed:', e);
     }
-  }, [products, heroData, aboutData, collections, portfolioItems, services, materials, testimonials]);
+  }, [products, heroData, aboutData, collections, portfolioItems, services, materials, testimonials, cartItems, orders]);
 
   const showToast = (msg) => {
     setToastMessage(msg);
@@ -176,7 +194,24 @@ export function ShopProvider({ children }) {
       }
       return [...prev, { product, quantity }];
     });
-    showToast(`Added "${product.name}" to your cart.`);
+    setCartView('cart');
+    showToast(`✓ Đã thêm "${product.name}" vào giỏ hàng!`);
+    setIsCartOpen(true);
+  };
+
+  const buyNow = (product, quantity = 1) => {
+    setCartItems((prev) => {
+      const existing = prev.find((item) => item.product.id === product.id);
+      if (existing) {
+        return prev.map((item) =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+      }
+      return [...prev, { product, quantity }];
+    });
+    setCartView('checkout');
     setIsCartOpen(true);
   };
 
@@ -203,6 +238,21 @@ export function ShopProvider({ children }) {
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
+
+  const placeOrder = (customerInfo) => {
+    const newOrder = {
+      id: `PF-${String(Date.now()).slice(-6)}`,
+      createdAt: new Date().toLocaleString('vi-VN'),
+      customer: customerInfo,
+      items: [...cartItems],
+      total: cartTotal,
+      status: 'Confirmed • Preparing for Delivery'
+    };
+    setOrders((prev) => [newOrder, ...prev]);
+    setCartItems([]);
+    showToast(`🎉 Đặt hàng thành công! Mã đơn: #${newOrder.id}`);
+    return newOrder;
+  };
 
   const openConsultationModal = (product = null) => {
     setConsultationProduct(product || { name: 'General Home Sofa Consultation' });
@@ -417,9 +467,10 @@ export function ShopProvider({ children }) {
   return (
     <ShopContext.Provider
       value={{
-        // Cart
+        // Cart & Orders
         cartItems,
         addToCart,
+        buyNow,
         removeFromCart,
         updateQuantity,
         clearCart,
@@ -427,6 +478,10 @@ export function ShopProvider({ children }) {
         cartTotal,
         isCartOpen,
         setIsCartOpen,
+        cartView,
+        setCartView,
+        orders,
+        placeOrder,
         consultationProduct,
         openConsultationModal,
         closeConsultationModal,

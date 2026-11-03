@@ -31,6 +31,7 @@ export default function ProductDetailPage() {
   const { id } = useParams();
   const {
     addToCart,
+    buyNow,
     openConsultationModal,
     products,
     isEditMode,
@@ -440,6 +441,15 @@ export default function ProductDetailPage() {
                 data-testid="add-to-cart-btn"
               >
                 <ShoppingBag size={18} /> Add to Cart
+              </button>
+
+              <button
+                type="button"
+                className="btn btn-buy-now-detail btn-lg"
+                onClick={() => buyNow(product, quantity)}
+                data-testid="buy-now-btn"
+              >
+                Buy Now <ArrowRight size={17} />
               </button>
 
               <button
