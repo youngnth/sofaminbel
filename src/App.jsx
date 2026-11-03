@@ -6,9 +6,6 @@ import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import AuthModal from './components/AuthModal';
 import ConsultationModal from './components/ConsultationModal';
-import FloatingEditorBar from './components/FloatingEditorBar';
-import CropModal from './components/CropModal';
-import ItemEditorModal from './components/ItemEditorModal';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import ProductDetailPage from './pages/ProductDetailPage';
@@ -55,9 +52,6 @@ export default function App() {
         <CartDrawer />
         <AuthModal />
         <ConsultationModal />
-        <FloatingEditorBar />
-        <CropModal />
-        <ItemEditorModal />
         <ToastNotification />
       </div>
     </ShopProvider>

@@ -15,27 +15,22 @@ const initialHero = {
     'Crafting spaces where luxury meets family comfort. Durable, scratch-resistant, and machine-washable sofas thoughtfully designed for Hanoi households with young children and pets.',
   ctaPrimary: 'Shop Now',
   ctaSecondary: 'Experience Perfa',
-  bgImage:
-    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1400&q=85',
+  bgImage: '/hero/hero_bg.jpg',
   featuredProductName: 'Sage Tufted 3-Seater Sofa',
-  featuredProductPrice: '41,900,000 ₫ • Algodão Organic Cotton'
+  featuredProductPrice: '41,900,000\u00A0₫ • Algodão Organic Cotton'
 };
 
-const STORAGE_VERSION = 'v9_services_photos';
+const STORAGE_VERSION = 'v10_final_locked';
 
 if (typeof window !== 'undefined') {
   try {
     const currentVer = localStorage.getItem('perfa_data_version');
     if (currentVer !== STORAGE_VERSION) {
-      if (
-        currentVer !== 'v5_15_products' &&
-        currentVer !== 'v6_testimonials_update' &&
-        currentVer !== 'v7_testimonial_photos' &&
-        currentVer !== 'v8_materials_photos'
-      ) {
-        localStorage.removeItem('perfa_react_products');
-        localStorage.removeItem('perfa_react_collections');
-      }
+      localStorage.removeItem('perfa_react_products');
+      localStorage.removeItem('perfa_react_hero');
+      localStorage.removeItem('perfa_react_about');
+      localStorage.removeItem('perfa_react_collections');
+      localStorage.removeItem('perfa_react_portfolio');
       localStorage.removeItem('perfa_react_services');
       localStorage.removeItem('perfa_react_materials');
       localStorage.removeItem('perfa_react_testimonials');
@@ -156,108 +151,30 @@ export function ShopProvider({ children }) {
     });
   };
 
-  // Edit Mode & Dynamic Site Data State
-  const [isEditMode, setIsEditMode] = useState(false);
+  // Site content is permanently saved in code; edit mode is disabled
+  const isEditMode = false;
+  const setIsEditMode = () => {};
 
-  // Load saved edits from LocalStorage or fall back to factory defaults
-  const [products, setProducts] = useState(() => {
-    try {
-      const saved = localStorage.getItem('perfa_react_products');
-      const list = saved ? JSON.parse(saved) : initialProducts;
-      return list.map((p) => ({
-        ...p,
-        colorHex: getColorHex(p.color, p.colorHex)
-      }));
-    } catch {
-      return initialProducts;
-    }
-  });
+  const [products, setProducts] = useState(() =>
+    initialProducts.map((p) => ({
+      ...p,
+      colorHex: getColorHex(p.color, p.colorHex)
+    }))
+  );
+  const [heroData, setHeroData] = useState(initialHero);
+  const [aboutData, setAboutData] = useState(initialAbout);
+  const [collections, setCollections] = useState(initialCollections);
+  const [portfolioItems, setPortfolioItems] = useState(initialPortfolio);
+  const [services, setServices] = useState(initialServices);
+  const [materials, setMaterials] = useState(initialMaterials);
+  const [testimonials, setTestimonials] = useState(initialTestimonials);
 
-  const [heroData, setHeroData] = useState(() => {
-    try {
-      const saved = localStorage.getItem('perfa_react_hero');
-      return saved ? JSON.parse(saved) : initialHero;
-    } catch {
-      return initialHero;
-    }
-  });
-
-  const [aboutData, setAboutData] = useState(() => {
-    try {
-      const saved = localStorage.getItem('perfa_react_about');
-      return saved ? JSON.parse(saved) : initialAbout;
-    } catch {
-      return initialAbout;
-    }
-  });
-
-  const [collections, setCollections] = useState(() => {
-    try {
-      const saved = localStorage.getItem('perfa_react_collections');
-      return saved ? JSON.parse(saved) : initialCollections;
-    } catch {
-      return initialCollections;
-    }
-  });
-
-  const [portfolioItems, setPortfolioItems] = useState(() => {
-    try {
-      const saved = localStorage.getItem('perfa_react_portfolio');
-      return saved ? JSON.parse(saved) : initialPortfolio;
-    } catch {
-      return initialPortfolio;
-    }
-  });
-
-  const [services, setServices] = useState(() => {
-    try {
-      const saved = localStorage.getItem('perfa_react_services');
-      if (!saved) return initialServices;
-      const parsed = JSON.parse(saved);
-      return parsed.map((srv, idx) => ({
-        ...initialServices[idx],
-        ...srv,
-        image: srv.image || initialServices[idx]?.image,
-        tag: srv.tag || initialServices[idx]?.tag
-      }));
-    } catch {
-      return initialServices;
-    }
-  });
-
-  const [materials, setMaterials] = useState(() => {
-    try {
-      const saved = localStorage.getItem('perfa_react_materials');
-      return saved ? JSON.parse(saved) : initialMaterials;
-    } catch {
-      return initialMaterials;
-    }
-  });
-
-  const [testimonials, setTestimonials] = useState(() => {
-    try {
-      const saved = localStorage.getItem('perfa_react_testimonials');
-      return saved ? JSON.parse(saved) : initialTestimonials;
-    } catch {
-      return initialTestimonials;
-    }
-  });
-
-  // Modal states for Item Editor & Crop Engine
   const [cropSession, setCropSession] = useState(null);
   const [itemEditorSession, setItemEditorSession] = useState(null);
 
-  // Auto-persist changes to LocalStorage
+  // Persist user cart, orders, and account to LocalStorage
   useEffect(() => {
     try {
-      localStorage.setItem('perfa_react_products', JSON.stringify(products));
-      localStorage.setItem('perfa_react_hero', JSON.stringify(heroData));
-      localStorage.setItem('perfa_react_about', JSON.stringify(aboutData));
-      localStorage.setItem('perfa_react_collections', JSON.stringify(collections));
-      localStorage.setItem('perfa_react_portfolio', JSON.stringify(portfolioItems));
-      localStorage.setItem('perfa_react_services', JSON.stringify(services));
-      localStorage.setItem('perfa_react_materials', JSON.stringify(materials));
-      localStorage.setItem('perfa_react_testimonials', JSON.stringify(testimonials));
       localStorage.setItem('perfa_react_cart', JSON.stringify(cartItems));
       localStorage.setItem('perfa_react_orders', JSON.stringify(orders));
       localStorage.setItem('perfa_react_users_db', JSON.stringify(registeredUsers));
@@ -269,7 +186,7 @@ export function ShopProvider({ children }) {
     } catch (e) {
       console.warn('LocalStorage save failed:', e);
     }
-  }, [products, heroData, aboutData, collections, portfolioItems, services, materials, testimonials, cartItems, orders, registeredUsers, currentUser]);
+  }, [cartItems, orders, registeredUsers, currentUser]);
 
   const showToast = (msg) => {
     setToastMessage(msg);
