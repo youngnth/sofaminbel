@@ -536,9 +536,9 @@ export const materialSwatches = [
     origin: 'Beechwood Tree Cellulose',
     badge: 'Silky Soft & Fade-Resistant',
     description: 'Sustainably extracted from European beechwood pulp. Boasts exceptional color retention, silky-smooth drape, and micro-denier strength that resists snags and pulls.',
-    sourceImage: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=600&q=80',
-    fabricImage: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80',
-    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=800&q=80'
+    sourceImage: '/materials/material_modal.jpg',
+    fabricImage: '/materials/material_modal.jpg',
+    image: '/materials/material_modal.jpg'
   },
   {
     name: 'Liocel',
@@ -546,9 +546,9 @@ export const materialSwatches = [
     origin: 'Eucalyptus Closed-Loop Fiber',
     badge: 'Cool-Touch & Hypoallergenic',
     description: 'Produced from renewable eucalyptus wood in a closed-loop system. Naturally cool to the touch, temperature-regulating in Hanoi humidity, and resistant to bacteria and dust mites.',
-    sourceImage: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80',
-    fabricImage: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80'
+    sourceImage: '/materials/material_liocel.jpg',
+    fabricImage: '/materials/material_liocel.jpg',
+    image: '/materials/material_liocel.jpg'
   },
   {
     name: 'Ecovero',
@@ -556,9 +556,9 @@ export const materialSwatches = [
     origin: 'Certified Renewable Wood Viscose',
     badge: 'Lightweight & Breathable',
     description: 'LENZING™ ECOVERO™ viscose with 50% lower carbon emissions and water impact. Airy linen hand-feel, gentle on sensitive toddler skin, and treated with an eco stain shield.',
-    sourceImage: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80',
-    fabricImage: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80',
-    image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80'
+    sourceImage: '/materials/material_ecovero.jpg',
+    fabricImage: '/materials/material_ecovero.jpg',
+    image: '/materials/material_ecovero.jpg'
   },
   {
     name: 'Algodão',
@@ -566,9 +566,9 @@ export const materialSwatches = [
     origin: '100% Organic Natural Cotton',
     badge: 'Pure Organic & Child-Safe',
     description: 'Pure certified organic cotton (Algodão) free from synthetic pesticides or harsh dyes. Luxuriously soft, breathable, and 100% machine-washable for active family households.',
-    sourceImage: 'https://images.unsplash.com/photo-1606041008023-472dfb5e530f?auto=format&fit=crop&w=600&q=80',
-    fabricImage: 'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=600&q=80',
-    image: 'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=800&q=80'
+    sourceImage: '/materials/material_algodao.jpg',
+    fabricImage: '/materials/material_algodao.jpg',
+    image: '/materials/material_algodao.jpg'
   }
 ];
 

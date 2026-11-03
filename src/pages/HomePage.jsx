@@ -582,23 +582,12 @@ export default function HomePage() {
                   className="material-card-link-wrapper"
                 >
                   <div className="material-split-visual">
-                    <div className="split-half split-left">
-                      <img
-                        src={mat.sourceImage || mat.image}
-                        alt={`${mat.name} Natural Source`}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="split-half split-right">
-                      <img
-                        src={mat.fabricImage || mat.image}
-                        alt={`${mat.name} Woven Fabric`}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="split-script-overlay">
-                      <span className="split-script-text">{mat.scriptTitle || mat.name}</span>
-                    </div>
+                    <img
+                      src={mat.image || mat.fabricImage}
+                      alt={`${mat.name} — ${mat.origin || 'Sustainable Material'}`}
+                      className="material-composite-img"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="material-card-meta">
                     <span className="material-origin-tag">{mat.origin || 'Sustainable Fiber'}</span>
