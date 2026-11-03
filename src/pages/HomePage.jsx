@@ -469,15 +469,15 @@ export default function HomePage() {
           sectionName="Why Perfa & Services"
         />
         <div className="container">
-          <div className="section-header centered">
-            <span className="section-eyebrow">Why Families in Hanoi Choose Perfa</span>
-            <h2 className="section-title">Why Perfa &amp; Our Services</h2>
-            <p className="section-subtitle">
+          <div className="section-header centered why-perfa-header">
+            <span className="section-eyebrow light">Why Families in Hanoi Choose Perfa</span>
+            <h2 className="section-title light">Why Perfa &amp; Our Services</h2>
+            <p className="section-subtitle light">
               From claw-resistant fabrics and machine-washable slipcovers to complimentary room layout advice and white-glove assembly in Hanoi.
             </p>
           </div>
 
-          {/* 4 Services */}
+          {/* 4 Services — Unified Image + Text Split Cards matching Materials */}
           <div className="services-grid">
             {services.map((srv, idx) => (
               <div key={srv.id || idx} className="service-card">
@@ -485,15 +485,36 @@ export default function HomePage() {
                   <div className="perfa-card-actions">
                     <button
                       type="button"
+                      className="perfa-card-btn btn-crop"
+                      onClick={() => {
+                        openCropModal({
+                          initialUrl: srv.image,
+                          aspectRatio: 4 / 3,
+                          title: `Cắt & Thay ảnh dịch vụ: ${srv.title}`,
+                          onApply: (url) => {
+                            updateService(srv.id, { image: url });
+                          }
+                        });
+                      }}
+                    >
+                      <ImageIcon size={12} /> Cắt
+                    </button>
+                    <button
+                      type="button"
                       className="perfa-card-btn"
                       onClick={() => {
                         openItemEditor({
                           title: `Sửa dịch vụ: ${srv.title}`,
                           fields: [
+                            { label: 'Nhãn Phụ (Tag)', key: 'tag', type: 'text' },
                             { label: 'Tiêu Đề (Title)', key: 'title', type: 'text' },
                             { label: 'Mô Tả (Description)', key: 'description', type: 'textarea' }
                           ],
-                          initialValues: { title: srv.title, description: srv.description },
+                          initialValues: {
+                            tag: srv.tag || '',
+                            title: srv.title,
+                            description: srv.description
+                          },
                           onSave: (vals) => updateService(srv.id, vals)
                         });
                       }}
@@ -502,11 +523,32 @@ export default function HomePage() {
                     </button>
                   </div>
                 )}
-                <div className="service-icon-box">
-                  {idx === 0 ? <Compass size={26} /> : idx === 1 ? <Truck size={26} /> : idx === 2 ? <ShieldCheck size={26} /> : <CreditCard size={26} />}
+                <div className="service-card-visual">
+                  <img
+                    src={srv.image}
+                    alt={srv.title}
+                    className="service-card-img"
+                    loading="lazy"
+                  />
+                  <span className="service-floating-icon" aria-hidden="true">
+                    {idx === 0 ? (
+                      <Compass size={18} />
+                    ) : idx === 1 ? (
+                      <Truck size={18} />
+                    ) : idx === 2 ? (
+                      <ShieldCheck size={18} />
+                    ) : (
+                      <CreditCard size={18} />
+                    )}
+                  </span>
                 </div>
-                <h3>{srv.title}</h3>
-                <p>{srv.description}</p>
+                <div className="service-card-meta">
+                  <span className="service-origin-tag">
+                    {srv.tag || 'Perfa Signature Service'}
+                  </span>
+                  <h3 className="service-name-heading">{srv.title}</h3>
+                  <p className="service-desc-text">{srv.description}</p>
+                </div>
               </div>
             ))}
           </div>

@@ -1003,7 +1003,7 @@ h3,
 }
 
 .product-card-body {
-  padding: 18px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -1070,38 +1070,49 @@ h3,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .product-price-block {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 .product-price-vnd {
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.96rem;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
   color: var(--text-dark);
+  white-space: nowrap;
 }
 
 .product-price-code {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
+  line-height: 1.25;
   color: var(--warm-grey);
+  white-space: nowrap;
 }
 
 .btn-card-cart {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 4px;
   background-color: var(--bg-beige);
   color: var(--wix-sage-dark);
   border: 1px solid var(--border-warm);
-  padding: 7px 13px;
+  padding: 6px 10px;
   border-radius: var(--radius-pill);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-card-cart:hover {
@@ -1273,51 +1284,133 @@ h3,
    ========================================================================== */
 
 .why-perfa-section {
-  background-color: var(--bg-stone);
+  background-color: #29382F;
+  color: #FFFFFF;
+  padding: 85px 0 95px;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.why-perfa-header .section-eyebrow.light {
+  color: #B4CEBE;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.why-perfa-header .section-title.light {
+  color: #FFFFFF;
+  font-size: 2.6rem;
+  font-family: var(--font-serif);
+  margin-top: 4px;
+}
+
+.why-perfa-header .section-subtitle.light {
+  color: #D2E0D7;
+  max-width: 660px;
+  margin: 10px auto 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
-  margin-bottom: 64px;
+  margin-bottom: 0;
 }
 
 .service-card {
-  background-color: var(--bg-white);
-  padding: 28px 24px;
+  background-color: #1E2A23;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-warm);
-  box-shadow: var(--shadow-soft);
-  transition: var(--transition);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--wix-sage-dark);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
-.service-icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background-color: var(--brand-green-light);
-  color: var(--wix-sage-dark);
+.service-card-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #151E19;
+}
+
+.service-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.service-card:hover .service-card-img {
+  transform: scale(1.05);
+}
+
+.service-floating-icon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background-color: rgba(22, 32, 26, 0.84);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #D7EBE0;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  z-index: 2;
 }
 
+.service-card-meta {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: linear-gradient(180deg, #212E27 0%, #19231E 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.service-origin-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #B4CEBE;
+  margin-bottom: 6px;
+}
+
+.service-name-heading,
 .service-card h3 {
+  font-family: var(--font-serif);
   font-size: 1.35rem;
-  margin-bottom: 10px;
-  color: var(--text-dark);
+  line-height: 1.25;
+  margin-bottom: 8px;
+  color: #FFFFFF;
 }
 
+.service-desc-text,
 .service-card p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #D6E1DA;
+  margin-bottom: 0;
+  flex: 1;
 }
 
 .materials-showcase-box {
@@ -3878,19 +3971,25 @@ h3,
 .product-card-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  flex-shrink: 0;
 }
 
 .btn-card-buy-now {
-  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 11px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--wix-sage-dark);
   background-color: var(--wix-sage-dark);
   color: #FFFFFF;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-card-buy-now:hover {
@@ -5060,6 +5159,19 @@ h3,
   background-color: #EAE4D8;
   color: #1B2820;
   border-color: #EAE4D8;
+}
+
+:root[data-theme='dark'] .why-perfa-section {
+  background-color: #16211B;
+}
+
+:root[data-theme='dark'] .service-card {
+  background-color: #111915;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+:root[data-theme='dark'] .service-card-meta {
+  background: linear-gradient(180deg, #19241E 0%, #121A16 100%);
 }
 
 :root[data-theme='dark'] .hero-section,

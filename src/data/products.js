@@ -505,27 +505,35 @@ export const wixPortfolioItems = [
 export const whyPerfaServices = [
   {
     id: 'design-consultation',
+    tag: 'Personalized Room Styling',
     title: 'Free Design Consultation',
     description:
-      'Our design consultants help you choose the right furniture and arrange your space beautifully. From selecting materials and sizes to planning your room layout, we provide personalized advice that fits your style, budget, and apartment size.'
+      'Our design consultants help you choose the right furniture and arrange your space beautifully. From selecting materials and sizes to planning your room layout, we provide personalized advice that fits your style, budget, and apartment size.',
+    image: '/services/service_consultation.png'
   },
   {
     id: 'delivery-assembly',
+    tag: 'White-Glove Installation',
     title: 'Delivery & Assembly in Hanoi',
     description:
-      'We provide fast and reliable delivery across Hanoi, along with professional assembly and installation services. Our team delivers, unpacks, assembles, and places your furniture exactly where you want it, so you can enjoy your new sofa without any hassle.'
+      'We provide fast and reliable delivery across Hanoi, along with professional assembly and installation services. Our team delivers, unpacks, assembles, and places your furniture exactly where you want it, so you can enjoy your new sofa without any hassle.',
+    image: '/services/service_delivery.png'
   },
   {
     id: 'warranty-aftersales',
+    tag: '5-Year Structural Protection',
     title: 'Warranty & After-Sales Care',
     description:
-      'Every Perfa product comes with a clear 5-year structural warranty covering manufacturing defects. If anything goes wrong, our after-sales team is ready to assist with repairs, spare washable slipcovers, replacements, or support.'
+      'Every Perfa product comes with a clear 5-year structural warranty covering manufacturing defects. If anything goes wrong, our after-sales team is ready to assist with repairs, spare washable slipcovers, replacements, or support.',
+    image: '/services/service_warranty.png'
   },
   {
     id: 'flexible-payment',
+    tag: '0% Interest Installments',
     title: 'Flexible Payment & 0% Financing',
     description:
-      "Buying family furniture shouldn't strain your budget. Perfa offers flexible payment options, including 0% installment plans and multiple payment methods, so you can bring home the sofa you love today and pay comfortably over time."
+      "Buying family furniture shouldn't strain your budget. Perfa offers flexible payment options, including 0% installment plans and multiple payment methods, so you can bring home the sofa you love today and pay comfortably over time.",
+    image: '/services/service_payment.png'
   }
 ];
 
@@ -632,10 +640,10 @@ export function getColorHex(colorName, fallbackHex = '#D8CFC2') {
 
 export function formatVND(amount) {
   if (typeof amount !== 'number') return '';
-  return `${amount.toLocaleString('en-US')} ₫`;
+  return `${amount.toLocaleString('en-US')}\u00A0₫`;
 }
 
 export function formatVNDWithCode(amount) {
   if (typeof amount !== 'number') return '';
-  return `VND ${amount.toLocaleString('en-US')}`;
+  return `VND\u00A0${amount.toLocaleString('en-US')}`;
 }

@@ -21,7 +21,7 @@ const initialHero = {
   featuredProductPrice: '41,900,000 ₫ • Algodão Organic Cotton'
 };
 
-const STORAGE_VERSION = 'v8_materials_photos';
+const STORAGE_VERSION = 'v9_services_photos';
 
 if (typeof window !== 'undefined') {
   try {
@@ -30,11 +30,13 @@ if (typeof window !== 'undefined') {
       if (
         currentVer !== 'v5_15_products' &&
         currentVer !== 'v6_testimonials_update' &&
-        currentVer !== 'v7_testimonial_photos'
+        currentVer !== 'v7_testimonial_photos' &&
+        currentVer !== 'v8_materials_photos'
       ) {
         localStorage.removeItem('perfa_react_products');
         localStorage.removeItem('perfa_react_collections');
       }
+      localStorage.removeItem('perfa_react_services');
       localStorage.removeItem('perfa_react_materials');
       localStorage.removeItem('perfa_react_testimonials');
       localStorage.setItem('perfa_data_version', STORAGE_VERSION);
@@ -210,7 +212,14 @@ export function ShopProvider({ children }) {
   const [services, setServices] = useState(() => {
     try {
       const saved = localStorage.getItem('perfa_react_services');
-      return saved ? JSON.parse(saved) : initialServices;
+      if (!saved) return initialServices;
+      const parsed = JSON.parse(saved);
+      return parsed.map((srv, idx) => ({
+        ...initialServices[idx],
+        ...srv,
+        image: srv.image || initialServices[idx]?.image,
+        tag: srv.tag || initialServices[idx]?.tag
+      }));
     } catch {
       return initialServices;
     }
