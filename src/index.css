@@ -114,7 +114,7 @@ textarea {
 }
 
 .section {
-  padding: 80px 0;
+  padding: 64px 0;
 }
 
 /* ==========================================================================
@@ -2676,8 +2676,9 @@ h3,
   z-index: 2000;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
+  justify-content: flex-start;
+  gap: 18px;
+  padding: 24px 20px;
 }
 
 .lightbox-toolbar {
@@ -2730,16 +2731,16 @@ h3,
 }
 
 .lightbox-stage {
-  flex: 1;
+  height: min(64vh, 520px);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: auto;
-  margin: 16px 0;
+  margin: 8px 0;
 }
 
 .lightbox-image {
-  max-height: 70vh;
+  max-height: min(60vh, 490px);
   max-width: 85vw;
   object-fit: contain;
   border-radius: var(--radius-sm);
@@ -2748,7 +2749,7 @@ h3,
 
 .lightbox-nav-arrow {
   position: absolute;
-  top: 50%;
+  top: min(46%, 340px);
   transform: translateY(-50%);
   background-color: rgba(255, 255, 255, 0.16);
   color: #FFFFFF;
@@ -5394,4 +5395,44 @@ h3,
   background-color: rgba(255, 255, 255, 0.14);
   border-color: rgba(255, 255, 255, 0.1);
 }
+
+/* ==========================================================================
+   WIX IFRAME DYNAMIC PAGE-BOTTOM SCROLL GUARD
+   ========================================================================== */
+.iframe-scroll-guard {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--wix-sage-deeper);
+}
+
+:root[data-theme='dark'] .iframe-scroll-guard {
+  background-color: #17221C;
+}
+
+.iframe-footer-edge-trigger {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
+.iframe-overshoot-zone {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.iframe-overshoot-strip {
+  width: 100%;
+  height: 80px;
+  flex-shrink: 0;
+}
+
 
