@@ -176,26 +176,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Showroom & Service CTA */}
-      <section className="section about-cta-banner">
-        <div className="container about-cta-inner">
-          <div>
-            <h2>Experience Perfa in Person in Hanoi</h2>
-            <p>
-              Visit our showroom at 207 Giai Phong Street, Bach Mai Ward, Hanoi — bring your kids and test our stain-resistant fabrics firsthand!
-            </p>
-          </div>
-          <div className="about-cta-buttons">
-            <Link to="/contact" className="btn btn-light-cream">
-              Visit Hanoi Showroom <ArrowRight size={16} />
-            </Link>
-            <Link to="/shop" className="btn btn-outline-light">
-              Browse All Sofas
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
