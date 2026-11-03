@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { X, Upload, Link as LinkIcon, RotateCw, ZoomIn, Scissors } from 'lucide-react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { X, Upload, RotateCw, Scissors } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 
-export default function CropModal() {
-  const { cropSession, closeCropModal } = useShop();
-
-  const [imageUrl, setImageUrl] = useState('');
-  const [urlInput, setUrlInput] = useState('');
-  const [aspectRatio, setAspectRatio] = useState(16 / 9);
+function CropModalContent({ cropSession, closeCropModal }) {
+  const [imageUrl, setImageUrl] = useState(cropSession.initialUrl || '');
+  const [urlInput, setUrlInput] = useState(
+    cropSession.initialUrl && !cropSession.initialUrl.startsWith('data:')
+      ? cropSession.initialUrl
+      : ''
+  );
+  const [aspectRatio, setAspectRatio] = useState(cropSession.aspectRatio || 16 / 9);
   const [zoom, setZoom] = useState(1);
   const [panX, setPanX] = useState(0);
   const [panY, setPanY] = useState(0);
@@ -18,50 +20,12 @@ export default function CropModal() {
   const isDraggingRef = useRef(false);
   const dragStartRef = useRef({ x: 0, y: 0 });
 
-  useEffect(() => {
-    if (cropSession) {
-      setImageUrl(cropSession.initialUrl || '');
-      setUrlInput(cropSession.initialUrl && !cropSession.initialUrl.startsWith('data:') ? cropSession.initialUrl : '');
-      setAspectRatio(cropSession.aspectRatio || 16 / 9);
-      setZoom(1);
-      setPanX(0);
-      setPanY(0);
-      setRotation(0);
-    }
-  }, [cropSession]);
-
-  // Load image object whenever imageUrl changes
-  useEffect(() => {
-    if (!imageUrl) return;
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => {
-      imageRef.current = img;
-      setPanX(0);
-      setPanY(0);
-      setZoom(1);
-      drawCanvas();
-    };
-    img.onerror = () => {
-      alert('Không thể tải ảnh từ URL này (do bảo mật CORS hoặc link hỏng). Vui lòng tải ảnh về máy rồi dùng nút "Tải ảnh từ máy tính".');
-    };
-    img.src = imageUrl;
-  }, [imageUrl]);
-
-  // Redraw canvas on any transform change
-  useEffect(() => {
-    drawCanvas();
-  }, [zoom, panX, panY, rotation, aspectRatio]);
-
-  if (!cropSession) return null;
-
-  const drawCanvas = () => {
+  const drawCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const img = imageRef.current;
 
-    // Canvas display dimensions
     const maxW = 560;
     const maxH = 340;
     let w = maxW;
@@ -103,7 +67,7 @@ export default function CropModal() {
     ctx.drawImage(img, -img.width / 2, -img.height / 2);
     ctx.restore();
 
-    // Draw Grid Lines (Rule of thirds)
+    // Grid lines
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
     ctx.lineWidth = 1;
     ctx.beginPath();
@@ -117,11 +81,31 @@ export default function CropModal() {
     ctx.lineTo(canvas.width, (canvas.height * 2) / 3);
     ctx.stroke();
 
-    // Border
     ctx.strokeStyle = '#4B6355';
     ctx.lineWidth = 3;
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
-  };
+  }, [aspectRatio, panX, panY, rotation, zoom]);
+
+  useEffect(() => {
+    if (!imageUrl) return;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      imageRef.current = img;
+      setPanX(0);
+      setPanY(0);
+      setZoom(1);
+      drawCanvas();
+    };
+    img.onerror = () => {
+      alert('Không thể tải ảnh từ URL này. Vui lòng tải ảnh về máy rồi dùng nút "Tải ảnh từ máy tính".');
+    };
+    img.src = imageUrl;
+  }, [imageUrl, drawCanvas]);
+
+  useEffect(() => {
+    drawCanvas();
+  }, [drawCanvas]);
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
@@ -205,7 +189,6 @@ export default function CropModal() {
         </div>
 
         <div className="perfa-modal-body">
-          {/* Source Selectors */}
           <div className="perfa-crop-source-row">
             <label className="perfa-upload-zone">
               <Upload size={24} color="#4B6355" />
@@ -235,7 +218,6 @@ export default function CropModal() {
             </form>
           </div>
 
-          {/* Aspect Ratio Presets */}
           <div className="perfa-aspect-pills">
             <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#8C877C', alignSelf: 'center' }}>
               Tỉ lệ khung:
@@ -270,7 +252,6 @@ export default function CropModal() {
             </button>
           </div>
 
-          {/* Interactive Canvas */}
           <div
             className="perfa-crop-stage-wrap"
             onMouseMove={handleMouseMove}
@@ -284,7 +265,6 @@ export default function CropModal() {
             />
           </div>
 
-          {/* Controls: Zoom, Pan X, Rotate */}
           <div className="perfa-crop-controls-row">
             <div className="perfa-control-item">
               <div className="perfa-control-label">
@@ -343,4 +323,10 @@ export default function CropModal() {
       </div>
     </div>
   );
+}
+
+export default function CropModal() {
+  const { cropSession, closeCropModal } = useShop();
+  if (!cropSession) return null;
+  return <CropModalContent cropSession={cropSession} closeCropModal={closeCropModal} />;
 }
