@@ -678,7 +678,12 @@ export default function HomePage() {
                   </div>
                 )}
                 <div className="testimonial-image-wrap">
-                  <img src={item.image} alt={item.family} loading="lazy" />
+                  <img
+                    src={item.image}
+                    alt={item.family}
+                    loading="lazy"
+                    style={{ objectPosition: item.imagePosition || 'center center' }}
+                  />
                   <span className="testimonial-location-pill">{item.location}</span>
                 </div>
                 <div className="testimonial-body">

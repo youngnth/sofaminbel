@@ -582,7 +582,8 @@ export const testimonials = [
       'Perfa is perfect for our home with two active kids. Its stain-resistant material and soft, rounded edges keep them safe and our living space warm and inviting every single day.',
     sofaPurchased: 'Sage Tufted 3-Seater Sofa',
     productId: '1793686225231',
-    image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=80'
+    image: '/testimonials/testimonial_1.jpg',
+    imagePosition: '50% 68%'
   },
   {
     id: 't2',
@@ -593,7 +594,8 @@ export const testimonials = [
       'With two kids and a pup, our Perfa sofa is a lifesaver. The scratch-resistant, easy-to-clean fabric keeps our cozy living room elegant and completely stress-free.',
     sofaPurchased: 'Curved Modular 4-Seater Sofa',
     productId: '1793684591208',
-    image: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=900&q=80'
+    image: '/testimonials/testimonial_2.jpg',
+    imagePosition: '50% 48%'
   },
   {
     id: 't3',
@@ -604,7 +606,8 @@ export const testimonials = [
       'What attracted us to Perfa was its compact modular design and removable washable covers. The fabric samples and clear product dimensions also helped us feel more confident about choosing the right sofa for our home. Perfa brings together the aesthetics and practicality we were looking for!',
     sofaPurchased: 'Curved Daybed 4-Seater Sofa',
     productId: '1793683789316',
-    image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80'
+    image: '/testimonials/testimonial_3.jpg',
+    imagePosition: '50% 45%'
   }
 ];
 

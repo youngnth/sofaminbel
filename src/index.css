@@ -17,9 +17,10 @@
   --brand-green: #7A8B6F; /* Muted Green */
   --brand-green-light: #E4ECE0;
 
-  /* Wix Earth Taupe & Charcoal Text */
+  /* Earth Taupe & Charcoal Text */
   --wix-taupe: #584B47; /* Exact Wix --color_11 */
   --wix-taupe-dark: #46403B; /* Exact Wix --color_12 */
+  --charcoal: #2C2C2C;
   --text-dark: #2C2C2C;
   --text-muted: #6E6A64;
   --warm-grey: #8A8A8A;
@@ -37,6 +38,32 @@
   --shadow-soft: 0 8px 28px rgba(44, 44, 44, 0.06);
   --shadow-hover: 0 16px 38px rgba(44, 44, 44, 0.12);
   --transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================================================
+   DARK MODE PALETTE & COMPONENT OVERRIDES ([data-theme="dark"])
+   ========================================================================== */
+:root[data-theme='dark'] {
+  --bg-beige: #141916;
+  --bg-stone: #1B221E;
+  --bg-cream-card: #222B26;
+  --bg-white: #1E2622;
+
+  --wix-sage-dark: #6D947B;
+  --wix-sage-deeper: #4F725C;
+  --brand-green: #88A67D;
+  --brand-green-light: #26332B;
+
+  --wix-taupe: #C4B9B2;
+  --wix-taupe-dark: #D6CEC7;
+  --charcoal: #F3EFE8;
+  --text-dark: #F3EFE8;
+  --text-muted: #A6B0AA;
+  --warm-grey: #8C9690;
+  --border-warm: #2E3A33;
+
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.38);
+  --shadow-hover: 0 18px 42px rgba(0, 0, 0, 0.56);
 }
 
 *,
@@ -356,10 +383,10 @@ h3,
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex: 1;
   justify-content: flex-end;
-  max-width: 460px;
+  max-width: 560px;
 }
 
 /* Search Bar */
@@ -3965,7 +3992,34 @@ h3,
   border-color: #FCA5A5;
 }
 
-/* Header Account Button & Auth Modal */
+/* Header Theme Toggle, Account Button & Auth Modal */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 13px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.theme-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.theme-toggle-btn.is-dark {
+  background-color: rgba(250, 204, 21, 0.18);
+  border-color: rgba(250, 204, 21, 0.45);
+  color: #FEF08A;
+}
+
 .account-trigger-btn {
   display: inline-flex;
   align-items: center;
@@ -4877,3 +4931,148 @@ h3,
 .perfa-rotate-btn:hover {
   background: #EFECE6;
 }
+
+/* ==========================================================================
+   DARK MODE SURFACE & ELEMENT REFINEMENTS
+   ========================================================================== */
+:root[data-theme='dark'] .top-announcement-bar {
+  background-color: #0E1310;
+  color: #D5E2D9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+:root[data-theme='dark'] .main-header-bar {
+  background-color: #1F2D26;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme='dark'] .header-search-form {
+  background-color: #151D18;
+  border-color: #2E3D35;
+}
+
+:root[data-theme='dark'] .header-search-input {
+  color: #F3EFE8;
+}
+
+:root[data-theme='dark'] .search-dropdown {
+  background-color: #1C2420;
+  border-color: #2E3A33;
+}
+
+:root[data-theme='dark'] .search-result-item {
+  border-bottom-color: #2A352F;
+}
+
+:root[data-theme='dark'] .cart-badge,
+:root[data-theme='dark'] .account-trigger-btn.logged-in {
+  background-color: #E2ECE5;
+  color: #1E2D24;
+  border-color: #E2ECE5;
+}
+
+:root[data-theme='dark'] .hero-section,
+:root[data-theme='dark'] .wix-about-banner-section,
+:root[data-theme='dark'] .wix-materials-section,
+:root[data-theme='dark'] .shop-hero-banner,
+:root[data-theme='dark'] .about-hero-section,
+:root[data-theme='dark'] .about-cta-banner,
+:root[data-theme='dark'] .home-contact-card,
+:root[data-theme='dark'] .site-footer {
+  background-color: #213028;
+}
+
+:root[data-theme='dark'] .footer-bottom {
+  background-color: #17221C;
+}
+
+:root[data-theme='dark'] .btn-light-cream {
+  background-color: #EAE4D8;
+  color: #1B241E;
+}
+
+:root[data-theme='dark'] .btn-light-cream:hover {
+  background-color: #FFFFFF;
+  color: #141B17;
+}
+
+:root[data-theme='dark'] .hero-floating-badge,
+:root[data-theme='dark'] .map-pin-card {
+  background-color: rgba(30, 38, 34, 0.95);
+  border: 1px solid #334239;
+  color: #F3EFE8;
+}
+
+:root[data-theme='dark'] .product-card-image-wrap,
+:root[data-theme='dark'] .product-main-image-container {
+  background-color: #252E29;
+}
+
+:root[data-theme='dark'] .product-card-footer,
+:root[data-theme='dark'] .testimonial-sofa-link-row,
+:root[data-theme='dark'] .filter-group {
+  border-color: #2B3630;
+}
+
+:root[data-theme='dark'] .badge-washable,
+:root[data-theme='dark'] .testimonial-location-pill,
+:root[data-theme='dark'] .product-card-hover-cta {
+  background-color: rgba(24, 31, 27, 0.92);
+  color: #E8E4DC;
+  border-color: #36453C;
+}
+
+:root[data-theme='dark'] .custom-checkbox,
+:root[data-theme='dark'] .same-material-mini-card,
+:root[data-theme='dark'] .checkout-field input,
+:root[data-theme='dark'] .checkout-field textarea,
+:root[data-theme='dark'] .payment-method-option,
+:root[data-theme='dark'] .btn-order-delete {
+  background-color: #161C19;
+  color: #F3EFE8;
+  border-color: #313E37;
+}
+
+:root[data-theme='dark'] .payment-method-option.selected,
+:root[data-theme='dark'] .bank-transfer-info-box,
+:root[data-theme='dark'] .checkout-auth-prompt,
+:root[data-theme='dark'] .checkout-auth-logged {
+  background-color: #233029;
+  border-color: #5C826B;
+  color: #E5EFE8;
+}
+
+:root[data-theme='dark'] .free-ship-pill,
+:root[data-theme='dark'] .order-code-pill,
+:root[data-theme='dark'] .auth-member-badge {
+  background-color: #26382E;
+  color: #98C2A8;
+}
+
+:root[data-theme='dark'] .saved-order-card.is-cancelled {
+  background-color: #1A1F1D;
+  border-color: #2E3632;
+}
+
+:root[data-theme='dark'] .btn-order-cancel,
+:root[data-theme='dark'] .btn-cancel-order-inline {
+  background-color: rgba(185, 28, 28, 0.16);
+  border-color: rgba(248, 113, 113, 0.4);
+  color: #FCA5A5;
+}
+
+:root[data-theme='dark'] .form-group input:focus,
+:root[data-theme='dark'] .form-group select:focus,
+:root[data-theme='dark'] .form-group textarea:focus {
+  background-color: #18201C;
+}
+
+:root[data-theme='dark'] .map-visual-canvas {
+  background: linear-gradient(135deg, #1B2620 0%, #202823 50%, #19231D 100%);
+}
+
+:root[data-theme='dark'] .road {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+

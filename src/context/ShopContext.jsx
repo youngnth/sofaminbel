@@ -20,13 +20,13 @@ const initialHero = {
   featuredProductPrice: '41,900,000 ₫ • Algodão Organic Cotton'
 };
 
-const STORAGE_VERSION = 'v6_testimonials_update';
+const STORAGE_VERSION = 'v7_testimonial_photos';
 
 if (typeof window !== 'undefined') {
   try {
     const currentVer = localStorage.getItem('perfa_data_version');
     if (currentVer !== STORAGE_VERSION) {
-      if (currentVer !== 'v5_15_products') {
+      if (currentVer !== 'v5_15_products' && currentVer !== 'v6_testimonials_update') {
         localStorage.removeItem('perfa_react_products');
         localStorage.removeItem('perfa_react_materials');
         localStorage.removeItem('perfa_react_collections');
@@ -122,6 +122,32 @@ export function ShopProvider({ children }) {
   });
 
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  // Dark / Light Theme State
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem('perfa_react_theme') || 'light';
+    } catch {
+      return 'light';
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('perfa_react_theme', theme);
+    } catch {
+      // ignore
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      showToast(next === 'dark' ? '🌙 Switched to Dark Mode' : '☀️ Switched to Light Mode');
+      return next;
+    });
+  };
 
   // Edit Mode & Dynamic Site Data State
   const [isEditMode, setIsEditMode] = useState(false);
@@ -666,9 +692,12 @@ export function ShopProvider({ children }) {
         toastMessage,
         showToast,
 
-        // Edit Mode
+        // Edit Mode & Theme
         isEditMode,
         setIsEditMode,
+        theme,
+        setTheme,
+        toggleTheme,
 
         // Dynamic Data
         products,

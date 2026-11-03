@@ -4,6 +4,8 @@ import {
   Search,
   ShoppingBag,
   User,
+  Moon,
+  Sun,
   Menu,
   X,
   PhoneCall,
@@ -27,7 +29,9 @@ export default function Header() {
     openConsultationModal,
     products,
     currentUser,
-    setIsAuthModalOpen
+    setIsAuthModalOpen,
+    theme,
+    toggleTheme
   } = useShop();
 
   const searchResults = searchProducts(products, searchQuery);
@@ -293,6 +297,20 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            <button
+              type="button"
+              className={`theme-toggle-btn ${theme === 'dark' ? 'is-dark' : ''}`}
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              data-testid="theme-toggle-btn"
+            >
+              {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
+              <span className="theme-btn-label">
+                {theme === 'dark' ? 'Light' : 'Dark'}
+              </span>
+            </button>
 
             <button
               type="button"
