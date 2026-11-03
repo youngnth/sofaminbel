@@ -3458,3 +3458,494 @@ h3,
     margin: 16px;
   }
 }
+
+
+/* ============================================================================
+   PERFA LIVING STUDIO — LIVE CONTENT EDITOR & CROP ENGINE STYLES
+   ============================================================================ */
+
+/* Floating Global Editor Bar */
+.perfa-editor-bar {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(43, 42, 38, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #F6F2EA;
+  padding: 8px 16px;
+  border-radius: 999px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(199, 211, 192, 0.25);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.perfa-editor-bar:hover {
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.45);
+}
+
+.perfa-editor-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--wix-sage-dark);
+  color: #FFFFFF;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.perfa-editor-toggle-btn:hover {
+  background: var(--wix-sage-deeper);
+  transform: translateY(-1px);
+}
+
+.perfa-editor-toggle-btn.active {
+  background: #B5552E;
+}
+
+.perfa-editor-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #F6F2EA;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.perfa-editor-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.perfa-editor-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  opacity: 0.85;
+}
+
+.perfa-editor-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Section Outline & Section Toolbar */
+.perfa-edit-mode section {
+  position: relative;
+  outline: 2px dashed rgba(75, 99, 85, 0.45);
+  outline-offset: -2px;
+}
+
+.perfa-section-toolbar {
+  position: absolute;
+  top: 14px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(43, 42, 38, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(199, 211, 192, 0.3);
+}
+
+.perfa-section-name {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #C7D3C0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-right: 6px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.perfa-toolbar-btn {
+  background: transparent;
+  color: #F6F2EA;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.perfa-toolbar-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+.perfa-toolbar-btn.btn-reset {
+  color: #FEB2B2;
+}
+
+.perfa-toolbar-btn.btn-reset:hover {
+  background: rgba(181, 85, 46, 0.4);
+  color: #FFFFFF;
+}
+
+/* Card Actions Overlay */
+.product-card {
+  position: relative;
+}
+
+.perfa-card-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 90;
+  display: flex;
+  gap: 6px;
+  background: rgba(43, 42, 38, 0.92);
+  backdrop-filter: blur(6px);
+  padding: 4px 6px;
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.perfa-card-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #F6F2EA;
+  border: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 7px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.15s ease;
+}
+
+.perfa-card-btn:hover {
+  background: var(--wix-sage-dark);
+  color: #FFFFFF;
+}
+
+.perfa-card-btn.btn-delete:hover {
+  background: #E53E3E;
+  color: #FFFFFF;
+}
+
+/* Add Item Card */
+.perfa-add-item-card {
+  min-height: 240px;
+  border: 2px dashed rgba(75, 99, 85, 0.45);
+  border-radius: 14px;
+  background: rgba(199, 211, 192, 0.2);
+  color: var(--wix-sage-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.perfa-add-item-card:hover {
+  background: rgba(199, 211, 192, 0.35);
+  border-color: var(--wix-sage-dark);
+  transform: translateY(-4px);
+}
+
+.perfa-add-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--wix-sage-dark);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+/* Crop & Editor Modals */
+.perfa-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(25, 24, 22, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.perfa-modal-box {
+  background: #FFFFFF;
+  color: var(--text-dark);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-warm);
+}
+
+.perfa-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid #EFECE6;
+  background: var(--bg-beige);
+}
+
+.perfa-modal-header h3 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.perfa-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--warm-grey);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.perfa-modal-close:hover {
+  color: var(--text-dark);
+}
+
+.perfa-modal-body {
+  padding: 24px 28px;
+}
+
+.perfa-form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perfa-form-group label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--wix-sage-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.perfa-form-group input,
+.perfa-form-group textarea,
+.perfa-form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border-warm);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  background: var(--bg-cream-card);
+  transition: border-color 0.2s ease;
+}
+
+.perfa-form-group input:focus,
+.perfa-form-group textarea:focus,
+.perfa-form-group select:focus {
+  outline: none;
+  border-color: var(--wix-sage-dark);
+  background: #FFFFFF;
+}
+
+.perfa-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 18px 28px;
+  border-top: 1px solid #EFECE6;
+  background: var(--bg-beige);
+}
+
+.perfa-btn-cancel {
+  background: transparent;
+  color: var(--warm-grey);
+  border: 1.5px solid var(--border-warm);
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.perfa-btn-cancel:hover {
+  color: var(--text-dark);
+  border-color: var(--warm-grey);
+}
+
+/* Crop Modal Specific */
+.perfa-crop-modal {
+  max-width: 820px;
+}
+
+.perfa-crop-source-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.perfa-upload-zone {
+  flex: 1;
+  min-width: 260px;
+  border: 2px dashed var(--wix-sage-dark);
+  border-radius: 8px;
+  background: rgba(199, 211, 192, 0.2);
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perfa-upload-zone:hover {
+  background: rgba(199, 211, 192, 0.35);
+}
+
+.perfa-upload-zone input {
+  display: none;
+}
+
+.perfa-url-zone {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.perfa-aspect-pills {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.perfa-aspect-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border-warm);
+  background: var(--bg-cream-card);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.perfa-aspect-pill.active {
+  background: var(--wix-sage-dark);
+  color: #FFFFFF;
+  border-color: var(--wix-sage-dark);
+}
+
+.perfa-crop-stage-wrap {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  background: #1A1917;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.perfa-crop-canvas {
+  max-width: 100%;
+  max-height: 100%;
+  cursor: grab;
+}
+
+.perfa-crop-canvas:active {
+  cursor: grabbing;
+}
+
+.perfa-crop-controls-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.perfa-control-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.perfa-control-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--warm-grey);
+}
+
+.perfa-slider {
+  width: 100%;
+  accent-color: var(--wix-sage-dark);
+}
+
+.perfa-rotate-btn {
+  background: var(--bg-beige);
+  border: 1.5px solid var(--border-warm);
+  color: var(--text-dark);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.perfa-rotate-btn:hover {
+  background: #EFECE6;
+}

@@ -8,9 +8,10 @@ import {
   ArrowUpDown,
   Check
 } from 'lucide-react';
-import { products } from '../data/products';
 import { searchProducts } from '../utils/searchProducts';
 import ProductCard from '../components/ProductCard';
+import SectionToolbar from '../components/SectionToolbar';
+import { useShop } from '../context/ShopContext';
 
 const PRICE_RANGES = [
   { label: 'Under 20M', min: 0, max: 19999999 },
@@ -37,6 +38,7 @@ const COLORS = [
 const SEAT_COUNTS = [2, 3, 4];
 
 export default function ShopPage() {
+  const { products, isEditMode, addProduct } = useShop();
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Filter states
@@ -150,6 +152,10 @@ export default function ShopPage() {
     <div className="shop-page">
       {/* Shop Page Banner matching Wix Catalog Header */}
       <section className="shop-hero-banner">
+        <SectionToolbar
+          sectionKey="products"
+          sectionName="Shop Catalog"
+        />
         <div className="container">
           <nav className="breadcrumb-nav" aria-label="Breadcrumb">
             <Link to="/">Home</Link>
@@ -451,6 +457,38 @@ export default function ShopPage() {
                 {filteredAndSortedProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
+                {isEditMode && (
+                  <div
+                    className="perfa-add-item-card"
+                    onClick={() => {
+                      const newId = String(Date.now());
+                      addProduct({
+                        id: newId,
+                        name: 'New Custom Sofa',
+                        price: 26000000,
+                        material: 'Pet-Friendly Fabric',
+                        color: 'Beige',
+                        colorHex: '#E6DEC8',
+                        seatCount: 3,
+                        dimensions: '220 cm (W) × 94 cm (D) × 84 cm (H)',
+                        isWashable: true,
+                        isBestSeller: true,
+                        createdAt: new Date().toISOString(),
+                        wixCategory: 'Sofa & Daybeds',
+                        tags: ['Pet-Friendly', 'Washable Cover'],
+                        description: 'Handcrafted luxury family sofa.',
+                        images: [
+                          'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
+                          'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
+                          'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80'
+                        ]
+                      });
+                    }}
+                  >
+                    <div className="perfa-add-icon">+</div>
+                    <span>Thêm Sofa Mới</span>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="shop-empty-state">

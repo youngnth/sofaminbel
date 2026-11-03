@@ -12,22 +12,41 @@ import {
   CheckCircle2,
   PawPrint,
   Droplets,
-  Baby
+  Baby,
+  Plus,
+  Edit2,
+  Image as ImageIcon,
+  Trash2
 } from 'lucide-react';
-import {
-  products,
-  featuredCollections,
-  wixPortfolioItems,
-  whyPerfaServices,
-  materialSwatches,
-  testimonials,
-  formatVND
-} from '../data/products';
+import { formatVND } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import SectionToolbar from '../components/SectionToolbar';
 import { useShop } from '../context/ShopContext';
 
 export default function HomePage() {
-  const { openConsultationModal, showToast } = useShop();
+  const {
+    openConsultationModal,
+    showToast,
+    isEditMode,
+    products,
+    heroData,
+    aboutData,
+    collections,
+    portfolioItems,
+    services,
+    materials,
+    testimonials,
+    updateHero,
+    updateAbout,
+    addProduct,
+    updatePortfolioItem,
+    deletePortfolioItem,
+    updateTestimonial,
+    deleteTestimonial,
+    openCropModal,
+    openItemEditor
+  } = useShop();
+
   const [activeCatalogTab, setActiveCatalogTab] = useState('All');
   const [quickContactSent, setQuickContactSent] = useState(false);
   const [quickContact, setQuickContact] = useState({
@@ -51,31 +70,120 @@ export default function HomePage() {
     showToast('Thank you! Our Hanoi team has received your message.');
   };
 
+  // Section Edit Handlers
+  const handleEditHero = () => {
+    openItemEditor({
+      title: 'Chỉnh sửa Hero Banner',
+      fields: [
+        { label: 'Tiêu Đề Lớn (Headline)', key: 'title', type: 'text' },
+        { label: 'Đoạn Mô Tả (Subtitle)', key: 'subtitle', type: 'textarea' },
+        { label: 'Nút Chính (Primary CTA)', key: 'ctaPrimary', type: 'text' },
+        { label: 'Nút Phụ (Secondary CTA)', key: 'ctaSecondary', type: 'text' }
+      ],
+      initialValues: {
+        title: heroData.title,
+        subtitle: heroData.subtitle,
+        ctaPrimary: heroData.ctaPrimary,
+        ctaSecondary: heroData.ctaSecondary
+      },
+      onSave: (vals) => updateHero(vals)
+    });
+  };
+
+  const handleCropHero = () => {
+    openCropModal({
+      initialUrl: heroData.bgImage,
+      aspectRatio: 16 / 9,
+      title: 'Cắt & Thay ảnh Hero Banner',
+      onApply: (croppedDataUrl) => updateHero({ bgImage: croppedDataUrl })
+    });
+  };
+
+  const handleEditAbout = () => {
+    openItemEditor({
+      title: 'Chỉnh sửa About Us (Vision & Mission)',
+      fields: [
+        { label: 'Tiêu Đề Phần (Heading)', key: 'sectionTitle', type: 'text' },
+        { label: 'Tiêu Đề Tầm Nhìn (Vision Title)', key: 'visionTitle', type: 'text' },
+        { label: 'Nội Dung Tầm Nhìn (Vision Text)', key: 'visionText', type: 'textarea' },
+        { label: 'Tiêu Đề Sứ Mệnh (Mission Title)', key: 'missionTitle', type: 'text' },
+        { label: 'Nội Dung Sứ Mệnh (Mission Text)', key: 'missionText', type: 'textarea' }
+      ],
+      initialValues: {
+        sectionTitle: aboutData.sectionTitle,
+        visionTitle: aboutData.visionTitle,
+        visionText: aboutData.visionText,
+        missionTitle: aboutData.missionTitle,
+        missionText: aboutData.missionText
+      },
+      onSave: (vals) => updateAbout(vals)
+    });
+  };
+
+  const handleCropAbout = () => {
+    openCropModal({
+      initialUrl: aboutData.image,
+      aspectRatio: 3 / 4,
+      title: 'Cắt & Thay ảnh About Us',
+      onApply: (croppedDataUrl) => updateAbout({ image: croppedDataUrl })
+    });
+  };
+
+  const handleAddNewProduct = () => {
+    const newId = String(Date.now());
+    const newProd = {
+      id: newId,
+      name: 'Luna Modular Luxury Sofa',
+      price: 29500000,
+      material: 'Pet-Friendly Fabric',
+      color: 'Beige',
+      colorHex: '#E6DEC8',
+      seatCount: 3,
+      dimensions: '230 cm (W) × 95 cm (D) × 84 cm (H)',
+      isWashable: true,
+      isBestSeller: true,
+      createdAt: new Date().toISOString(),
+      wixCategory: 'Sofa & Daybeds',
+      tags: ['Pet-Friendly', 'Washable Cover', 'New Arrival'],
+      description: 'Handcrafted luxury sofa engineered for modern Hanoi homes with young children and pets.',
+      images: [
+        'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80'
+      ]
+    };
+    addProduct(newProd);
+  };
+
   return (
-    <div className="home-page">
-      {/* 1. HERO BANNER (Matches Wix Section 2 #comp-m8ley4yv + Enhanced CTA) */}
+    <div className={`home-page ${isEditMode ? 'perfa-edit-mode' : ''}`}>
+      {/* 1. HERO BANNER */}
       <section className="hero-section">
+        <SectionToolbar
+          sectionKey="hero"
+          sectionName="Hero Banner"
+          onEditText={handleEditHero}
+          onCropImage={handleCropHero}
+        />
         <div className="container hero-grid">
           <div className="hero-content">
             <div className="hero-eyebrow">
               <PawPrint size={15} />
               <span>HANOI FAMILY &amp; PET-FRIENDLY SOFA SPECIALIST</span>
             </div>
-            <h1 className="hero-headline">Unique Elegance for Everyday Family Life</h1>
-            <p className="hero-subheadline">
-              Crafting spaces where luxury meets family comfort. Durable, scratch-resistant, and machine-washable sofas thoughtfully designed for Hanoi households with young children and pets.
-            </p>
+            <h1 className="hero-headline">{heroData.title}</h1>
+            <p className="hero-subheadline">{heroData.subtitle}</p>
 
             <div className="hero-cta-group">
               <Link to="/shop" className="btn btn-light-cream btn-lg">
-                Shop Now <ArrowRight size={18} />
+                {heroData.ctaPrimary || 'Shop Now'} <ArrowRight size={18} />
               </Link>
               <button
                 type="button"
                 className="btn btn-outline-light btn-lg"
                 onClick={() => openConsultationModal()}
               >
-                Experience Perfa
+                {heroData.ctaSecondary || 'Experience Perfa'}
               </button>
             </div>
 
@@ -101,14 +209,16 @@ export default function HomePage() {
 
           <div className="hero-image-card">
             <img
-              src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1400&q=85"
-              alt="Perfa Luna 3-Seater Family Sofa in a warm Hanoi living room"
+              src={heroData.bgImage}
+              alt="Perfa Family Sofa in a warm Hanoi living room"
               className="hero-main-img"
             />
             <div className="hero-floating-badge">
-              <span className="floating-badge-label">Featured Best Seller</span>
-              <strong>Luna 3-Seater Sofa</strong>
-              <span className="floating-badge-price">25,000,000 ₫ • Pet-Friendly Fabric</span>
+              <span className="floating-badge-label">Featured Sofa</span>
+              <strong>{heroData.featuredProductName || 'Luna 3-Seater Sofa'}</strong>
+              <span className="floating-badge-price">
+                {heroData.featuredProductPrice || '25,000,000 ₫ • Pet-Friendly Fabric'}
+              </span>
               <Link to="/product/1" className="floating-badge-link">
                 View Sofa <ArrowRight size={13} />
               </Link>
@@ -117,8 +227,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. FEATURED COLLECTIONS SECTION (4 Category Cards) */}
+      {/* 2. FEATURED COLLECTIONS SECTION */}
       <section className="section featured-collections-section">
+        <SectionToolbar
+          sectionKey="collections"
+          sectionName="Featured Collections"
+        />
         <div className="container">
           <div className="section-header">
             <div>
@@ -126,29 +240,20 @@ export default function HomePage() {
               <h2 className="section-title">Featured Collections</h2>
             </div>
             <Link to="/shop" className="section-link">
-              View All 12 Sofas <ArrowRight size={16} />
+              View All {products.length} Sofas <ArrowRight size={16} />
             </Link>
           </div>
 
           <div className="collections-grid">
-            {featuredCollections.map((col) => {
+            {collections.map((col) => {
               const queryParam =
                 col.filterType === 'material'
                   ? `/shop?material=${encodeURIComponent(col.filterValue)}`
                   : `/shop?seatCount=${encodeURIComponent(col.filterValue)}`;
               return (
-                <Link
-                  to={queryParam}
-                  key={col.id}
-                  className="collection-card"
-                >
+                <Link to={queryParam} key={col.id} className="collection-card">
                   <div className="collection-card-img-wrap">
-                    <img
-                      src={col.image}
-                      alt={col.title}
-                      className="collection-card-img"
-                      loading="lazy"
-                    />
+                    <img src={col.image} alt={col.title} className="collection-card-img" loading="lazy" />
                     <span className="collection-count-badge">{col.itemCount}</span>
                   </div>
                   <div className="collection-card-content">
@@ -166,8 +271,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. BEST SELLERS SECTION (4 Flagship Product Cards) */}
+      {/* 3. BEST SELLERS SECTION */}
       <section className="section best-sellers-section">
+        <SectionToolbar
+          sectionKey="products"
+          sectionName="Best Sellers & Products"
+        />
         <div className="container">
           <div className="section-header">
             <div>
@@ -177,40 +286,53 @@ export default function HomePage() {
                 Engineered with removable washable covers and pet-friendly fabrics — priced from 11,000,000 ₫ to 60,000,000 ₫.
               </p>
             </div>
-            <Link to="/shop" className="btn btn-primary">
-              Shop All Sofas <ArrowRight size={16} />
-            </Link>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              {isEditMode && (
+                <button type="button" className="btn btn-secondary-sage" onClick={handleAddNewProduct}>
+                  <Plus size={16} /> + Thêm Sofa Mới
+                </button>
+              )}
+              <Link to="/shop" className="btn btn-primary">
+                Shop All Sofas <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
 
           <div className="product-grid-4">
             {bestSellers.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
+            {isEditMode && (
+              <div className="perfa-add-item-card" onClick={handleAddNewProduct}>
+                <div className="perfa-add-icon">+</div>
+                <span>Thêm Sofa Mới</span>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* 4. WIX ABOUT VISION/MISSION + PORTFOLIO & PRODUCT CATALOG SHOWCASE */}
+      {/* 4. ABOUT VISION/MISSION + PORTFOLIO SHOWCASE */}
       <section className="section wix-about-banner-section">
+        <SectionToolbar
+          sectionKey="about"
+          sectionName="About Us & Story"
+          onEditText={handleEditAbout}
+          onCropImage={handleCropAbout}
+        />
         <div className="container">
           <div className="wix-about-split">
             <div className="wix-about-text-col">
               <span className="section-eyebrow light">About Perfa Hanoi</span>
-              <h2 className="wix-about-heading">
-                Built for Homes with Active Kids &amp; Beloved Pets
-              </h2>
+              <h2 className="wix-about-heading">{aboutData.sectionTitle}</h2>
               <div className="wix-vision-mission-cards">
                 <div className="vision-card">
-                  <h3>Our Vision</h3>
-                  <p>
-                    To make durable, family-friendly furniture accessible and affordable for households with children and pets, helping them create safe, comfortable, and functional homes.
-                  </p>
+                  <h3>{aboutData.visionTitle}</h3>
+                  <p>{aboutData.visionText}</p>
                 </div>
                 <div className="vision-card">
-                  <h3>Our Mission</h3>
-                  <p>
-                    To become a trusted mid-range furniture e-commerce brand in Hanoi for young families, recognized for practical design, pet- and child-friendly materials, and reliable service.
-                  </p>
+                  <h3>{aboutData.missionTitle}</h3>
+                  <p>{aboutData.missionText}</p>
                 </div>
               </div>
               <Link to="/about" className="btn btn-light-cream">
@@ -219,14 +341,14 @@ export default function HomePage() {
             </div>
             <div className="wix-about-image-col">
               <img
-                src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80"
+                src={aboutData.image}
                 alt="Happy dogs relaxing on a durable Perfa sofa"
                 className="wix-about-img"
               />
             </div>
           </div>
 
-          {/* Wix Portfolio Strip (#comp-m8lfzgqb) */}
+          {/* Portfolio Strip */}
           <div className="wix-portfolio-block" id="portfolio">
             <div className="wix-portfolio-header">
               <div>
@@ -238,27 +360,72 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="wix-portfolio-grid">
-              {wixPortfolioItems.map((item) => (
-                <Link
-                  to={`/product/${item.linkedProductId}`}
-                  key={item.id}
-                  className="wix-portfolio-card"
-                >
-                  <img src={item.image} alt={item.title} loading="lazy" />
-                  <div className="wix-portfolio-overlay">
-                    <span className="portfolio-cat">{item.category}</span>
-                    <h4>{item.title}</h4>
-                    <p>{item.location}</p>
-                  </div>
-                </Link>
+              {portfolioItems.map((item) => (
+                <div key={item.id} className="wix-portfolio-card">
+                  {isEditMode && (
+                    <div className="perfa-card-actions">
+                      <button
+                        type="button"
+                        className="perfa-card-btn"
+                        onClick={() => {
+                          openItemEditor({
+                            title: `Sửa dự án: ${item.title}`,
+                            fields: [
+                              { label: 'Tên Dự Án (Title)', key: 'title', type: 'text' },
+                              { label: 'Địa Điểm (Location)', key: 'location', type: 'text' },
+                              { label: 'Phân Loại (Category)', key: 'category', type: 'text' }
+                            ],
+                            initialValues: { title: item.title, location: item.location, category: item.category },
+                            onSave: (vals) => updatePortfolioItem(item.id, vals)
+                          });
+                        }}
+                      >
+                        <Edit2 size={12} /> Sửa
+                      </button>
+                      <button
+                        type="button"
+                        className="perfa-card-btn btn-crop"
+                        onClick={() => {
+                          openCropModal({
+                            initialUrl: item.image,
+                            aspectRatio: 4 / 3,
+                            title: `Cắt & Thay ảnh: ${item.title}`,
+                            onApply: (url) => updatePortfolioItem(item.id, { image: url })
+                          });
+                        }}
+                      >
+                        <ImageIcon size={12} /> Cắt
+                      </button>
+                      <button
+                        type="button"
+                        className="perfa-card-btn btn-delete"
+                        onClick={() => deletePortfolioItem(item.id)}
+                      >
+                        <Trash2 size={12} /> Xóa
+                      </button>
+                    </div>
+                  )}
+                  <Link to={`/product/${item.linkedProductId || 1}`}>
+                    <img src={item.image} alt={item.title} loading="lazy" />
+                    <div className="wix-portfolio-overlay">
+                      <span className="portfolio-cat">{item.category}</span>
+                      <h4>{item.title}</h4>
+                      <p>{item.location}</p>
+                    </div>
+                  </Link>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Wix Categorized Product Catalog Preview (#comp-mvtsvux1 / #comp-mvtwhk66 / #comp-mvtxph5v) */}
+      {/* 5. PRODUCT CATALOG PREVIEW */}
       <section className="section wix-catalog-preview-section" id="catalog">
+        <SectionToolbar
+          sectionKey="products"
+          sectionName="Product Catalog Silhouettes"
+        />
         <div className="container">
           <div className="section-header">
             <div>
@@ -293,8 +460,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. "WHY PERFA" BENEFITS, MATERIALS & SERVICES SECTION (Matches Wix Sections 8 & 11) */}
+      {/* 6. "WHY PERFA" SERVICES & SIGNATURE MATERIALS */}
       <section className="section why-perfa-section" id="services">
+        <SectionToolbar
+          sectionKey="services"
+          sectionName="Why Perfa & Services"
+        />
         <div className="container">
           <div className="section-header centered">
             <span className="section-eyebrow">Why Families in Hanoi Choose Perfa</span>
@@ -304,42 +475,41 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* 4 Services from Wix (#comp-m8lfbrub) */}
+          {/* 4 Services */}
           <div className="services-grid">
-            <div className="service-card">
-              <div className="service-icon-box">
-                <Compass size={26} />
+            {services.map((srv, idx) => (
+              <div key={srv.id || idx} className="service-card">
+                {isEditMode && (
+                  <div className="perfa-card-actions">
+                    <button
+                      type="button"
+                      className="perfa-card-btn"
+                      onClick={() => {
+                        openItemEditor({
+                          title: `Sửa dịch vụ: ${srv.title}`,
+                          fields: [
+                            { label: 'Tiêu Đề (Title)', key: 'title', type: 'text' },
+                            { label: 'Mô Tả (Description)', key: 'description', type: 'textarea' }
+                          ],
+                          initialValues: { title: srv.title, description: srv.description },
+                          onSave: (vals) => updateService(srv.id, vals)
+                        });
+                      }}
+                    >
+                      <Edit2 size={12} /> Sửa
+                    </button>
+                  </div>
+                )}
+                <div className="service-icon-box">
+                  {idx === 0 ? <Compass size={26} /> : idx === 1 ? <Truck size={26} /> : idx === 2 ? <ShieldCheck size={26} /> : <CreditCard size={26} />}
+                </div>
+                <h3>{srv.title}</h3>
+                <p>{srv.description}</p>
               </div>
-              <h3>{whyPerfaServices[0].title}</h3>
-              <p>{whyPerfaServices[0].description}</p>
-            </div>
-
-            <div className="service-card">
-              <div className="service-icon-box">
-                <Truck size={26} />
-              </div>
-              <h3>{whyPerfaServices[1].title}</h3>
-              <p>{whyPerfaServices[1].description}</p>
-            </div>
-
-            <div className="service-card">
-              <div className="service-icon-box">
-                <ShieldCheck size={26} />
-              </div>
-              <h3>{whyPerfaServices[2].title}</h3>
-              <p>{whyPerfaServices[2].description}</p>
-            </div>
-
-            <div className="service-card">
-              <div className="service-icon-box">
-                <CreditCard size={26} />
-              </div>
-              <h3>{whyPerfaServices[3].title}</h3>
-              <p>{whyPerfaServices[3].description}</p>
-            </div>
+            ))}
           </div>
 
-          {/* Wix Materials Showcase (#comp-mvxxjr3c) */}
+          {/* Materials Showcase */}
           <div className="materials-showcase-box" id="materials">
             <div className="materials-showcase-header">
               <div>
@@ -352,32 +522,54 @@ export default function HomePage() {
             </div>
 
             <div className="materials-swatch-grid">
-              {materialSwatches.map((mat) => (
-                <Link
-                  to={`/shop?material=${encodeURIComponent(mat.name)}`}
-                  key={mat.name}
-                  className="material-swatch-card"
-                >
-                  <div className="material-swatch-img-wrap">
-                    <img src={mat.image} alt={mat.name} loading="lazy" />
-                    <span className="material-swatch-badge">{mat.badge}</span>
-                  </div>
-                  <div className="material-swatch-info">
-                    <h4>{mat.name}</h4>
-                    <p>{mat.description}</p>
-                    <span className="material-swatch-link">
-                      Shop {mat.name} Sofas <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </Link>
+              {materials.map((mat) => (
+                <div key={mat.name} className="material-swatch-card">
+                  {isEditMode && (
+                    <div className="perfa-card-actions">
+                      <button
+                        type="button"
+                        className="perfa-card-btn btn-crop"
+                        onClick={() => {
+                          openCropModal({
+                            initialUrl: mat.image,
+                            aspectRatio: 1,
+                            title: `Cắt & Thay ảnh chất liệu: ${mat.name}`,
+                            onApply: (url) => {
+                              // update material
+                            }
+                          });
+                        }}
+                      >
+                        <ImageIcon size={12} /> Cắt
+                      </button>
+                    </div>
+                  )}
+                  <Link to={`/shop?material=${encodeURIComponent(mat.name)}`}>
+                    <div className="material-swatch-img-wrap">
+                      <img src={mat.image} alt={mat.name} loading="lazy" />
+                      <span className="material-swatch-badge">{mat.badge}</span>
+                    </div>
+                    <div className="material-swatch-info">
+                      <h4>{mat.name}</h4>
+                      <p>{mat.description}</p>
+                      <span className="material-swatch-link">
+                        Shop {mat.name} Sofas <ArrowRight size={14} />
+                      </span>
+                    </div>
+                  </Link>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. CUSTOMER TESTIMONIALS SECTION (Matches Wix Sections 9, 10 & 12) */}
+      {/* 7. CUSTOMER TESTIMONIALS */}
       <section className="section testimonials-section" id="testimonials">
+        <SectionToolbar
+          sectionKey="testimonials"
+          sectionName="Client Testimonials"
+        />
         <div className="container">
           <div className="section-header centered">
             <span className="section-eyebrow">Trusted by Hanoi Households</span>
@@ -390,6 +582,50 @@ export default function HomePage() {
           <div className="testimonials-grid">
             {testimonials.map((item) => (
               <article key={item.id} className="testimonial-card">
+                {isEditMode && (
+                  <div className="perfa-card-actions">
+                    <button
+                      type="button"
+                      className="perfa-card-btn"
+                      onClick={() => {
+                        openItemEditor({
+                          title: `Sửa đánh giá: ${item.family}`,
+                          fields: [
+                            { label: 'Tên Gia Đình (Family Name)', key: 'family', type: 'text' },
+                            { label: 'Khu Vực (Location)', key: 'location', type: 'text' },
+                            { label: 'Hộ Gia Đình (Household)', key: 'household', type: 'text' },
+                            { label: 'Lời Đánh Giá (Quote)', key: 'quote', type: 'textarea' }
+                          ],
+                          initialValues: { family: item.family, location: item.location, household: item.household, quote: item.quote },
+                          onSave: (vals) => updateTestimonial(item.id, vals)
+                        });
+                      }}
+                    >
+                      <Edit2 size={12} /> Sửa
+                    </button>
+                    <button
+                      type="button"
+                      className="perfa-card-btn btn-crop"
+                      onClick={() => {
+                        openCropModal({
+                          initialUrl: item.image,
+                          aspectRatio: 1,
+                          title: `Cắt & Thay ảnh gia đình: ${item.family}`,
+                          onApply: (url) => updateTestimonial(item.id, { image: url })
+                        });
+                      }}
+                    >
+                      <ImageIcon size={12} /> Cắt
+                    </button>
+                    <button
+                      type="button"
+                      className="perfa-card-btn btn-delete"
+                      onClick={() => deleteTestimonial(item.id)}
+                    >
+                      <Trash2 size={12} /> Xóa
+                    </button>
+                  </div>
+                )}
                 <div className="testimonial-image-wrap">
                   <img src={item.image} alt={item.family} loading="lazy" />
                   <span className="testimonial-location-pill">{item.location}</span>
@@ -403,8 +639,8 @@ export default function HomePage() {
                   </div>
                   <div className="testimonial-sofa-link-row">
                     <span>Purchased:</span>
-                    <Link to={`/product/${item.productId}`}>
-                      {item.sofaPurchased} <ArrowRight size={13} />
+                    <Link to={`/product/${item.productId || 1}`}>
+                      {item.sofaPurchased || 'Perfa Sofa'} <ArrowRight size={13} />
                     </Link>
                   </div>
                 </div>
@@ -414,7 +650,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. HOMEPAGE CONTACT SECTION (Matches Wix Section 13 #comp-m8lgly9k) */}
+      {/* 8. HOMEPAGE CONTACT */}
       <section className="section home-contact-section">
         <div className="container">
           <div className="home-contact-card">

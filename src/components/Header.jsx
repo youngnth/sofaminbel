@@ -9,7 +9,7 @@ import {
   Sparkles,
   ArrowRight
 } from 'lucide-react';
-import { products, formatVND, formatVNDWithCode } from '../data/products';
+import { formatVND, formatVNDWithCode } from '../data/products';
 import { searchProducts } from '../utils/searchProducts';
 import { useShop } from '../context/ShopContext';
 
@@ -20,7 +20,7 @@ export default function Header() {
   const searchContainerRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const { cartCount, setIsCartOpen, openConsultationModal } = useShop();
+  const { cartCount, setIsCartOpen, openConsultationModal, products } = useShop();
 
   const searchResults = searchProducts(products, searchQuery);
 

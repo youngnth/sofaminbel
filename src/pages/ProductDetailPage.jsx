@@ -21,7 +21,7 @@ import {
   Plus,
   Minus
 } from 'lucide-react';
-import { products, formatVND, formatVNDWithCode } from '../data/products';
+import { formatVND, formatVNDWithCode } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import { useShop } from '../context/ShopContext';
 
@@ -29,7 +29,15 @@ const THUMB_LABELS = ['Front View', 'Side Angle', 'Fabric Close-Up'];
 
 export default function ProductDetailPage() {
   const { id } = useParams();
-  const { addToCart, openConsultationModal } = useShop();
+  const {
+    addToCart,
+    openConsultationModal,
+    products,
+    isEditMode,
+    updateProduct,
+    openCropModal,
+    openItemEditor
+  } = useShop();
 
   const product = products.find((p) => p.id === id) || products[0];
 
@@ -185,6 +193,63 @@ export default function ProductDetailPage() {
                 </button>
               ))}
             </div>
+
+            {isEditMode && (
+              <div style={{ marginTop: '14px', display: 'flex', gap: '10px' }}>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-sm"
+                  onClick={() => {
+                    openCropModal({
+                      initialUrl: product.images[activeImageIndex],
+                      aspectRatio: 1,
+                      title: `Cắt & Thay ảnh góc ${THUMB_LABELS[activeImageIndex] || activeImageIndex + 1}: ${product.name}`,
+                      onApply: (croppedDataUrl) => {
+                        const newImgs = [...product.images];
+                        newImgs[activeImageIndex] = croppedDataUrl;
+                        updateProduct(product.id, { images: newImgs });
+                      }
+                    });
+                  }}
+                >
+                  🖼️ Cắt &amp; Thay Góc Ảnh Này
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-secondary-sage btn-sm"
+                  onClick={() => {
+                    openItemEditor({
+                      title: `Sửa thông tin: ${product.name}`,
+                      fields: [
+                        { label: 'Tên Sản Phẩm (Name)', key: 'name', type: 'text' },
+                        { label: 'Giá (VND Số)', key: 'price', type: 'number' },
+                        { label: 'Chất Liệu (Material)', key: 'material', type: 'text' },
+                        { label: 'Kích Thước (Dimensions)', key: 'dimensions', type: 'text' },
+                        { label: 'Mô Tả Sản Phẩm (Description)', key: 'description', type: 'textarea' }
+                      ],
+                      initialValues: {
+                        name: product.name,
+                        price: product.price,
+                        material: product.material,
+                        dimensions: product.dimensions,
+                        description: product.description
+                      },
+                      onSave: (vals) => {
+                        updateProduct(product.id, {
+                          name: vals.name,
+                          price: parseInt(vals.price, 10) || product.price,
+                          material: vals.material,
+                          dimensions: vals.dimensions,
+                          description: vals.description
+                        });
+                      }
+                    });
+                  }}
+                >
+                  ✏️ Sửa Thông Tin Sofa
+                </button>
+              </div>
+            )}
           </div>
 
           {/* RIGHT: Product Information & Interactive Material Section */}
