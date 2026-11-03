@@ -340,24 +340,22 @@ h3,
 }
 
 .brand-logo {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  align-items: center;
   line-height: 1;
+  flex-shrink: 0;
 }
 
-.brand-logo-text {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #FFFFFF;
+.brand-logo-img {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s ease;
 }
 
-.brand-logo-sub {
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  color: #D5E2D9;
-  margin-top: 2px;
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.03);
 }
 
 .desktop-nav {
@@ -3143,13 +3141,15 @@ h3,
 }
 
 .footer-logo {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #FFFFFF;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.footer-logo-img {
+  height: 86px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .footer-tagline {
@@ -4070,6 +4070,14 @@ h3,
 
 .auth-brand-top {
   margin-bottom: 18px;
+}
+
+.auth-modal-logo {
+  height: 62px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .auth-brand-top h3 {

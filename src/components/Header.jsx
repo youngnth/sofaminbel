@@ -96,9 +96,12 @@ export default function Header() {
       <div className="main-header-bar">
         <div className="container header-inner">
           {/* Brand Logo */}
-          <Link to="/" className="brand-logo" aria-label="PERFA Home">
-            <span className="brand-logo-text">PERFA</span>
-            <span className="brand-logo-sub">HANOI • EST. 2026</span>
+          <Link to="/" className="brand-logo" aria-label="Perfa — Sofa & Premium Furniture">
+            <img
+              src="/logo-header-light.png"
+              alt="Perfa — Sofa & Premium Furniture"
+              className="brand-logo-img"
+            />
           </Link>
 
           {/* Desktop Navigation Menu */}

@@ -24,7 +24,8 @@ export default function AuthModal() {
     updateUserProfile,
     orders,
     setIsCartOpen,
-    setCartView
+    setCartView,
+    theme
   } = useShop();
 
   const [activeTab, setActiveTab] = useState('login'); // 'login' | 'register'
@@ -226,6 +227,11 @@ export default function AuthModal() {
           /* LOGGED OUT: SIGN IN / REGISTER TABS */
           <div className="auth-guest-view">
             <div className="auth-brand-top">
+              <img
+                src={theme === 'dark' ? '/logo-header-light.png' : '/logo-full-dark.png'}
+                alt="Perfa — Sofa & Premium Furniture"
+                className="auth-modal-logo"
+              />
               <span className="eyebrow-tag">
                 <Sparkles size={13} /> PERFA HANOI ACCOUNT
               </span>

@@ -40,8 +40,12 @@ export default function Footer() {
       <div className="container footer-main">
         {/* Column 1: Brand & Contact Info matching Wix Footer */}
         <div className="footer-col footer-brand-col">
-          <Link to="/" className="footer-logo">
-            PERFA
+          <Link to="/" className="footer-logo" aria-label="Perfa — Sofa & Premium Furniture">
+            <img
+              src="/logo-full-light.png"
+              alt="Perfa — Sofa & Premium Furniture"
+              className="footer-logo-img"
+            />
           </Link>
           <p className="footer-tagline">
             Durable, easy-to-clean, family and pet-friendly sofas crafted for modern households in Hanoi.
