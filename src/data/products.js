@@ -1,306 +1,426 @@
 // Complete product catalog and brand content for PERFA Hanoi
-// Matches the Wix template catalog with 4 eco-materials: Modal, Liocel, Ecovero, Algodão.
+// 15 user-crafted sofa products with calibrated dimensions, colors, and 4 eco-materials (Modal, Liocel, Ecovero, Algodão).
 
 export const products = [
   {
-    id: '1',
-    name: 'Luna 3-Seater Sofa',
-    price: 25000000,
-    material: 'Liocel',
-    color: 'Beige',
-    colorHex: '#E6DEC8',
-    seatCount: 3,
-    dimensions: '220 cm (W) × 94 cm (D) × 84 cm (H)',
-    isWashable: true,
-    isBestSeller: true,
-    createdAt: '2026-10-15',
-    wixCategory: 'Sofa & Daybeds',
-    tags: ['Liocel Weave', 'Washable Cover', 'Best Seller'],
-    shortDescription: 'Our signature Hanoi family sofa upholstered in silky, breathable Liocel with fully removable washable covers.',
-    description:
-      'Designed specifically for modern apartments in Hanoi with young children and indoor pets, the Luna 3-Seater Sofa combines soft rounded corners with high-density resilient foam. Its tightly woven Liocel eucalyptus-cellulose fabric provides natural thermal cooling and hypoallergenic resistance, while zippered cushion covers can be removed in under two minutes and machine-washed at 30°C.',
-    careInstructions: 'Machine wash removable covers on gentle cycle (30°C). Blot everyday spills with a damp microfiber cloth.',
-    warranty: '5-Year Structural Frame & 2-Year Cushion Resiliency Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793686225231",
+    "name": "Sage Tufted 3-Seater Sofa",
+    "price": 41900000,
+    "material": "Algodão",
+    "color": "Green",
+    "colorHex": "#6F8573",
+    "seatCount": 3,
+    "dimensions": "228 cm (W) × 96 cm (D) × 82 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T06:10:25.231Z",
+    "wixCategory": "Sofa & Daybeds",
+    "tags": [
+      "Algodão Organic Cotton",
+      "Washable Cover",
+      "Best Seller"
+    ],
+    "description": "A centerpiece from the Perfa Sofa Series, the Sage Tufted 3-Seater showcases our signature botanical green palette. Crafted with 100% pure certified Algodão organic cotton yarns, pet hair brushes off effortlessly without static cling, and muddy paws wipe clean with warm water.",
+    "images": [
+      "/products/sofa_1_1.jpg",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "shortDescription": "Deep channel-tufted seating in pure Algodão organic cotton, dyed in signature Perfa sage green.",
+    "careInstructions": "Brush pet fur effortlessly by hand or lint roller. Machine wash individual cushion covers in cold water.",
+    "warranty": "5-Year Structural Frame & Organic Cotton Fabric Guarantee"
   },
   {
-    id: '2',
-    name: 'Cloud Lounge 2-Seater Sofa',
-    price: 13500000,
-    material: 'Ecovero',
-    color: 'Beige',
-    colorHex: '#F0EAE1',
-    seatCount: 2,
-    dimensions: '168 cm (W) × 88 cm (D) × 80 cm (H)',
-    isWashable: true,
-    isBestSeller: true,
-    createdAt: '2026-09-20',
-    wixCategory: 'Single Seat & Compact',
-    tags: ['Ecovero Viscose', 'Washable Cover', 'Compact Living'],
-    shortDescription: 'Ultra-plush compact loveseat tailored in lightweight, certified sustainable Ecovero eco-viscose.',
-    description:
-      'Featured in our original Perfa Catalog, the Cloud Lounge 2-Seater brings airy comfort to compact Hanoi living rooms and reading nooks. Upholstered in certified renewable Ecovero viscose with an eco stain barrier, juice, milk, and coffee bead up on the surface so you can wipe them away before they soak in.',
-    careInstructions: 'Wipe liquid droplets immediately with a dry paper towel. Unzip slipcovers for seasonal machine washing.',
-    warranty: '5-Year Kiln-Dried Ash Wood Frame Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793684973979",
+    "name": "Wooden Corner 4-Seater Sectional",
+    "price": 52500000,
+    "material": "Algodão",
+    "color": "Brown",
+    "colorHex": "#7A4B3A",
+    "seatCount": 4,
+    "dimensions": "295 cm (W) × 180 cm (Chaise D) × 82 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:49:33.979Z",
+    "wixCategory": "Corner & Modular",
+    "tags": [
+      "Algodão Organic Cotton",
+      "Solid Walnut Shelf",
+      "Spacious Sectional"
+    ],
+    "description": "A flagship piece from the Perfa Corner Collection at 52,500,000 VND, the Wooden Corner Sectional maximizes corner seating in spacious Hanoi homes. The integrated solid wood platform acts as a built-in coffee shelf while heavy-weight Algodão organic cotton provides durable, hypoallergenic seating.",
+    "images": [
+      "/products/sofa_2_1.jpg",
+      "/products/sofa_2_2.jpg",
+      "/products/sofa_2_3.jpg"
+    ],
+    "shortDescription": "L-shaped 4-seater family sectional with a solid walnut wrap-around shelf and Algodão organic cotton.",
+    "careInstructions": "Wipe wood shelf with dry cloth. All seating slipcovers unzip for machine washing.",
+    "warranty": "5-Year Solid Timber & Fabric Warranty"
   },
   {
-    id: '3',
-    name: 'Shell Compact Loveseat',
-    price: 15500000,
-    material: 'Ecovero',
-    color: 'Grey',
-    colorHex: '#9A9A96',
-    seatCount: 2,
-    dimensions: '160 cm (W) × 86 cm (D) × 78 cm (H)',
-    isWashable: true,
-    isBestSeller: false,
-    createdAt: '2026-08-12',
-    wixCategory: 'Single Seat & Compact',
-    tags: ['Ecovero Viscose', 'Washable Cover', 'Child-Safe Edges'],
-    shortDescription: 'Sculpted wrap-around silhouette with zero sharp corners, upholstered in gentle stone-grey Ecovero.',
-    description:
-      'Inspired by organic shell curves from the Perfa Single & Compact Collection, this 2-seater loveseat wraps your family in 360-degree padded safety. Every edge is cushioned with multi-layer soft batting and draped in breathable Ecovero viscose so energetic toddlers stay protected during playtime.',
-    careInstructions: 'Removable seat cushion covers are machine-washable. Vacuum crevices monthly with a soft brush attachment.',
-    warranty: '5-Year Structural Frame Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1512212621149-107ffe572d2f?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793684730432",
+    "name": "Boucle Block 3-Seater Sofa",
+    "price": 39900000,
+    "material": "Modal",
+    "color": "Grey",
+    "colorHex": "#68696E",
+    "seatCount": 3,
+    "dimensions": "235 cm (W) × 100 cm (D) × 76 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:45:30.432Z",
+    "wixCategory": "Corner & Modular",
+    "tags": [
+      "Modal Fiber",
+      "Washable Cover",
+      "Modular Block"
+    ],
+    "description": "Directly from the Perfa Modular Catalog at 39,900,000 VND, the Boucle Block 3-Seater features extra-deep 68 cm seating for family movie nights. Crafted from durable beechwood-derived Modal bouclé yarn, its low 40 cm seat height lets young children climb safely, while high-resilience pocket springs prevent sagging.",
+    "images": [
+      "/products/sofa_3_1.jpg",
+      "/products/sofa_3_2.jpg",
+      "/products/sofa_3_3.jpg"
+    ],
+    "shortDescription": "Low-profile architectural block sofa with high-tensile modal bouclé weave and removable slipcovers.",
+    "careInstructions": "Unzip modular slipcovers and wash on delicate cycle. Air dry flat to preserve bouclé loft.",
+    "warranty": "5-Year Frame & Pocket-Spring Core Warranty"
   },
   {
-    id: '4',
-    name: 'Sage Tufted 3-Seater Sofa',
-    price: 35800000,
-    material: 'Algodão',
-    color: 'Green',
-    colorHex: '#6F8573',
-    seatCount: 3,
-    dimensions: '228 cm (W) × 96 cm (D) × 82 cm (H)',
-    isWashable: true,
-    isBestSeller: true,
-    createdAt: '2026-10-22',
-    wixCategory: 'Sofa & Daybeds',
-    tags: ['Algodão Organic Cotton', 'Washable Cover', 'Best Seller'],
-    shortDescription: 'Deep channel-tufted seating in pure unbleached Algodão organic cotton, dyed in signature Perfa sage.',
-    description:
-      'A centerpiece from the Perfa Sofa Series, the Sage Tufted 3-Seater showcases our signature muted botanical green palette. Crafted with 100% pure certified Algodão organic cotton yarns, pet hair brushes off effortlessly without static cling, and muddy footprints wash clean with warm water.',
-    careInstructions: 'Brush pet fur effortlessly by hand or lint roller. Machine wash individual cushion covers in cold water.',
-    warranty: '5-Year Structural Frame & Organic Cotton Fabric Guarantee',
-    images: [
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1579656381226-5fc0f0100c3b?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793684591208",
+    "name": "Curved Modular 4-Seater Sofa",
+    "price": 59900000,
+    "material": "Modal",
+    "color": "Green",
+    "colorHex": "#4B6355",
+    "seatCount": 4,
+    "dimensions": "315 cm (W) × 120 cm (D) × 80 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:43:11.208Z",
+    "wixCategory": "Corner & Modular",
+    "tags": [
+      "Modal Weave",
+      "Washable Cover",
+      "Flagship Modular"
+    ],
+    "description": "Crowning the Perfa Portfolio and Modular Catalog at 59,900,000 VND, the Curved Modular 4-Seater adapts effortlessly to growing families. Reconfigure individual modules for playdates or movie nights, knowing every single cushion is woven from resilient Modal beechwood fiber that is claw-resistant and machine-washable.",
+    "images": [
+      "/products/sofa_4_1.jpg",
+      "/products/sofa_4_2.jpg",
+      "/products/sofa_4_3.jpg"
+    ],
+    "shortDescription": "Our flagship 4-seater modular sanctuary in deep Perfa Moss Green Modal with 100% washable covers.",
+    "careInstructions": "All modular covers unzip completely for home washing at 30°C.",
+    "warranty": "Lifetime Frame Support & 5-Year Modal Fabric Warranty"
   },
   {
-    id: '5',
-    name: 'Dome Swivel 2-Seater Sofa',
-    price: 18400000,
-    material: 'Algodão',
-    color: 'Navy',
-    colorHex: '#2E4057',
-    seatCount: 2,
-    dimensions: '172 cm (W) × 90 cm (D) × 82 cm (H)',
-    isWashable: true,
-    isBestSeller: false,
-    createdAt: '2026-07-19',
-    wixCategory: 'Single Seat & Compact',
-    tags: ['Algodão Organic Cotton', 'Swivel Base', 'Washable Cover'],
-    shortDescription: 'Deep navy organic cotton loveseat with a recessed 360-degree smooth swivel plinth base.',
-    description:
-      'Designed for versatile apartment layouts in Hanoi, the Dome Swivel 2-Seater pairs architectural curves with Algodão organic cotton in rich Midnight Navy. Resistant to daily family wear and gentle on toddler hands, it keeps smaller living spaces looking tailored and inviting year-round.',
-    careInstructions: 'Spot clean with mild soap and water, or unzip full covers for gentle cold wash.',
-    warranty: '5-Year Frame & Swivel Mechanism Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793684226007",
+    "name": "Round Lounge Armchair",
+    "price": 43700000,
+    "material": "Liocel",
+    "color": "Beige",
+    "colorHex": "#E6DEC8",
+    "seatCount": 1,
+    "dimensions": "105 cm (W) × 100 cm (D) × 78 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:37:06.007Z",
+    "wixCategory": "Single Seat & Compact",
+    "tags": [
+      "Liocel Weave",
+      "Curved Silhouette",
+      "Washable Cover"
+    ],
+    "description": "Featured at 43,700,000 VND, the Round Lounge Armchair offers an inviting cocoon for reading and relaxation. Upholstered in temperature-regulating Liocel weave that feels naturally cool to the touch and resists bacteria.",
+    "images": [
+      "/products/sofa_5_1.jpg",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "shortDescription": "Sculptural circular lounge armchair upholstered in silky cool Liocel eucalyptus fiber.",
+    "careInstructions": "Spot clean with a damp microfiber cloth or unzip cover for gentle hand washing.",
+    "warranty": "5-Year Structural Frame Warranty"
   },
   {
-    id: '6',
-    name: 'Boucle Block 3-Seater Sofa',
-    price: 39900000,
-    material: 'Modal',
-    color: 'Grey',
-    colorHex: '#68696E',
-    seatCount: 3,
-    dimensions: '235 cm (W) × 100 cm (D) × 76 cm (H)',
-    isWashable: true,
-    isBestSeller: false,
-    createdAt: '2026-09-30',
-    wixCategory: 'Corner & Modular',
-    tags: ['Modal Fiber', 'Washable Cover', 'Modular Block'],
-    shortDescription: 'Low-profile architectural block sofa with high-tensile modal bouclé weave and removable slipcovers.',
-    description:
-      'Directly from the Perfa Modular Catalog at 39,900,000 VND, the Boucle Block 3-Seater features extra-deep seating for family movie nights. Crafted from durable beechwood-derived Modal bouclé yarn, its low 40 cm seat height lets young children climb up and down safely, while high-resilience pocket springs prevent sagging.',
-    careInstructions: 'Unzip modular slipcovers and wash on delicate cycle. Air dry flat to preserve bouclé loft.',
-    warranty: '5-Year Frame & Pocket-Spring Core Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1606722590583-6951b5ea92ad?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793684224296",
+    "name": "Terracotta Sectional 4-Seater",
+    "price": 48500000,
+    "material": "Modal",
+    "color": "Brown",
+    "colorHex": "#B5552E",
+    "seatCount": 4,
+    "dimensions": "285 cm (W) × 170 cm (Chaise D) × 82 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:37:04.296Z",
+    "wixCategory": "Corner & Modular",
+    "tags": [
+      "Modal Velvet",
+      "Spacious Sectional",
+      "Warm Earth Palette"
+    ],
+    "description": "At 48,500,000 VND, the Terracotta Sectional brings Mediterranean warmth into modern Hanoi living rooms. Upholstered in high-tensile modal fiber with superior color depth that never fades under direct sunlight.",
+    "images": [
+      "/products/sofa_6_1.jpg",
+      "/products/sofa_6_2.jpg",
+      "/products/sofa_6_3.jpg"
+    ],
+    "shortDescription": "Warm earth-toned terracotta sectional crafted in soft, durable modal weave for vibrant living spaces.",
+    "careInstructions": "Wipe spills immediately with a microfiber towel. Unzip modular slipcovers for seasonal washing.",
+    "warranty": "5-Year Frame & Cushion Resiliency Guarantee"
   },
   {
-    id: '7',
-    name: 'Olive Velvet 3-Seater Sofa',
-    price: 41900000,
-    material: 'Modal',
-    color: 'Green',
-    colorHex: '#556B57',
-    seatCount: 3,
-    dimensions: '225 cm (W) × 94 cm (D) × 83 cm (H)',
-    isWashable: true,
-    isBestSeller: false,
-    createdAt: '2026-10-05',
-    wixCategory: 'Sofa & Daybeds',
-    tags: ['Modal Velvet', 'Washable Cover', 'Anti-Static'],
-    shortDescription: 'Lustrous botanical olive velvet woven from pure modal cellulose for deep color richness and anti-snag strength.',
-    description:
-      'A favorite from the Perfa Sofa Collection, the Olive Velvet 3-Seater Sofa delivers the rich visual warmth of botanical velvet with zero maintenance stress. Its dense Modal fiber structure prevents claws from catching and resists static electricity, making it the ultimate upgrade for pet-loving households in Hanoi.',
-    careInstructions: 'Wipe spills with a damp cloth or machine wash removable cushion covers at 30°C.',
-    warranty: '5-Year Frame & Modal Pile Integrity Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793684103943",
+    "name": "Olive Velvet 3-Seater Sofa",
+    "price": 35800000,
+    "material": "Modal",
+    "color": "Green",
+    "colorHex": "#556B57",
+    "seatCount": 3,
+    "dimensions": "225 cm (W) × 94 cm (D) × 83 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:35:03.943Z",
+    "wixCategory": "Sofa & Daybeds",
+    "tags": [
+      "Modal Velvet",
+      "Washable Cover",
+      "Anti-Static"
+    ],
+    "description": "A favorite from the Perfa Sofa Collection at 35,800,000 VND, the Olive Velvet 3-Seater delivers the visual warmth of botanical velvet with zero maintenance stress. Its dense Modal fiber structure prevents claws from catching and resists static electricity.",
+    "images": [
+      "/products/sofa_7_1.jpg",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "shortDescription": "Lustrous botanical olive velvet woven from pure modal cellulose for deep color richness and anti-snag strength.",
+    "careInstructions": "Wipe spills with a damp cloth or machine wash removable cushion covers at 30°C.",
+    "warranty": "5-Year Frame & Modal Pile Integrity Warranty"
   },
   {
-    id: '8',
-    name: 'Curved Daybed 4-Seater Sofa',
-    price: 48500000,
-    material: 'Liocel',
-    color: 'Beige',
-    colorHex: '#DDD4C2',
-    seatCount: 4,
-    dimensions: '275 cm (W) × 115 cm (D) × 82 cm (H)',
-    isWashable: true,
-    isBestSeller: true,
-    createdAt: '2026-10-28',
-    wixCategory: 'Sofa & Daybeds',
-    tags: ['Liocel Weave', 'Washable Cover', 'Daybed Lounge'],
-    shortDescription: 'Expansive crescent-shaped 4-seater daybed sofa draped in silky-cool Liocel fabric for the entire family.',
-    description:
-      'Highlighted in the Perfa Signature Series at 48,500,000 VND, the Curved Daybed 4-Seater Sofa offers generous lounging space for four adults or an entire family with kids and pets. Its gentle sweeping curve promotes face-to-face conversation while the natural eucalyptus Liocel slipcovers stay fresh and cool in any weather.',
-    careInstructions: 'Full removable slipcovers for both base and cushions; machine wash cold and line dry.',
-    warranty: '5-Year Solid Beech Frame Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793684008346",
+    "name": "Rattan Frame 3-Seater Sofa",
+    "price": 38500000,
+    "material": "Liocel",
+    "color": "Beige",
+    "colorHex": "#D8CEBE",
+    "seatCount": 3,
+    "dimensions": "218 cm (W) × 90 cm (D) × 82 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:33:28.346Z",
+    "wixCategory": "Sofa & Daybeds",
+    "tags": [
+      "Liocel Twill",
+      "Solid Ash & Rattan",
+      "Indochine Heritage"
+    ],
+    "description": "Combining Indochine craftsmanship with family durability at 38,500,000 VND, this 3-seater features solid ash timber, open-weave rattan arm inlays, and heavy Liocel twill cushions for natural moisture management.",
+    "images": [
+      "/products/sofa_8_1.jpg",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "shortDescription": "Handcrafted solid ash and woven cane paired with breathable golden-sand Liocel cushions.",
+    "careInstructions": "Wipe timber with a soft dry cloth. Unzip cushion covers for machine washing at 30°C.",
+    "warranty": "5-Year Timber Joinery & Cushion Resiliency Warranty"
   },
   {
-    id: '9',
-    name: 'Rattan & Saddle 3-Seater Sofa',
-    price: 43700000,
-    material: 'Liocel',
-    color: 'Brown',
-    colorHex: '#8B5A3C',
-    seatCount: 3,
-    dimensions: '218 cm (W) × 90 cm (D) × 82 cm (H)',
-    isWashable: true,
-    isBestSeller: false,
-    createdAt: '2026-08-29',
-    wixCategory: 'Sofa & Daybeds',
-    tags: ['Liocel Twill', 'Solid Ash & Rattan', 'Washable Cushions'],
-    shortDescription: 'Handcrafted solid ash and woven cane paired with heavy caramel Liocel twill cushions.',
-    description:
-      'Combining Indochine heritage craftsmanship with modern family durability, this 3-seater features solid ash timber, open-weave rattan arm inlays, and heavy Liocel twill cushions. Naturally breathable and moisture-wicking, it provides unmatched sitting comfort in Hanoi homes.',
-    careInstructions: 'Wipe timber with a soft dry cloth. Unzip cushion covers for machine washing at 30°C.',
-    warranty: '5-Year Timber Joinery & Cushion Resiliency Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1579656381226-5fc0f0100c3b?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793683789316",
+    "name": "Curved Daybed 4-Seater Sofa",
+    "price": 47900000,
+    "material": "Liocel",
+    "color": "Beige",
+    "colorHex": "#DDD4C2",
+    "seatCount": 4,
+    "dimensions": "275 cm (W) × 115 cm (D) × 82 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:29:49.316Z",
+    "wixCategory": "Sofa & Daybeds",
+    "tags": [
+      "Liocel Weave",
+      "Washable Cover",
+      "Daybed Lounge"
+    ],
+    "description": "Highlighted at 47,900,000 VND, the Curved Daybed 4-Seater offers generous lounging space for four adults or an entire family with kids and pets. Its gentle sweeping curve promotes conversation while natural eucalyptus Liocel slipcovers stay fresh and cool.",
+    "images": [
+      "/products/sofa_9_1.jpg",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "shortDescription": "Expansive crescent-shaped 4-seater daybed sofa draped in silky-cool Liocel fabric for the entire family.",
+    "careInstructions": "Full removable slipcovers for both base and cushions; machine wash cold and line dry.",
+    "warranty": "5-Year Solid Beech Frame Warranty"
   },
   {
-    id: '10',
-    name: 'Relax Lounger 2-Seater Sofa',
-    price: 22900000,
-    material: 'Ecovero',
-    color: 'Navy',
-    colorHex: '#34495E',
-    seatCount: 2,
-    dimensions: '180 cm (W) × 92 cm (D) × 84 cm (H)',
-    isWashable: true,
-    isBestSeller: false,
-    createdAt: '2026-09-10',
-    wixCategory: 'Single Seat & Compact',
-    tags: ['Ecovero Viscose', 'Ergonomic Support', 'Washable Cover'],
-    shortDescription: 'Ergonomic reclined pitch with removable breathable Ecovero eco-viscose covers in dusk navy.',
-    description:
-      'From the Perfa Product Catalog at 22,900,000 VND, the Relax Lounger 2-Seater Sofa is engineered with dual-density lumbar cushions and wide padded armrests that double as headrests for afternoon naps. Covered in certified sustainable Ecovero viscose that feels silky and stays cool.',
-    careInstructions: 'Unzip cushion covers and machine wash at 30°C with mild detergent.',
-    warranty: '5-Year Structural Frame Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1573866926487-a1865558a9cf?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793683788409",
+    "name": "Wood Accent Armchair",
+    "price": 10900000,
+    "material": "Ecovero",
+    "color": "Beige",
+    "colorHex": "#EAE3D2",
+    "seatCount": 1,
+    "dimensions": "82 cm (W) × 85 cm (D) × 78 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:29:48.409Z",
+    "wixCategory": "Single Seat & Compact",
+    "tags": [
+      "Ecovero Viscose",
+      "Solid Oak Frame",
+      "Minimalist"
+    ],
+    "description": "At 10,900,000 VND, the Wood Accent Armchair is a versatile reading chair for bedrooms and nooks. Built with exposed solid oak joinery and high-density foam cushions wrapped in sustainable Ecovero fabric.",
+    "images": [
+      "/products/sofa_10_1.jpg",
+      "/products/sofa_10_2.jpg",
+      "/products/sofa_10_3.jpg"
+    ],
+    "shortDescription": "Scandinavian-inspired solid oak armchair with airy, breathable Ecovero eco-viscose cushions.",
+    "careInstructions": "Dust wood frame weekly. Machine wash removable cushion cover on delicate cycle.",
+    "warranty": "5-Year Solid Oak Frame Warranty"
   },
   {
-    id: '11',
-    name: 'Wooden Corner 4-Seater Sectional',
-    price: 52500000,
-    material: 'Algodão',
-    color: 'Brown',
-    colorHex: '#7A4B3A',
-    seatCount: 4,
-    dimensions: '295 cm (W) × 180 cm (Chaise D) × 82 cm (H)',
-    isWashable: true,
-    isBestSeller: false,
-    createdAt: '2026-10-11',
-    wixCategory: 'Corner & Modular',
-    tags: ['Algodão Organic Cotton', 'Solid Timber Shelf', 'Spacious Sectional'],
-    shortDescription: 'L-shaped 4-seater family sectional with a solid walnut wrap-around shelf and Algodão organic cotton.',
-    description:
-      'A flagship piece from the Perfa Corner Collection at 52,500,000 VND, the Wooden Corner 4-Seater Sectional maximizes corner seating in spacious Hanoi apartments and townhouses. The integrated solid wood side platform acts as a built-in coffee shelf while heavy-weight Algodão organic cotton provides durable, hypoallergenic seating.',
-    careInstructions: 'Wipe wood shelf with dry cloth. All seating slipcovers unzip for machine washing.',
-    warranty: '5-Year Solid Timber & Fabric Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1606722590583-6951b5ea92ad?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793683337929",
+    "name": "Relax Lounger 2-Seater Sofa",
+    "price": 22900000,
+    "material": "Liocel",
+    "color": "Navy",
+    "colorHex": "#34495E",
+    "seatCount": 2,
+    "dimensions": "180 cm (W) × 92 cm (D) × 84 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:22:17.929Z",
+    "wixCategory": "Single Seat & Compact",
+    "tags": [
+      "Liocel Weave",
+      "Ergonomic Support",
+      "Washable Cover"
+    ],
+    "description": "At 22,900,000 VND, the Relax Lounger 2-Seater Sofa is engineered with dual-density lumbar cushions and wide padded armrests that double as headrests for afternoon naps.",
+    "images": [
+      "/products/sofa_11_1.jpg",
+      "/products/sofa_11_2.jpg",
+      "/products/sofa_11_3.jpg"
+    ],
+    "shortDescription": "Ergonomic reclined pitch with removable breathable Liocel covers in dusk navy.",
+    "careInstructions": "Unzip cushion covers and machine wash at 30°C with mild detergent.",
+    "warranty": "5-Year Structural Frame Warranty"
   },
   {
-    id: '12',
-    name: 'Moss Curved Modular 4-Seater Sofa',
-    price: 59900000,
-    material: 'Modal',
-    color: 'Green',
-    colorHex: '#4B6355',
-    seatCount: 4,
-    dimensions: '315 cm (W) × 120 cm (D) × 80 cm (H)',
-    isWashable: true,
-    isBestSeller: false,
-    createdAt: '2026-11-01',
-    wixCategory: 'Corner & Modular',
-    tags: ['Modal Weave', 'Washable Cover', 'Flagship Modular'],
-    shortDescription: 'Our flagship 4-seater modular sanctuary in deep Perfa Moss Green Modal with 100% washable covers.',
-    description:
-      'Crowning the Perfa Portfolio and Modular Catalog at 59,900,000 VND, the Moss Curved Modular 4-Seater Sofa adapts effortlessly to growing families. Reconfigure individual modules for playdates or movie nights, knowing every single cushion and base cover is woven from resilient Modal beechwood fiber that is claw-resistant, stain-repellent, and machine-washable.',
-    careInstructions: 'All modular covers unzip completely for home washing at 30°C.',
-    warranty: 'Lifetime Frame Support & 5-Year Modal Fabric Warranty',
-    images: [
-      'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1000&q=80'
-    ]
+    "id": "1793683076576",
+    "name": "Dome Swivel Armchair",
+    "price": 18400000,
+    "material": "Algodão",
+    "color": "Navy",
+    "colorHex": "#2E4057",
+    "seatCount": 1,
+    "dimensions": "92 cm (W) × 90 cm (D) × 82 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:17:56.576Z",
+    "wixCategory": "Single Seat & Compact",
+    "tags": [
+      "Algodão Organic Cotton",
+      "Smooth Swivel",
+      "Washable Cover"
+    ],
+    "description": "At 18,400,000 VND, the Dome Swivel Armchair pairs architectural curves with Algodão organic cotton in rich Midnight Navy. Resistant to daily family wear and gentle on toddler hands.",
+    "images": [
+      "/products/sofa_12_1.jpg",
+      "/products/sofa_12_2.jpg",
+      "/products/sofa_12_3.jpg"
+    ],
+    "shortDescription": "Deep navy organic cotton armchair with a recessed 360-degree smooth swivel plinth base.",
+    "careInstructions": "Spot clean with mild soap and water, or unzip full covers for gentle cold wash.",
+    "warranty": "5-Year Frame & Swivel Mechanism Warranty"
+  },
+  {
+    "id": "1793683075661",
+    "name": "Shell Armchair",
+    "price": 15500000,
+    "material": "Ecovero",
+    "color": "Grey",
+    "colorHex": "#9A9A96",
+    "seatCount": 1,
+    "dimensions": "88 cm (W) × 86 cm (D) × 78 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:17:55.661Z",
+    "wixCategory": "Single Seat & Compact",
+    "tags": [
+      "Ecovero Viscose",
+      "Child-Safe Edges",
+      "Washable Cover"
+    ],
+    "description": "At 15,500,000 VND, the Shell Armchair wraps you in 360-degree padded safety. Every edge is cushioned with soft batting and draped in breathable Ecovero eco-viscose.",
+    "images": [
+      "/products/sofa_13_1.jpg",
+      "/products/sofa_13_2.jpg",
+      "/products/sofa_13_3.jpg"
+    ],
+    "shortDescription": "Sculpted wrap-around accent armchair with zero sharp corners, upholstered in gentle stone-grey Ecovero.",
+    "careInstructions": "Removable seat cushion covers are machine-washable. Vacuum crevices monthly.",
+    "warranty": "5-Year Structural Frame Warranty"
+  },
+  {
+    "id": "1793683074980",
+    "name": "Soft Puft Lounge Ottoman",
+    "price": 12900000,
+    "material": "Ecovero",
+    "color": "Beige",
+    "colorHex": "#E6DEC8",
+    "seatCount": 1,
+    "dimensions": "90 cm (W) × 90 cm (D) × 42 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T05:17:54.980Z",
+    "wixCategory": "Single Seat & Compact",
+    "tags": [
+      "Ecovero Viscose",
+      "Multi-Functional",
+      "Washable Cover"
+    ],
+    "description": "At 12,900,000 VND, the Soft Puft Lounge Ottoman is light enough for kids to move around during games, yet dense enough to serve as a stable tray coffee table.",
+    "images": [
+      "/products/sofa_14_1.jpg",
+      "/products/sofa_14_2.jpg",
+      "/products/sofa_14_3.jpg"
+    ],
+    "shortDescription": "Multi-functional plush lounge ottoman that serves as a coffee table, footrest, or kid playtime seat.",
+    "careInstructions": "Unzip slipcover and wash in cold water. Spot clean stains with warm water.",
+    "warranty": "3-Year Foam Resiliency Warranty"
+  },
+  {
+    "id": "1793681868018",
+    "name": "Cloud Lounge 2-Seater Sofa",
+    "price": 13500000,
+    "material": "Ecovero",
+    "color": "Beige",
+    "colorHex": "#F0EAE1",
+    "seatCount": 2,
+    "dimensions": "168 cm (W) × 88 cm (D) × 80 cm (H)",
+    "isWashable": true,
+    "isBestSeller": true,
+    "createdAt": "2026-11-03T04:57:48.018Z",
+    "wixCategory": "Single Seat & Compact",
+    "tags": [
+      "Ecovero Viscose",
+      "Washable Cover",
+      "Compact Living"
+    ],
+    "description": "At 13,500,000 VND, the Cloud Lounge 2-Seater brings airy comfort to compact Hanoi living rooms. Upholstered in certified renewable Ecovero viscose with an eco stain barrier.",
+    "images": [
+      "/products/sofa_15_1.jpg",
+      "/products/sofa_15_2.jpg",
+      "/products/sofa_15_3.jpg"
+    ],
+    "shortDescription": "Ultra-plush compact loveseat tailored in lightweight, certified sustainable Ecovero eco-viscose.",
+    "careInstructions": "Wipe liquid droplets immediately with a dry paper towel. Unzip slipcovers for seasonal machine washing.",
+    "warranty": "5-Year Kiln-Dried Ash Wood Frame Warranty"
   }
 ];
 
@@ -312,8 +432,8 @@ export const featuredCollections = [
     description: 'High-tensile modal weaves offering deep color richness, anti-static touch, and scratch resistance.',
     filterType: 'material',
     filterValue: 'Modal',
-    itemCount: '3 Designs',
-    image: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=80'
+    itemCount: '4 Designs',
+    image: '/products/sofa_4_1.jpg'
   },
   {
     id: 'liocel-cooling',
@@ -322,8 +442,8 @@ export const featuredCollections = [
     description: 'Ultra-smooth, temperature-regulating fabrics that stay cool and naturally resist bacteria and dust mites.',
     filterType: 'material',
     filterValue: 'Liocel',
-    itemCount: '3 Designs',
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+    itemCount: '4 Designs',
+    image: '/products/sofa_9_1.jpg'
   },
   {
     id: 'family-3-seaters',
@@ -332,8 +452,8 @@ export const featuredCollections = [
     description: 'Our most popular size for young families in Hanoi — spacious seating with soft rounded edges.',
     filterType: 'seatCount',
     filterValue: 3,
-    itemCount: '5 Designs',
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80'
+    itemCount: '4 Designs',
+    image: '/products/sofa_1_1.jpg'
   },
   {
     id: 'modular-sectionals',
@@ -342,43 +462,43 @@ export const featuredCollections = [
     description: 'Flexible L-shaped sectionals and curved daybeds built for large family gatherings.',
     filterType: 'seatCount',
     filterValue: 4,
-    itemCount: '3 Designs',
-    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80'
+    itemCount: '4 Designs',
+    image: '/products/sofa_2_1.jpg'
   }
 ];
 
 export const wixPortfolioItems = [
   {
     id: 'port-1',
-    title: 'Moss Modular Sofa',
+    title: 'Curved Modular Sofa',
     location: 'Tay Ho Lakeview Residence, Hanoi',
     category: 'Modal Modular',
-    image: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=80',
-    linkedProductId: '12'
+    image: '/products/sofa_4_1.jpg',
+    linkedProductId: '1793684591208'
   },
   {
     id: 'port-2',
-    title: 'The Verde Lounger',
+    title: 'Sage Tufted Sofa',
     location: 'Vinhomes Smart City, Hanoi',
-    category: 'Algodão Sage',
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80',
-    linkedProductId: '4'
+    category: 'Algodão Organic Cotton',
+    image: '/products/sofa_1_1.jpg',
+    linkedProductId: '1793686225231'
   },
   {
     id: 'port-3',
-    title: 'Perfa Halo Series',
+    title: 'Curved Daybed Sofa',
     location: 'Ecopark Grand Villa, Hanoi',
     category: 'Liocel Daybed',
-    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80',
-    linkedProductId: '8'
+    image: '/products/sofa_9_1.jpg',
+    linkedProductId: '1793683789316'
   },
   {
     id: 'port-4',
-    title: 'Cozy Minimalist Accent Sofa',
+    title: 'Cloud Lounge Sofa',
     location: 'Ba Dinh Heritage Apartment, Hanoi',
     category: 'Ecovero Viscose',
-    image: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=900&q=80',
-    linkedProductId: '2'
+    image: '/products/sofa_15_1.jpg',
+    linkedProductId: '1793681868018'
   }
 ];
 
@@ -460,8 +580,8 @@ export const testimonials = [
     household: 'Parents of two active kids (ages 3 & 6)',
     quote:
       'Perfa is perfect for our home with two active kids. Its stain-resistant material and soft, rounded edges keep them safe and our living space warm and inviting every single day.',
-    sofaPurchased: 'Luna 3-Seater Sofa',
-    productId: '1',
+    sofaPurchased: 'Sage Tufted 3-Seater Sofa',
+    productId: '1793686225231',
     image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=80'
   },
   {
@@ -471,8 +591,8 @@ export const testimonials = [
     household: 'Two kids & a Golden Retriever pup',
     quote:
       'With two kids and a pup, our Perfa sofa is a lifesaver. The scratch-resistant, easy-to-clean fabric keeps our cozy living room elegant and completely stress-free.',
-    sofaPurchased: 'Sage Tufted 3-Seater Sofa',
-    productId: '4',
+    sofaPurchased: 'Curved Modular 4-Seater Sofa',
+    productId: '1793684591208',
     image: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=900&q=80'
   },
   {
@@ -483,7 +603,7 @@ export const testimonials = [
     quote:
       'Our cats used to shred every sofa we owned until we switched to Perfa. After eight months, there is not a single pulled thread, and being able to machine-wash the covers after juice spills is a game changer.',
     sofaPurchased: 'Curved Daybed 4-Seater Sofa',
-    productId: '8',
+    productId: '1793683789316',
     image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80'
   }
 ];

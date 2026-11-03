@@ -217,11 +217,11 @@ export default function HomePage() {
             />
             <div className="hero-floating-badge">
               <span className="floating-badge-label">Featured Sofa</span>
-              <strong>{heroData.featuredProductName || 'Luna 3-Seater Sofa'}</strong>
+              <strong>{heroData.featuredProductName || 'Sage Tufted 3-Seater Sofa'}</strong>
               <span className="floating-badge-price">
-                {heroData.featuredProductPrice || '25,000,000 ₫ • Pet-Friendly Fabric'}
+                {heroData.featuredProductPrice || '41,900,000 ₫ • Algodão Organic Cotton'}
               </span>
-              <Link to="/product/1" className="floating-badge-link">
+              <Link to={`/product/${products[0]?.id || '1793686225231'}`} className="floating-badge-link">
                 View Sofa <ArrowRight size={13} />
               </Link>
             </div>

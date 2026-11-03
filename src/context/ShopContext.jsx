@@ -16,11 +16,11 @@ const initialHero = {
   ctaSecondary: 'Experience Perfa',
   bgImage:
     'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1400&q=85',
-  featuredProductName: 'Luna 3-Seater Sofa',
-  featuredProductPrice: '25,000,000 ₫ • Liocel Fabric'
+  featuredProductName: 'Sage Tufted 3-Seater Sofa',
+  featuredProductPrice: '41,900,000 ₫ • Algodão Organic Cotton'
 };
 
-const STORAGE_VERSION = 'v3_eco_materials';
+const STORAGE_VERSION = 'v5_15_products';
 
 if (typeof window !== 'undefined') {
   try {

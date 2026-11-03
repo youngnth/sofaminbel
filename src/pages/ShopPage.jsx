@@ -35,7 +35,7 @@ const COLORS = [
   { name: 'Brown', hex: '#8B5A3C' }
 ];
 
-const SEAT_COUNTS = [2, 3, 4];
+const SEAT_COUNTS = [1, 2, 3, 4];
 
 export default function ShopPage() {
   const { products, isEditMode, addProduct } = useShop();
