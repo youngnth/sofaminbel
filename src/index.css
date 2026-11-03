@@ -1395,6 +1395,204 @@ h3,
 }
 
 /* ==========================================================================
+   WIX-EXACT MATERIALS SECTION WITH SPLIT CARDS (Modal, Liocel, Ecovero, Algodão)
+   ========================================================================== */
+
+.wix-materials-section {
+  background-color: #4B6355;
+  color: #FFFFFF;
+  padding: 85px 0 95px;
+  position: relative;
+}
+
+.wix-materials-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 38px;
+  flex-wrap: wrap;
+}
+
+.wix-materials-header .section-title {
+  color: #FFFFFF;
+  font-size: 2.6rem;
+  font-family: var(--font-serif);
+  margin-top: 4px;
+}
+
+.wix-materials-header .section-eyebrow.light {
+  color: #C5D8CC;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.wix-materials-note {
+  font-size: 0.95rem;
+  color: #D3E0D8;
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+.wix-materials-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.material-split-card-theme {
+  background-color: #3f5448;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.material-split-card-theme:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.38);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.material-card-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.material-split-visual {
+  position: relative;
+  display: flex;
+  height: 290px;
+  overflow: hidden;
+  background-color: #27362f;
+}
+
+.split-half {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.split-half img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.material-split-card-theme:hover .split-half img {
+  transform: scale(1.08);
+}
+
+.split-half.split-left {
+  border-right: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.split-script-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 3;
+  text-align: center;
+  width: 90%;
+}
+
+.split-script-text {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85), 0 0 24px rgba(0, 0, 0, 0.65);
+  display: inline-block;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.material-split-card-theme:hover .split-script-text {
+  transform: scale(1.06);
+}
+
+.material-card-meta {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: linear-gradient(180deg, #384c40 0%, #32443a 100%);
+}
+
+.material-origin-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #C2D5C7;
+  margin-bottom: 6px;
+}
+
+.material-name-heading {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.material-desc-text {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #DDE5E0;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.material-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.14);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  align-self: flex-start;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.material-split-card-theme:hover .material-explore-btn {
+  background-color: rgba(255, 255, 255, 0.26);
+  transform: translateX(3px);
+}
+
+@media (max-width: 1024px) {
+  .wix-materials-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .wix-materials-grid {
+    grid-template-columns: 1fr;
+  }
+  .material-split-visual {
+    height: 240px;
+  }
+}
+
+/* ==========================================================================
    CLIENT TESTIMONIALS & HOMEPAGE CONTACT
    ========================================================================== */
 

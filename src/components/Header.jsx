@@ -189,16 +189,30 @@ export default function Header() {
                         <button
                           type="button"
                           className="search-chip"
-                          onClick={() => handleQuickQuery('Pet-Friendly')}
+                          onClick={() => handleQuickQuery('Liocel')}
                         >
-                          Pet-Friendly
+                          Liocel
                         </button>
                         <button
                           type="button"
                           className="search-chip"
-                          onClick={() => handleQuickQuery('Stain-Resistant Linen')}
+                          onClick={() => handleQuickQuery('Modal')}
                         >
-                          Stain-Resistant Linen
+                          Modal
+                        </button>
+                        <button
+                          type="button"
+                          className="search-chip"
+                          onClick={() => handleQuickQuery('Ecovero')}
+                        >
+                          Ecovero
+                        </button>
+                        <button
+                          type="button"
+                          className="search-chip"
+                          onClick={() => handleQuickQuery('Algodão')}
+                        >
+                          Algodão
                         </button>
                       </div>
                     </div>

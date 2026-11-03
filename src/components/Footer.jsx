@@ -73,10 +73,16 @@ export default function Footer() {
               <Link to="/shop">Shop All Sofas</Link>
             </li>
             <li>
-              <Link to="/shop?material=Pet-Friendly+Fabric">Pet-Friendly Collection</Link>
+              <Link to="/shop?material=Modal">Modal Series</Link>
             </li>
             <li>
-              <Link to="/shop?material=Stain-Resistant+Linen">Stain-Resistant Linen</Link>
+              <Link to="/shop?material=Liocel">Liocel Series</Link>
+            </li>
+            <li>
+              <Link to="/shop?material=Ecovero">Ecovero Viscose</Link>
+            </li>
+            <li>
+              <Link to="/shop?material=Algod%C3%A3o">Algodão Organic Cotton</Link>
             </li>
             <li>
               <Link to="/about">About Us</Link>

@@ -17,8 +17,25 @@ const initialHero = {
   bgImage:
     'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1400&q=85',
   featuredProductName: 'Luna 3-Seater Sofa',
-  featuredProductPrice: '25,000,000 ₫ • Pet-Friendly Fabric'
+  featuredProductPrice: '25,000,000 ₫ • Liocel Fabric'
 };
+
+const STORAGE_VERSION = 'v3_eco_materials';
+
+if (typeof window !== 'undefined') {
+  try {
+    const currentVer = localStorage.getItem('perfa_data_version');
+    if (currentVer !== STORAGE_VERSION) {
+      localStorage.removeItem('perfa_react_products');
+      localStorage.removeItem('perfa_react_materials');
+      localStorage.removeItem('perfa_react_collections');
+      localStorage.removeItem('perfa_react_testimonials');
+      localStorage.setItem('perfa_data_version', STORAGE_VERSION);
+    }
+  } catch (e) {
+    console.warn('Storage check failed:', e);
+  }
+}
 
 const initialAbout = {
   sectionTitle: 'Built for Homes with Active Kids & Beloved Pets',

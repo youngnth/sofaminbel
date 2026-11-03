@@ -63,7 +63,7 @@ export default function ContactPage() {
           </nav>
           <h1 className="shop-page-title">Contact Perfa Hanoi</h1>
           <p className="shop-page-subtitle">
-            Have a project in mind or want free pet-friendly fabric swatches delivered to your home in Hanoi? Reach out to us today to start creating your dream space.
+            Have a project in mind or want free sustainable fabric swatches (Modal, Liocel, Ecovero, Algodão) delivered to your home in Hanoi? Reach out to us today to start creating your dream space.
           </p>
         </div>
       </section>
@@ -217,8 +217,8 @@ export default function ContactPage() {
                       <option value="Free Design Consultation">
                         Free Design Consultation
                       </option>
-                      <option value="Request Free Pet-Friendly Fabric Swatches">
-                        Request Free Pet-Friendly Fabric Swatches
+                      <option value="Request Free Fabric Swatches (Modal, Liocel, Ecovero, Algodão)">
+                        Request Free Fabric Swatches (Modal, Liocel, Ecovero, Algodão)
                       </option>
                       <option value="Custom Sofa Dimensions & Sizing">
                         Custom Sofa Dimensions &amp; Sizing

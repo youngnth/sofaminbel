@@ -21,10 +21,10 @@ const PRICE_RANGES = [
 ];
 
 const MATERIALS = [
-  'Pet-Friendly Fabric',
-  'Stain-Resistant Linen',
-  'Fabric',
-  'Leather'
+  'Modal',
+  'Liocel',
+  'Ecovero',
+  'Algodão'
 ];
 
 const COLORS = [
@@ -466,7 +466,7 @@ export default function ShopPage() {
                         id: newId,
                         name: 'New Custom Sofa',
                         price: 26000000,
-                        material: 'Pet-Friendly Fabric',
+                        material: 'Liocel',
                         color: 'Beige',
                         colorHex: '#E6DEC8',
                         seatCount: 3,
@@ -475,7 +475,7 @@ export default function ShopPage() {
                         isBestSeller: true,
                         createdAt: new Date().toISOString(),
                         wixCategory: 'Sofa & Daybeds',
-                        tags: ['Pet-Friendly', 'Washable Cover'],
+                        tags: ['Liocel Weave', 'Washable Cover'],
                         description: 'Handcrafted luxury family sofa.',
                         images: [
                           'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',

@@ -41,6 +41,8 @@ export default function HomePage() {
     addProduct,
     updatePortfolioItem,
     deletePortfolioItem,
+    updateService,
+    updateMaterial,
     updateTestimonial,
     deleteTestimonial,
     openCropModal,
@@ -135,7 +137,7 @@ export default function HomePage() {
       id: newId,
       name: 'Luna Modular Luxury Sofa',
       price: 29500000,
-      material: 'Pet-Friendly Fabric',
+      material: 'Liocel',
       color: 'Beige',
       colorHex: '#E6DEC8',
       seatCount: 3,
@@ -144,7 +146,7 @@ export default function HomePage() {
       isBestSeller: true,
       createdAt: new Date().toISOString(),
       wixCategory: 'Sofa & Daybeds',
-      tags: ['Pet-Friendly', 'Washable Cover', 'New Arrival'],
+      tags: ['Liocel Weave', 'Washable Cover', 'New Arrival'],
       description: 'Handcrafted luxury sofa engineered for modern Hanoi homes with young children and pets.',
       images: [
         'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
@@ -508,58 +510,107 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Materials Showcase */}
-          <div className="materials-showcase-box" id="materials">
-            <div className="materials-showcase-header">
-              <div>
-                <span className="section-eyebrow">Engineered for Kids &amp; Pets</span>
-                <h3 className="materials-showcase-title">Signature Perfa Materials</h3>
+      {/* 6. MATERIALS SECTION - EXACT WIX SPLIT CARDS */}
+      <section className="section wix-materials-section" id="materials">
+        <SectionToolbar
+          sectionKey="materials"
+          sectionName="Materials"
+        />
+        <div className="container">
+          <div className="wix-materials-header">
+            <div>
+              <span className="section-eyebrow light">Eco-Certified Textiles</span>
+              <h2 className="section-title light">Materials</h2>
+            </div>
+            <p className="wix-materials-note">
+              Click any sustainable material below to browse all sofas crafted in that exact upholstery.
+            </p>
+          </div>
+
+          <div className="wix-materials-grid">
+            {materials.map((mat) => (
+              <div key={mat.name} className="material-split-card-theme">
+                {isEditMode && (
+                  <div className="perfa-card-actions">
+                    <button
+                      type="button"
+                      className="perfa-card-btn btn-crop"
+                      onClick={() => {
+                        openCropModal({
+                          initialUrl: mat.fabricImage || mat.image,
+                          aspectRatio: 3 / 4,
+                          title: `Cắt & Thay ảnh chất liệu: ${mat.name}`,
+                          onApply: (url) => {
+                            updateMaterial(mat.name, { fabricImage: url, image: url });
+                          }
+                        });
+                      }}
+                    >
+                      <ImageIcon size={12} /> Cắt
+                    </button>
+                    <button
+                      type="button"
+                      className="perfa-card-btn"
+                      onClick={() => {
+                        openItemEditor({
+                          title: `Sửa thông tin chất liệu: ${mat.name}`,
+                          fields: [
+                            { label: 'Tên Chất Liệu (Name)', key: 'name', type: 'text' },
+                            { label: 'Tiêu Đề Viết Hoa (Script Title)', key: 'scriptTitle', type: 'text' },
+                            { label: 'Nguồn Gốc (Origin)', key: 'origin', type: 'text' },
+                            { label: 'Mô Tả (Description)', key: 'description', type: 'textarea' }
+                          ],
+                          initialValues: {
+                            name: mat.name,
+                            scriptTitle: mat.scriptTitle || mat.name,
+                            origin: mat.origin || '',
+                            description: mat.description
+                          },
+                          onSave: (vals) => updateMaterial(mat.name, vals)
+                        });
+                      }}
+                    >
+                      <Edit2 size={12} /> Sửa
+                    </button>
+                  </div>
+                )}
+                <Link
+                  to={`/shop?material=${encodeURIComponent(mat.name)}`}
+                  className="material-card-link-wrapper"
+                >
+                  <div className="material-split-visual">
+                    <div className="split-half split-left">
+                      <img
+                        src={mat.sourceImage || mat.image}
+                        alt={`${mat.name} Natural Source`}
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="split-half split-right">
+                      <img
+                        src={mat.fabricImage || mat.image}
+                        alt={`${mat.name} Woven Fabric`}
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="split-script-overlay">
+                      <span className="split-script-text">{mat.scriptTitle || mat.name}</span>
+                    </div>
+                  </div>
+                  <div className="material-card-meta">
+                    <span className="material-origin-tag">{mat.origin || 'Sustainable Fiber'}</span>
+                    <h4 className="material-name-heading">{mat.name}</h4>
+                    <p className="material-desc-text">{mat.description}</p>
+                    <span className="material-explore-btn">
+                      Shop {mat.name} Sofas <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </Link>
               </div>
-              <p className="materials-showcase-note">
-                Click any material below to filter sofas crafted with that exact upholstery.
-              </p>
-            </div>
-
-            <div className="materials-swatch-grid">
-              {materials.map((mat) => (
-                <div key={mat.name} className="material-swatch-card">
-                  {isEditMode && (
-                    <div className="perfa-card-actions">
-                      <button
-                        type="button"
-                        className="perfa-card-btn btn-crop"
-                        onClick={() => {
-                          openCropModal({
-                            initialUrl: mat.image,
-                            aspectRatio: 1,
-                            title: `Cắt & Thay ảnh chất liệu: ${mat.name}`,
-                            onApply: (url) => {
-                              // update material
-                            }
-                          });
-                        }}
-                      >
-                        <ImageIcon size={12} /> Cắt
-                      </button>
-                    </div>
-                  )}
-                  <Link to={`/shop?material=${encodeURIComponent(mat.name)}`}>
-                    <div className="material-swatch-img-wrap">
-                      <img src={mat.image} alt={mat.name} loading="lazy" />
-                      <span className="material-swatch-badge">{mat.badge}</span>
-                    </div>
-                    <div className="material-swatch-info">
-                      <h4>{mat.name}</h4>
-                      <p>{mat.description}</p>
-                      <span className="material-swatch-link">
-                        Shop {mat.name} Sofas <ArrowRight size={14} />
-                      </span>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
