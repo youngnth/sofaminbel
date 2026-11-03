@@ -32,15 +32,12 @@ export default function HomePage() {
     heroData,
     aboutData,
     collections,
-    portfolioItems,
     services,
     materials,
     testimonials,
     updateHero,
     updateAbout,
     addProduct,
-    updatePortfolioItem,
-    deletePortfolioItem,
     updateService,
     updateMaterial,
     updateTestimonial,
@@ -347,76 +344,6 @@ export default function HomePage() {
                 alt="Happy dogs relaxing on a durable Perfa sofa"
                 className="wix-about-img"
               />
-            </div>
-          </div>
-
-          {/* Portfolio Strip */}
-          <div className="wix-portfolio-block" id="portfolio">
-            <div className="wix-portfolio-header">
-              <div>
-                <span className="section-eyebrow light">Real Hanoi Living Rooms</span>
-                <h3 className="wix-portfolio-title">Our Portfolio</h3>
-              </div>
-              <Link to="/portfolio" className="btn btn-outline-light btn-sm">
-                View Full Portfolio <ArrowRight size={14} />
-              </Link>
-            </div>
-            <div className="wix-portfolio-grid">
-              {portfolioItems.map((item) => (
-                <div key={item.id} className="wix-portfolio-card">
-                  {isEditMode && (
-                    <div className="perfa-card-actions">
-                      <button
-                        type="button"
-                        className="perfa-card-btn"
-                        onClick={() => {
-                          openItemEditor({
-                            title: `Sửa dự án: ${item.title}`,
-                            fields: [
-                              { label: 'Tên Dự Án (Title)', key: 'title', type: 'text' },
-                              { label: 'Địa Điểm (Location)', key: 'location', type: 'text' },
-                              { label: 'Phân Loại (Category)', key: 'category', type: 'text' }
-                            ],
-                            initialValues: { title: item.title, location: item.location, category: item.category },
-                            onSave: (vals) => updatePortfolioItem(item.id, vals)
-                          });
-                        }}
-                      >
-                        <Edit2 size={12} /> Sửa
-                      </button>
-                      <button
-                        type="button"
-                        className="perfa-card-btn btn-crop"
-                        onClick={() => {
-                          openCropModal({
-                            initialUrl: item.image,
-                            aspectRatio: 4 / 3,
-                            title: `Cắt & Thay ảnh: ${item.title}`,
-                            onApply: (url) => updatePortfolioItem(item.id, { image: url })
-                          });
-                        }}
-                      >
-                        <ImageIcon size={12} /> Cắt
-                      </button>
-                      <button
-                        type="button"
-                        className="perfa-card-btn btn-delete"
-                        onClick={() => deletePortfolioItem(item.id)}
-                      >
-                        <Trash2 size={12} /> Xóa
-                      </button>
-                    </div>
-                  )}
-                  <Link to={`/product/${item.linkedProductId || 1}`}>
-                    <img src={item.image} alt={item.title} loading="lazy" />
-                    <div className="wix-portfolio-overlay">
-                      <span className="portfolio-cat">{item.category}</span>
-                      <h4>{item.title}</h4>
-                      <p>{item.location}</p>
-                    </div>
-                  </Link>
-                </div>
-              ))}
             </div>
           </div>
         </div>
