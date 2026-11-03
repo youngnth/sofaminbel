@@ -597,11 +597,11 @@ export const testimonials = [
   },
   {
     id: 't3',
-    family: 'Claire & Minh Family',
+    family: 'Linh & Huy Family',
     location: 'Hai Ba Trung District, Hanoi',
     household: 'Toddler & two indoor British Shorthair cats',
     quote:
-      'Our cats used to shred every sofa we owned until we switched to Perfa. After eight months, there is not a single pulled thread, and being able to machine-wash the covers after juice spills is a game changer.',
+      'What attracted us to Perfa was its compact modular design and removable washable covers. The fabric samples and clear product dimensions also helped us feel more confident about choosing the right sofa for our home. Perfa brings together the aesthetics and practicality we were looking for!',
     sofaPurchased: 'Curved Daybed 4-Seater Sofa',
     productId: '1793683789316',
     image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80'

@@ -20,15 +20,17 @@ const initialHero = {
   featuredProductPrice: '41,900,000 ₫ • Algodão Organic Cotton'
 };
 
-const STORAGE_VERSION = 'v5_15_products';
+const STORAGE_VERSION = 'v6_testimonials_update';
 
 if (typeof window !== 'undefined') {
   try {
     const currentVer = localStorage.getItem('perfa_data_version');
     if (currentVer !== STORAGE_VERSION) {
-      localStorage.removeItem('perfa_react_products');
-      localStorage.removeItem('perfa_react_materials');
-      localStorage.removeItem('perfa_react_collections');
+      if (currentVer !== 'v5_15_products') {
+        localStorage.removeItem('perfa_react_products');
+        localStorage.removeItem('perfa_react_materials');
+        localStorage.removeItem('perfa_react_collections');
+      }
       localStorage.removeItem('perfa_react_testimonials');
       localStorage.setItem('perfa_data_version', STORAGE_VERSION);
     }
