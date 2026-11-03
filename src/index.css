@@ -46,21 +46,21 @@
 :root[data-theme='dark'] {
   --bg-beige: #141916;
   --bg-stone: #1B221E;
-  --bg-cream-card: #222B26;
+  --bg-cream-card: #242E28;
   --bg-white: #1E2622;
 
-  --wix-sage-dark: #6D947B;
-  --wix-sage-deeper: #4F725C;
-  --brand-green: #88A67D;
-  --brand-green-light: #26332B;
+  --wix-sage-dark: #4B6B58;
+  --wix-sage-deeper: #395444;
+  --brand-green: #A8D5B6;
+  --brand-green-light: #28382F;
 
-  --wix-taupe: #C4B9B2;
-  --wix-taupe-dark: #D6CEC7;
-  --charcoal: #F3EFE8;
-  --text-dark: #F3EFE8;
-  --text-muted: #A6B0AA;
-  --warm-grey: #8C9690;
-  --border-warm: #2E3A33;
+  --wix-taupe: #E8E0D5;
+  --wix-taupe-dark: #F4EFE6;
+  --charcoal: #FFFFFF;
+  --text-dark: #FFFFFF;
+  --text-muted: #DCE5DF;
+  --warm-grey: #C4D0C8;
+  --border-warm: #34423A;
 
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.38);
   --shadow-hover: 0 18px 42px rgba(0, 0, 0, 0.56);
@@ -103,6 +103,7 @@ select,
 textarea {
   font-family: inherit;
   font-size: inherit;
+  color: inherit;
 }
 
 .container {
@@ -4956,10 +4957,67 @@ h3,
 /* ==========================================================================
    DARK MODE SURFACE & ELEMENT REFINEMENTS
    ========================================================================== */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* Brighten all sage-colored text/links/prices/badges on dark backgrounds */
+:root[data-theme='dark'] .section-eyebrow,
+:root[data-theme='dark'] .section-link,
+:root[data-theme='dark'] .service-icon-box,
+:root[data-theme='dark'] .floating-badge-label,
+:root[data-theme='dark'] .floating-badge-link,
+:root[data-theme='dark'] .collection-cta,
+:root[data-theme='dark'] .product-material-pill,
+:root[data-theme='dark'] .product-card-title a:hover,
+:root[data-theme='dark'] .btn-card-cart,
+:root[data-theme='dark'] .view-all-search-btn,
+:root[data-theme='dark'] .price-primary,
+:root[data-theme='dark'] .clear-filters-btn:hover,
+:root[data-theme='dark'] .active-filter-pill,
+:root[data-theme='dark'] .product-category-eyebrow,
+:root[data-theme='dark'] .product-detail-price,
+:root[data-theme='dark'] .material-inline-link,
+:root[data-theme='dark'] .material-explorer-eyebrow,
+:root[data-theme='dark'] .material-clickable-link,
+:root[data-theme='dark'] .same-material-price,
+:root[data-theme='dark'] .same-material-arrow,
+:root[data-theme='dark'] .vm-tag,
+:root[data-theme='dark'] .pillar-icon,
+:root[data-theme='dark'] .contact-icon-circle,
+:root[data-theme='dark'] .success-icon,
+:root[data-theme='dark'] .map-badge,
+:root[data-theme='dark'] .testimonial-sofa-link-row a,
+:root[data-theme='dark'] .cart-item-price,
+:root[data-theme='dark'] .cart-perks-note,
+:root[data-theme='dark'] .quick-add-info .quick-add-price,
+:root[data-theme='dark'] .back-to-cart-link,
+:root[data-theme='dark'] .mini-summary-total,
+:root[data-theme='dark'] .bank-note,
+:root[data-theme='dark'] .receipt-row.total,
+:root[data-theme='dark'] .saved-order-total,
+:root[data-theme='dark'] .auth-tab-item.active,
+:root[data-theme='dark'] .btn-demo-login,
+:root[data-theme='dark'] .checkout-login-btn,
+:root[data-theme='dark'] .eyebrow-tag,
+:root[data-theme='dark'] .material-swatch-link,
+:root[data-theme='dark'] .btn-secondary-sage {
+  color: #B4E4C5 !important;
+}
+
+:root[data-theme='dark'] .section-link {
+  border-bottom-color: #B4E4C5;
+}
+
+:root[data-theme='dark'] .btn-secondary-sage {
+  border-color: #7FA88E;
+  background-color: #222E27;
+}
+
 :root[data-theme='dark'] .top-announcement-bar {
   background-color: #0E1310;
-  color: #D5E2D9;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: #E6F0EA;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 :root[data-theme='dark'] .main-header-bar {
@@ -4969,16 +5027,28 @@ h3,
 
 :root[data-theme='dark'] .header-search-form {
   background-color: #151D18;
-  border-color: #2E3D35;
+  border-color: #384B40;
 }
 
 :root[data-theme='dark'] .header-search-input {
-  color: #F3EFE8;
+  color: #FFFFFF;
+}
+
+:root[data-theme='dark'] .header-search-input::placeholder,
+:root[data-theme='dark'] input::placeholder,
+:root[data-theme='dark'] textarea::placeholder {
+  color: #A9B8B0;
 }
 
 :root[data-theme='dark'] .search-dropdown {
   background-color: #1C2420;
-  border-color: #2E3A33;
+  border-color: #34423A;
+  color: #FFFFFF;
+}
+
+:root[data-theme='dark'] .search-results-header {
+  background-color: #151C18;
+  color: #DCE5DF;
 }
 
 :root[data-theme='dark'] .search-result-item {
@@ -4987,9 +5057,9 @@ h3,
 
 :root[data-theme='dark'] .cart-badge,
 :root[data-theme='dark'] .account-trigger-btn.logged-in {
-  background-color: #E2ECE5;
-  color: #1E2D24;
-  border-color: #E2ECE5;
+  background-color: #EAE4D8;
+  color: #1B2820;
+  border-color: #EAE4D8;
 }
 
 :root[data-theme='dark'] .hero-section,
@@ -5008,20 +5078,39 @@ h3,
 }
 
 :root[data-theme='dark'] .btn-light-cream {
-  background-color: #EAE4D8;
-  color: #1B241E;
+  background-color: #F4EFE6;
+  color: #18221C;
 }
 
 :root[data-theme='dark'] .btn-light-cream:hover {
   background-color: #FFFFFF;
-  color: #141B17;
+  color: #111814;
+}
+
+:root[data-theme='dark'] .btn-buy-now-detail {
+  background-color: #344E3F;
+  border-color: #6B967D;
+  color: #FFFFFF;
+}
+
+:root[data-theme='dark'] .btn-buy-now-detail:hover,
+:root[data-theme='dark'] .btn-card-buy-now:hover,
+:root[data-theme='dark'] .btn-quick-add:hover,
+:root[data-theme='dark'] .btn-order-reorder:hover {
+  background-color: #588168;
+  border-color: #7FA88E;
+  color: #FFFFFF;
 }
 
 :root[data-theme='dark'] .hero-floating-badge,
 :root[data-theme='dark'] .map-pin-card {
-  background-color: rgba(30, 38, 34, 0.95);
-  border: 1px solid #334239;
-  color: #F3EFE8;
+  background-color: rgba(28, 36, 32, 0.96);
+  border: 1px solid #3D4F44;
+  color: #FFFFFF;
+}
+
+:root[data-theme='dark'] .floating-badge-price {
+  color: #DCE5DF;
 }
 
 :root[data-theme='dark'] .product-card-image-wrap,
@@ -5031,16 +5120,36 @@ h3,
 
 :root[data-theme='dark'] .product-card-footer,
 :root[data-theme='dark'] .testimonial-sofa-link-row,
-:root[data-theme='dark'] .filter-group {
-  border-color: #2B3630;
+:root[data-theme='dark'] .filter-group,
+:root[data-theme='dark'] .cart-item {
+  border-color: #2F3B34;
 }
 
 :root[data-theme='dark'] .badge-washable,
 :root[data-theme='dark'] .testimonial-location-pill,
 :root[data-theme='dark'] .product-card-hover-cta {
-  background-color: rgba(24, 31, 27, 0.92);
-  color: #E8E4DC;
-  border-color: #36453C;
+  background-color: rgba(22, 29, 25, 0.94);
+  color: #FFFFFF;
+  border-color: #415248;
+}
+
+:root[data-theme='dark'] .color-filter-chip,
+:root[data-theme='dark'] .seat-filter-btn,
+:root[data-theme='dark'] .catalog-tab-btn,
+:root[data-theme='dark'] .search-chip {
+  color: #F4EFE6;
+  background-color: #242E28;
+  border-color: #3A4940;
+}
+
+:root[data-theme='dark'] .color-filter-chip.selected,
+:root[data-theme='dark'] .seat-filter-btn.selected,
+:root[data-theme='dark'] .catalog-tab-btn.active,
+:root[data-theme='dark'] .catalog-tab-btn:hover,
+:root[data-theme='dark'] .search-chip:hover {
+  background-color: #4B6B58;
+  border-color: #7FA88E;
+  color: #FFFFFF;
 }
 
 :root[data-theme='dark'] .custom-checkbox,
@@ -5048,44 +5157,88 @@ h3,
 :root[data-theme='dark'] .checkout-field input,
 :root[data-theme='dark'] .checkout-field textarea,
 :root[data-theme='dark'] .payment-method-option,
-:root[data-theme='dark'] .btn-order-delete {
-  background-color: #161C19;
-  color: #F3EFE8;
-  border-color: #313E37;
+:root[data-theme='dark'] .btn-order-delete,
+:root[data-theme='dark'] .sort-select,
+:root[data-theme='dark'] .shop-inline-search {
+  background-color: #161D19;
+  color: #FFFFFF;
+  border-color: #38473F;
+}
+
+:root[data-theme='dark'] .shop-inline-search input {
+  color: #FFFFFF;
+}
+
+:root[data-theme='dark'] .payment-method-option strong,
+:root[data-theme='dark'] .checkout-field label,
+:root[data-theme='dark'] .quick-add-info strong,
+:root[data-theme='dark'] .cart-item-name,
+:root[data-theme='dark'] .cart-drawer,
+:root[data-theme='dark'] .auth-modal,
+:root[data-theme='dark'] .consultation-modal {
+  color: #FFFFFF;
 }
 
 :root[data-theme='dark'] .payment-method-option.selected,
 :root[data-theme='dark'] .bank-transfer-info-box,
 :root[data-theme='dark'] .checkout-auth-prompt,
 :root[data-theme='dark'] .checkout-auth-logged {
-  background-color: #233029;
-  border-color: #5C826B;
-  color: #E5EFE8;
+  background-color: #24332B;
+  border-color: #6B967D;
+  color: #F4EFE6;
 }
 
 :root[data-theme='dark'] .free-ship-pill,
 :root[data-theme='dark'] .order-code-pill,
 :root[data-theme='dark'] .auth-member-badge {
-  background-color: #26382E;
-  color: #98C2A8;
+  background-color: #283D31;
+  color: #B4E4C5;
+}
+
+:root[data-theme='dark'] .order-status-line {
+  color: #6EE7B7;
+}
+
+:root[data-theme='dark'] .order-status-line.cancelled {
+  color: #FCA5A5;
 }
 
 :root[data-theme='dark'] .saved-order-card.is-cancelled {
-  background-color: #1A1F1D;
-  border-color: #2E3632;
+  background-color: #1A201D;
+  border-color: #323D37;
 }
 
 :root[data-theme='dark'] .btn-order-cancel,
-:root[data-theme='dark'] .btn-cancel-order-inline {
-  background-color: rgba(185, 28, 28, 0.16);
-  border-color: rgba(248, 113, 113, 0.4);
-  color: #FCA5A5;
+:root[data-theme='dark'] .btn-cancel-order-inline,
+:root[data-theme='dark'] .btn-logout-account {
+  background-color: rgba(185, 28, 28, 0.2);
+  border-color: rgba(248, 113, 113, 0.5);
+  color: #FECACA;
+}
+
+:root[data-theme='dark'] .form-group input,
+:root[data-theme='dark'] .form-group select,
+:root[data-theme='dark'] .form-group textarea {
+  background-color: #161D19;
+  color: #FFFFFF;
+  border-color: #38473F;
 }
 
 :root[data-theme='dark'] .form-group input:focus,
 :root[data-theme='dark'] .form-group select:focus,
 :root[data-theme='dark'] .form-group textarea:focus {
-  background-color: #18201C;
+  background-color: #1C2520;
+  border-color: #7FA88E;
+}
+
+:root[data-theme='dark'] .newsletter-submit-btn {
+  background-color: #F4EFE6;
+  color: #18221C;
+}
+
+:root[data-theme='dark'] .newsletter-submit-btn:hover {
+  background-color: #FFFFFF;
+  color: #111814;
 }
 
 :root[data-theme='dark'] .map-visual-canvas {
@@ -5093,7 +5246,7 @@ h3,
 }
 
 :root[data-theme='dark'] .road {
-  background-color: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 

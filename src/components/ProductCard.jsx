@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBag, Users, Sparkles, ArrowUpRight, Edit2, Image, Trash2 } from 'lucide-react';
-import { formatVND, formatVNDWithCode } from '../data/products';
+import { formatVND, formatVNDWithCode, getColorHex } from '../data/products';
 import { useShop } from '../context/ShopContext';
 
 export default function ProductCard({ product }) {
@@ -128,7 +128,7 @@ export default function ProductCard({ product }) {
         <div className="product-card-color-row">
           <span
             className="color-dot"
-            style={{ backgroundColor: product.colorHex || '#D8CFC2' }}
+            style={{ backgroundColor: getColorHex(product.color, product.colorHex) }}
             aria-hidden="true"
           />
           <span className="color-label">{product.color}</span>

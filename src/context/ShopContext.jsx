@@ -5,7 +5,8 @@ import {
   wixPortfolioItems as initialPortfolio,
   whyPerfaServices as initialServices,
   materialSwatches as initialMaterials,
-  testimonials as initialTestimonials
+  testimonials as initialTestimonials,
+  getColorHex
 } from '../data/products';
 
 const initialHero = {
@@ -160,7 +161,11 @@ export function ShopProvider({ children }) {
   const [products, setProducts] = useState(() => {
     try {
       const saved = localStorage.getItem('perfa_react_products');
-      return saved ? JSON.parse(saved) : initialProducts;
+      const list = saved ? JSON.parse(saved) : initialProducts;
+      return list.map((p) => ({
+        ...p,
+        colorHex: getColorHex(p.color, p.colorHex)
+      }));
     } catch {
       return initialProducts;
     }
@@ -460,9 +465,17 @@ export function ShopProvider({ children }) {
   // Content Modification Functions
   const updateProduct = (id, updatedFields) => {
     setProducts((prev) =>
-      prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p))
+      prev.map((p) => {
+        if (p.id !== id) return p;
+        const nextColor = updatedFields.color !== undefined ? updatedFields.color : p.color;
+        return {
+          ...p,
+          ...updatedFields,
+          colorHex: getColorHex(nextColor, updatedFields.colorHex || p.colorHex)
+        };
+      })
     );
-    showToast('✓ Đã cập nhật thông tin sản phẩm.');
+    showToast('✓ Product details updated.');
   };
 
   const deleteProduct = (id) => {

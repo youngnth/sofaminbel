@@ -21,7 +21,7 @@ import {
   Plus,
   Minus
 } from 'lucide-react';
-import { formatVND, formatVNDWithCode } from '../data/products';
+import { formatVND, formatVNDWithCode, getColorHex } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import { useShop } from '../context/ShopContext';
 
@@ -225,6 +225,8 @@ export default function ProductDetailPage() {
                         { label: 'Tên Sản Phẩm (Name)', key: 'name', type: 'text' },
                         { label: 'Giá (VND Số)', key: 'price', type: 'number' },
                         { label: 'Chất Liệu (Material)', key: 'material', type: 'text' },
+                        { label: 'Màu Sắc (Color)', key: 'color', type: 'text' },
+                        { label: 'Số Ghế (Seat Count)', key: 'seatCount', type: 'number' },
                         { label: 'Kích Thước (Dimensions)', key: 'dimensions', type: 'text' },
                         { label: 'Mô Tả Sản Phẩm (Description)', key: 'description', type: 'textarea' }
                       ],
@@ -232,6 +234,8 @@ export default function ProductDetailPage() {
                         name: product.name,
                         price: product.price,
                         material: product.material,
+                        color: product.color,
+                        seatCount: product.seatCount,
                         dimensions: product.dimensions,
                         description: product.description
                       },
@@ -240,6 +244,8 @@ export default function ProductDetailPage() {
                           name: vals.name,
                           price: parseInt(vals.price, 10) || product.price,
                           material: vals.material,
+                          color: vals.color,
+                          seatCount: parseInt(vals.seatCount, 10) || product.seatCount,
                           dimensions: vals.dimensions,
                           description: vals.description
                         });
@@ -305,7 +311,7 @@ export default function ProductDetailPage() {
                   <span className="spec-value">
                     <span
                       className="color-dot"
-                      style={{ backgroundColor: product.colorHex }}
+                      style={{ backgroundColor: getColorHex(product.color, product.colorHex) }}
                     />
                     {product.color}
                   </span>
