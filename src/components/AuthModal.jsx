@@ -25,7 +25,8 @@ export default function AuthModal() {
     orders,
     setIsCartOpen,
     setCartView,
-    theme
+    theme,
+    modalTopOffset
   } = useShop();
 
   const [activeTab, setActiveTab] = useState('login'); // 'login' | 'register'
@@ -108,9 +109,13 @@ export default function AuthModal() {
   };
 
   return (
-    <div className="modal-backdrop" onClick={() => setIsAuthModalOpen(false)}>
+    <div
+      className="modal-backdrop modal-backdrop-center"
+      onClick={() => setIsAuthModalOpen(false)}
+    >
       <div
         className="auth-modal"
+        style={{ marginTop: `${modalTopOffset}px` }}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

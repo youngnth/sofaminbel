@@ -3,7 +3,7 @@ import { X, CheckCircle2, Calendar, Phone, Sparkles } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 
 export default function ConsultationModal() {
-  const { consultationProduct, closeConsultationModal, showToast } = useShop();
+  const { consultationProduct, closeConsultationModal, showToast, modalTopOffset } = useShop();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -27,9 +27,13 @@ export default function ConsultationModal() {
   };
 
   return (
-    <div className="modal-backdrop" onClick={handleClose}>
+    <div
+      className="modal-backdrop modal-backdrop-center"
+      onClick={handleClose}
+    >
       <div
         className="consultation-modal"
+        style={{ marginTop: `${modalTopOffset}px` }}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

@@ -45,7 +45,8 @@ export default function CartDrawer() {
     reorderItems,
     currentUser,
     setIsAuthModalOpen,
-    openConsultationModal
+    openConsultationModal,
+    modalTopOffset
   } = useShop();
 
   const [lastOrder, setLastOrder] = useState(null);
@@ -75,19 +76,13 @@ export default function CartDrawer() {
   if (!isCartOpen) return null;
 
   const handleCancelOrderClick = (ord) => {
-    if (
-      window.confirm(
-        `Are you sure you want to cancel order #${ord.id} (${formatVND(ord.total)})?`
-      )
-    ) {
-      cancelOrder(ord.id, 'Cancelled by customer');
-      if (lastOrder && lastOrder.id === ord.id) {
-        setLastOrder((prev) => ({
-          ...prev,
-          status: 'Cancelled',
-          isCancelled: true
-        }));
-      }
+    cancelOrder(ord.id, 'Cancelled by customer');
+    if (lastOrder && lastOrder.id === ord.id) {
+      setLastOrder((prev) => ({
+        ...prev,
+        status: 'Cancelled',
+        isCancelled: true
+      }));
     }
   };
 
@@ -125,6 +120,14 @@ export default function CartDrawer() {
     <div className="modal-backdrop" onClick={() => setIsCartOpen(false)}>
       <aside
         className="cart-drawer"
+        style={
+          modalTopOffset > 60
+            ? {
+                marginTop: `${Math.max(0, modalTopOffset - 24)}px`,
+                borderRadius: '16px 0 0 16px'
+              }
+            : undefined
+        }
         onClick={(e) => e.stopPropagation()}
         aria-label="Shopping Cart"
       >

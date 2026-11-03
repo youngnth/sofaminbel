@@ -602,7 +602,7 @@ export const testimonials = [
       'With two kids and a pup, our Perfa sofa is a lifesaver. The scratch-resistant, easy-to-clean fabric keeps our cozy living room elegant and completely stress-free.',
     sofaPurchased: 'Curved Modular 4-Seater Sofa',
     productId: '1793684591208',
-    image: '/testimonials/testimonial_2.jpg',
+    image: '/testimonials/testimonial_2_hd.png',
     imagePosition: '50% 48%'
   },
   {

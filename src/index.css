@@ -291,7 +291,7 @@ h3,
 
 .top-announcement-bar {
   background-color: var(--wix-taupe-dark);
-  color: var(--bg-beige);
+  color: #F5F0E8;
   font-size: 0.78rem;
   padding: 7px 0;
 }
@@ -406,7 +406,7 @@ h3,
 }
 
 .header-search-form:focus-within {
-  border-color: var(--bg-beige);
+  border-color: #F5F0E8;
   box-shadow: 0 0 0 3px rgba(245, 240, 232, 0.25);
 }
 
@@ -1162,7 +1162,7 @@ h3,
 .vision-card h3 {
   font-size: 1.35rem;
   margin-bottom: 8px;
-  color: var(--bg-beige);
+  color: #FFFFFF;
 }
 
 .vision-card p {
@@ -1865,7 +1865,7 @@ h3,
 
 .home-contact-highlights strong {
   display: block;
-  color: var(--bg-beige);
+  color: #FFFFFF;
 }
 
 .home-contact-preview-img {
@@ -3284,7 +3284,7 @@ h3,
   font-family: var(--font-serif);
   font-size: 1.35rem;
   margin-bottom: 16px;
-  color: var(--bg-beige);
+  color: #FFFFFF;
 }
 
 .footer-links {
@@ -3390,7 +3390,7 @@ h3,
 .social-heading {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--bg-beige);
+  color: #FFFFFF;
 }
 
 .social-icons-row {
@@ -3410,8 +3410,8 @@ h3,
 }
 
 .social-icon-link:hover {
-  background-color: var(--bg-beige);
-  color: var(--wix-sage-dark);
+  background-color: #F5F0E8;
+  color: #213028;
 }
 
 .footer-bottom {
@@ -3441,12 +3441,20 @@ h3,
   z-index: 1500;
   display: flex;
   justify-content: flex-end;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.modal-backdrop.modal-backdrop-center {
+  justify-content: center;
+  padding: 0 16px 40px;
 }
 
 .cart-drawer {
   width: 470px;
   max-width: 100%;
-  height: 100%;
+  height: min(100%, 100vh);
+  max-height: 820px;
   background-color: var(--bg-white);
   display: flex;
   flex-direction: column;
@@ -4169,11 +4177,11 @@ h3,
 }
 
 .auth-modal {
-  margin: auto;
+  margin: 44px auto auto auto;
   background-color: var(--bg-white);
   width: 480px;
   max-width: 94vw;
-  max-height: 92vh;
+  max-height: min(90vh, 760px);
   overflow-y: auto;
   border-radius: var(--radius-lg);
   padding: 32px;
@@ -4361,11 +4369,11 @@ h3,
 
 /* Consultation Modal */
 .consultation-modal {
-  margin: auto;
+  margin: 44px auto auto auto;
   background-color: var(--bg-white);
   width: 560px;
   max-width: 94vw;
-  max-height: 92vh;
+  max-height: min(90vh, 760px);
   overflow-y: auto;
   border-radius: var(--radius-lg);
   padding: 36px;
@@ -5058,6 +5066,19 @@ h3,
    ========================================================================== */
 :root[data-theme='dark'] {
   color-scheme: dark;
+}
+
+:root[data-theme='dark'] h1,
+:root[data-theme='dark'] h2,
+:root[data-theme='dark'] h3,
+:root[data-theme='dark'] h4,
+:root[data-theme='dark'] h5,
+:root[data-theme='dark'] h6,
+:root[data-theme='dark'] .vision-card h3,
+:root[data-theme='dark'] .footer-heading,
+:root[data-theme='dark'] .social-heading,
+:root[data-theme='dark'] .home-contact-highlights strong {
+  color: #FFFFFF;
 }
 
 /* Brighten all sage-colored text/links/prices/badges on dark backgrounds */

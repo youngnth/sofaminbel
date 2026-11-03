@@ -77,6 +77,28 @@ export function ShopProvider({ children }) {
   const [cartView, setCartView] = useState('cart'); // 'cart' | 'checkout' | 'success' | 'orders'
   const [consultationProduct, setConsultationProduct] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
+  const [modalTopOffset, setModalTopOffset] = useState(44);
+
+  // Track pointer Y coordinate so modals & drawers always open in the user's
+  // visible screen region even when embedded inside a tall Wix iframe.
+  useEffect(() => {
+    const updateAnchorFromEvent = (e) => {
+      const clientY = typeof e.clientY === 'number' ? e.clientY : 120;
+      if (clientY <= 600) {
+        setModalTopOffset(44);
+      } else {
+        const winH = window.innerHeight || 900;
+        const maxTop = Math.max(44, winH - 640);
+        setModalTopOffset(Math.min(maxTop, Math.max(44, clientY - 180)));
+      }
+    };
+    window.addEventListener('pointerdown', updateAnchorFromEvent, true);
+    window.addEventListener('mousedown', updateAnchorFromEvent, true);
+    return () => {
+      window.removeEventListener('pointerdown', updateAnchorFromEvent, true);
+      window.removeEventListener('mousedown', updateAnchorFromEvent, true);
+    };
+  }, []);
 
   // Basic Authentication State (persisted in LocalStorage)
   const [currentUser, setCurrentUser] = useState(() => {
@@ -634,6 +656,7 @@ export function ShopProvider({ children }) {
         closeConsultationModal,
         toastMessage,
         showToast,
+        modalTopOffset,
 
         // Edit Mode & Theme
         isEditMode,
