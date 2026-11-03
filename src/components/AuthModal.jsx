@@ -71,7 +71,7 @@ export default function AuthModal() {
     e.preventDefault();
     setErrorMsg('');
     if (!loginData.identifier.trim() || !loginData.password.trim()) {
-      setErrorMsg('Vui lòng nhập Email/SĐT và Mật khẩu.');
+      setErrorMsg('Please enter your Email / Phone Number and Password.');
       return;
     }
     const res = loginUser(loginData);
@@ -83,7 +83,7 @@ export default function AuthModal() {
   const handleDemoLogin = () => {
     setErrorMsg('');
     loginUser({
-      identifier: 'khachhang@perfa.vn',
+      identifier: 'guest@perfa.vn',
       password: '123456'
     });
   };
@@ -92,7 +92,7 @@ export default function AuthModal() {
     e.preventDefault();
     setErrorMsg('');
     if (!regData.fullName.trim() || !regData.phone.trim() || !regData.password.trim()) {
-      setErrorMsg('Vui lòng điền Họ tên, Số điện thoại và Mật khẩu.');
+      setErrorMsg('Please fill in your Full Name, Phone Number, and Password.');
       return;
     }
     const res = registerUser(regData);
@@ -143,7 +143,7 @@ export default function AuthModal() {
             <form className="auth-form" onSubmit={handleProfileSave}>
               <div className="checkout-field">
                 <label>
-                  <User size={14} /> Họ và tên (Full Name)
+                  <User size={14} /> Full Name
                 </label>
                 <input
                   type="text"
@@ -158,7 +158,7 @@ export default function AuthModal() {
               <div className="checkout-field-row">
                 <div className="checkout-field">
                   <label>
-                    <PhoneCall size={14} /> Số điện thoại
+                    <PhoneCall size={14} /> Phone Number
                   </label>
                   <input
                     type="tel"
@@ -185,11 +185,11 @@ export default function AuthModal() {
 
               <div className="checkout-field">
                 <label>
-                  <MapPin size={14} /> Địa chỉ giao hàng mặc định (Hà Nội)
+                  <MapPin size={14} /> Default Delivery Address (Hanoi)
                 </label>
                 <input
                   type="text"
-                  placeholder="Số nhà, tòa nhà, đường, quận tại Hà Nội..."
+                  placeholder="Apartment, building, street, district in Hanoi..."
                   value={profileData.address}
                   onChange={(e) =>
                     setProfileData((p) => ({ ...p, address: e.target.value }))
@@ -199,7 +199,7 @@ export default function AuthModal() {
 
               <div className="auth-profile-actions">
                 <button type="submit" className="btn btn-primary btn-full">
-                  Lưu thông tin (Save Profile)
+                  Save Profile
                 </button>
                 <button
                   type="button"
@@ -210,14 +210,14 @@ export default function AuthModal() {
                     setIsCartOpen(true);
                   }}
                 >
-                  <ClipboardList size={16} /> Xem &amp; Hủy đơn hàng ({orders.length})
+                  <ClipboardList size={16} /> View &amp; Manage Orders ({orders.length})
                 </button>
                 <button
                   type="button"
                   className="btn-logout-account"
                   onClick={logoutUser}
                 >
-                  <LogOut size={15} /> Đăng xuất (Sign Out)
+                  <LogOut size={15} /> Sign Out
                 </button>
               </div>
             </form>
@@ -230,12 +230,10 @@ export default function AuthModal() {
                 <Sparkles size={13} /> PERFA HANOI ACCOUNT
               </span>
               <h3>
-                {activeTab === 'login'
-                  ? 'Welcome Back (Đăng nhập)'
-                  : 'Create Account (Đăng ký)'}
+                {activeTab === 'login' ? 'Welcome Back' : 'Create Account'}
               </h3>
               <p>
-                Đăng nhập để lưu địa chỉ nhận hàng, thanh toán nhanh và quản lý đơn hàng của bạn.
+                Sign in to save your delivery address, enjoy faster checkout, and manage your orders.
               </p>
             </div>
 
@@ -248,7 +246,7 @@ export default function AuthModal() {
                   setErrorMsg('');
                 }}
               >
-                Đăng nhập (Sign In)
+                Sign In
               </button>
               <button
                 type="button"
@@ -258,7 +256,7 @@ export default function AuthModal() {
                   setErrorMsg('');
                 }}
               >
-                Đăng ký mới (Register)
+                Register
               </button>
             </div>
 
@@ -268,13 +266,13 @@ export default function AuthModal() {
               <form className="auth-form" onSubmit={handleLoginSubmit}>
                 <div className="checkout-field">
                   <label htmlFor="auth-login-id">
-                    <User size={14} /> Email hoặc Số điện thoại *
+                    <User size={14} /> Email or Phone Number *
                   </label>
                   <input
                     id="auth-login-id"
                     type="text"
                     required
-                    placeholder="khachhang@perfa.vn hoặc 0912345678"
+                    placeholder="guest@perfa.vn or 0912345678"
                     value={loginData.identifier}
                     onChange={(e) =>
                       setLoginData((p) => ({ ...p, identifier: e.target.value }))
@@ -284,13 +282,13 @@ export default function AuthModal() {
 
                 <div className="checkout-field">
                   <label htmlFor="auth-login-pw">
-                    <Lock size={14} /> Mật khẩu (Password) *
+                    <Lock size={14} /> Password *
                   </label>
                   <input
                     id="auth-login-pw"
                     type="password"
                     required
-                    placeholder="Nhập mật khẩu..."
+                    placeholder="Enter your password..."
                     value={loginData.password}
                     onChange={(e) =>
                       setLoginData((p) => ({ ...p, password: e.target.value }))
@@ -299,17 +297,17 @@ export default function AuthModal() {
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-full btn-lg">
-                  Đăng nhập (Sign In)
+                  Sign In
                 </button>
 
                 <div className="auth-demo-box">
-                  <span>Muốn thử nhanh?</span>
+                  <span>Want to test quickly?</span>
                   <button
                     type="button"
                     className="btn-demo-login"
                     onClick={handleDemoLogin}
                   >
-                    Đăng nhập nhanh bằng Tài khoản Mẫu (1-Click)
+                    Quick Sign In with Demo Account (1-Click)
                   </button>
                 </div>
               </form>
@@ -317,13 +315,13 @@ export default function AuthModal() {
               <form className="auth-form" onSubmit={handleRegisterSubmit}>
                 <div className="checkout-field">
                   <label htmlFor="reg-name">
-                    <User size={14} /> Họ và tên (Full Name) *
+                    <User size={14} /> Full Name *
                   </label>
                   <input
                     id="reg-name"
                     type="text"
                     required
-                    placeholder="Nguyễn Minh Anh"
+                    placeholder="e.g. Alex Nguyen"
                     value={regData.fullName}
                     onChange={(e) =>
                       setRegData((p) => ({ ...p, fullName: e.target.value }))
@@ -334,7 +332,7 @@ export default function AuthModal() {
                 <div className="checkout-field-row">
                   <div className="checkout-field">
                     <label htmlFor="reg-phone">
-                      <PhoneCall size={14} /> Số điện thoại *
+                      <PhoneCall size={14} /> Phone Number *
                     </label>
                     <input
                       id="reg-phone"
@@ -354,7 +352,7 @@ export default function AuthModal() {
                     <input
                       id="reg-email"
                       type="email"
-                      placeholder="ban@email.com"
+                      placeholder="you@example.com"
                       value={regData.email}
                       onChange={(e) =>
                         setRegData((p) => ({ ...p, email: e.target.value }))
@@ -365,12 +363,12 @@ export default function AuthModal() {
 
                 <div className="checkout-field">
                   <label htmlFor="reg-addr">
-                    <MapPin size={14} /> Địa chỉ nhận hàng (Hà Nội)
+                    <MapPin size={14} /> Delivery Address (Hanoi)
                   </label>
                   <input
                     id="reg-addr"
                     type="text"
-                    placeholder="Số nhà, đường, quận tại Hà Nội..."
+                    placeholder="Apartment, street, district in Hanoi..."
                     value={regData.address}
                     onChange={(e) =>
                       setRegData((p) => ({ ...p, address: e.target.value }))
@@ -380,13 +378,13 @@ export default function AuthModal() {
 
                 <div className="checkout-field">
                   <label htmlFor="reg-pw">
-                    <Lock size={14} /> Mật khẩu *
+                    <Lock size={14} /> Password *
                   </label>
                   <input
                     id="reg-pw"
                     type="password"
                     required
-                    placeholder="Tối thiểu 4 ký tự..."
+                    placeholder="At least 4 characters..."
                     value={regData.password}
                     onChange={(e) =>
                       setRegData((p) => ({ ...p, password: e.target.value }))
@@ -395,7 +393,7 @@ export default function AuthModal() {
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-full btn-lg">
-                  Tạo tài khoản (Create Account)
+                  Create Account
                 </button>
               </form>
             )}

@@ -77,14 +77,14 @@ export default function CartDrawer() {
   const handleCancelOrderClick = (ord) => {
     if (
       window.confirm(
-        `Bạn có chắc chắn muốn HỦY đơn hàng #${ord.id} (${formatVND(ord.total)}) không?`
+        `Are you sure you want to cancel order #${ord.id} (${formatVND(ord.total)})?`
       )
     ) {
-      cancelOrder(ord.id, 'Khách hàng yêu cầu hủy đơn');
+      cancelOrder(ord.id, 'Cancelled by customer');
       if (lastOrder && lastOrder.id === ord.id) {
         setLastOrder((prev) => ({
           ...prev,
-          status: 'Cancelled (Đã hủy đơn)',
+          status: 'Cancelled',
           isCancelled: true
         }));
       }
@@ -220,7 +220,7 @@ export default function CartDrawer() {
                     className="btn-cancel-order-inline"
                     onClick={() => handleCancelOrderClick(lastOrder)}
                   >
-                    <XCircle size={15} /> Cancel This Order (Hủy đơn hàng)
+                    <XCircle size={15} /> Cancel This Order
                   </button>
                 )}
                 <button
@@ -269,11 +269,11 @@ export default function CartDrawer() {
                           ord.isCancelled ? 'cancelled' : ''
                         }`}
                       >
-                        {ord.status}
+                        {ord.isCancelled ? 'Cancelled' : ord.status}
                         {ord.cancelledAt && (
                           <span className="cancelled-time-note">
                             {' '}
-                            • lúc {ord.cancelledAt}
+                            • at {ord.cancelledAt}
                           </span>
                         )}
                       </div>
@@ -304,7 +304,7 @@ export default function CartDrawer() {
                             className="btn-order-cancel"
                             onClick={() => handleCancelOrderClick(ord)}
                           >
-                            <XCircle size={14} /> Cancel Order (Hủy đơn)
+                            <XCircle size={14} /> Cancel Order
                           </button>
                         ) : (
                           <>
@@ -313,7 +313,7 @@ export default function CartDrawer() {
                               className="btn-order-reorder"
                               onClick={() => reorderItems(ord)}
                             >
-                              <RotateCcw size={13} /> Đặt lại (Re-order)
+                              <RotateCcw size={13} /> Re-order
                             </button>
                             <button
                               type="button"
@@ -321,14 +321,14 @@ export default function CartDrawer() {
                               onClick={() => {
                                 if (
                                   window.confirm(
-                                    `Xóa vĩnh viễn đơn hàng #${ord.id} khỏi lịch sử?`
+                                    `Permanently remove order #${ord.id} from your order history?`
                                   )
                                 ) {
                                   deleteOrder(ord.id);
                                 }
                               }}
                             >
-                              <Trash2 size={13} /> Xóa
+                              <Trash2 size={13} /> Remove
                             </button>
                           </>
                         )}
@@ -359,7 +359,7 @@ export default function CartDrawer() {
 
               {!currentUser ? (
                 <div className="checkout-auth-prompt">
-                  <span>Bạn đã có tài khoản?</span>
+                  <span>Already have an account?</span>
                   <button
                     type="button"
                     className="checkout-login-btn"
@@ -368,12 +368,12 @@ export default function CartDrawer() {
                       setIsAuthModalOpen(true);
                     }}
                   >
-                    Đăng nhập để tự động điền thông tin
+                    Sign in to auto-fill details
                   </button>
                 </div>
               ) : (
                 <div className="checkout-auth-logged">
-                  ✓ Đang đặt hàng với tài khoản <strong>{currentUser.fullName}</strong>
+                  ✓ Ordering as <strong>{currentUser.fullName}</strong>
                 </div>
               )}
 
@@ -381,7 +381,7 @@ export default function CartDrawer() {
 
               <div className="checkout-field">
                 <label htmlFor="checkout-fullName">
-                  <User size={14} /> Full Name (Họ và tên) *
+                  <User size={14} /> Full Name *
                 </label>
                 <input
                   id="checkout-fullName"
@@ -397,7 +397,7 @@ export default function CartDrawer() {
               <div className="checkout-field-row">
                 <div className="checkout-field">
                   <label htmlFor="checkout-phone">
-                    <PhoneCall size={14} /> Phone Number (SĐT) *
+                    <PhoneCall size={14} /> Phone Number *
                   </label>
                   <input
                     id="checkout-phone"
@@ -426,7 +426,7 @@ export default function CartDrawer() {
 
               <div className="checkout-field">
                 <label htmlFor="checkout-address">
-                  <MapPin size={14} /> Delivery Address in Hanoi (Địa chỉ nhận hàng) *
+                  <MapPin size={14} /> Delivery Address in Hanoi *
                 </label>
                 <input
                   id="checkout-address"
@@ -440,7 +440,7 @@ export default function CartDrawer() {
               </div>
 
               <div className="checkout-field">
-                <label>Payment Method (Phương thức thanh toán)</label>
+                <label>Payment Method</label>
                 <div className="payment-methods-grid">
                   <label
                     className={`payment-method-option ${
@@ -684,7 +684,7 @@ export default function CartDrawer() {
               onClick={() => setCartView('checkout')}
               data-testid="proceed-to-checkout-btn"
             >
-              Proceed to Checkout (Đặt mua ngay) <ArrowRight size={17} />
+              Proceed to Checkout <ArrowRight size={17} />
             </button>
             <button
               type="button"

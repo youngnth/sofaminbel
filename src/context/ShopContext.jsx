@@ -80,29 +80,45 @@ export function ShopProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(() => {
     try {
       const saved = localStorage.getItem('perfa_react_user');
-      return saved ? JSON.parse(saved) : null;
+      if (!saved) return null;
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.id === 'u1' && parsed.fullName === 'Khách hàng Perfa') {
+        return {
+          ...parsed,
+          fullName: 'Alex Nguyen',
+          email: 'guest@perfa.vn',
+          address: '207 Giai Phong St, Hai Ba Trung, Hanoi'
+        };
+      }
+      return parsed;
     } catch {
       return null;
     }
   });
 
   const [registeredUsers, setRegisteredUsers] = useState(() => {
+    const defaultDemoUser = {
+      id: 'u1',
+      fullName: 'Alex Nguyen',
+      email: 'guest@perfa.vn',
+      phone: '0912345678',
+      address: '207 Giai Phong St, Hai Ba Trung, Hanoi',
+      password: '123456'
+    };
     try {
       const saved = localStorage.getItem('perfa_react_users_db');
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed.map((u) =>
+            u.id === 'u1' ? defaultDemoUser : u
+          );
+        }
+      }
     } catch {
       // ignore
     }
-    return [
-      {
-        id: 'u1',
-        fullName: 'Khách hàng Perfa',
-        email: 'khachhang@perfa.vn',
-        phone: '0912345678',
-        address: '207 Giải Phóng, Hai Bà Trưng, Hà Nội',
-        password: '123456'
-      }
-    ];
+    return [defaultDemoUser];
   });
 
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -232,7 +248,7 @@ export function ShopProvider({ children }) {
       return [...prev, { product, quantity }];
     });
     setCartView('cart');
-    showToast(`✓ Đã thêm "${product.name}" vào giỏ hàng!`);
+    showToast(`✓ Added "${product.name}" to your cart!`);
     setIsCartOpen(true);
   };
 
@@ -279,7 +295,7 @@ export function ShopProvider({ children }) {
   const placeOrder = (customerInfo) => {
     const newOrder = {
       id: `PF-${String(Date.now()).slice(-6)}`,
-      createdAt: new Date().toLocaleString('vi-VN'),
+      createdAt: new Date().toLocaleString('en-US'),
       customer: customerInfo,
       userId: currentUser?.id || null,
       items: [...cartItems],
@@ -289,7 +305,7 @@ export function ShopProvider({ children }) {
     };
     setOrders((prev) => [newOrder, ...prev]);
     setCartItems([]);
-    showToast(`🎉 Đặt hàng thành công! Mã đơn: #${newOrder.id}`);
+    showToast(`🎉 Order placed successfully! Order #${newOrder.id}`);
     return newOrder;
   };
 
@@ -299,20 +315,20 @@ export function ShopProvider({ children }) {
         ord.id === orderId
           ? {
               ...ord,
-              status: 'Cancelled (Đã hủy đơn)',
+              status: 'Cancelled',
               isCancelled: true,
-              cancelledAt: new Date().toLocaleString('vi-VN'),
+              cancelledAt: new Date().toLocaleString('en-US'),
               cancelReason: reason
             }
           : ord
       )
     );
-    showToast(`✓ Đã hủy đơn hàng #${orderId}.`);
+    showToast(`✓ Order #${orderId} has been cancelled.`);
   };
 
   const deleteOrder = (orderId) => {
     setOrders((prev) => prev.filter((ord) => ord.id !== orderId));
-    showToast(`✓ Đã xóa đơn hàng #${orderId} khỏi lịch sử.`);
+    showToast(`✓ Removed order #${orderId} from your history.`);
   };
 
   const reorderItems = (order) => {
@@ -331,7 +347,7 @@ export function ShopProvider({ children }) {
     });
     setCartView('cart');
     setIsCartOpen(true);
-    showToast(`✓ Đã thêm lại sản phẩm từ đơn #${order.id} vào giỏ hàng!`);
+    showToast(`✓ Added items from order #${order.id} back to your cart!`);
   };
 
   // Basic Authentication Handlers
@@ -344,16 +360,16 @@ export function ShopProvider({ children }) {
     );
 
     if (!matched) {
-      return { ok: false, message: 'Không tìm thấy tài khoản với Email hoặc SĐT này.' };
+      return { ok: false, message: 'No account found with this Email or Phone Number.' };
     }
     if (matched.password !== password) {
-      return { ok: false, message: 'Mật khẩu không chính xác.' };
+      return { ok: false, message: 'Incorrect password. Please try again.' };
     }
 
     const { password: _pw, ...safeUser } = matched;
     setCurrentUser(safeUser);
     setIsAuthModalOpen(false);
-    showToast(`👋 Xin chào, ${safeUser.fullName}!`);
+    showToast(`👋 Welcome back, ${safeUser.fullName}!`);
     return { ok: true, user: safeUser };
   };
 
@@ -367,7 +383,7 @@ export function ShopProvider({ children }) {
         (cleanPhone && u.phone === cleanPhone)
     );
     if (exists) {
-      return { ok: false, message: 'Email hoặc Số điện thoại này đã được đăng ký.' };
+      return { ok: false, message: 'This Email or Phone Number is already registered.' };
     }
 
     const newUser = {
@@ -383,14 +399,14 @@ export function ShopProvider({ children }) {
     const { password: _pw, ...safeUser } = newUser;
     setCurrentUser(safeUser);
     setIsAuthModalOpen(false);
-    showToast(`🎉 Đăng ký thành công! Xin chào ${safeUser.fullName}.`);
+    showToast(`🎉 Account created! Welcome, ${safeUser.fullName}.`);
     return { ok: true, user: safeUser };
   };
 
   const logoutUser = () => {
     setCurrentUser(null);
     setIsAuthModalOpen(false);
-    showToast('✓ Đã đăng xuất tài khoản.');
+    showToast('✓ You have been signed out.');
   };
 
   const updateUserProfile = (updatedFields) => {
@@ -400,7 +416,7 @@ export function ShopProvider({ children }) {
     setRegisteredUsers((prev) =>
       prev.map((u) => (u.id === currentUser.id ? { ...u, ...updatedFields } : u))
     );
-    showToast('✓ Đã lưu thông tin tài khoản.');
+    showToast('✓ Account profile saved.');
   };
 
   const openConsultationModal = (product = null) => {
