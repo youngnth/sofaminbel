@@ -46,8 +46,8 @@ export default function AboutPage() {
 
           <div className="about-hero-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
-              alt="Hanoi family enjoying their comfortable living room sofa"
+              src="/about/about_hero.jpg"
+              alt="Happy child coloring on the rug with their dog beside a Perfa sofa"
             />
           </div>
         </div>
@@ -80,13 +80,13 @@ export default function AboutPage() {
         <div className="container about-story-grid">
           <div className="about-story-images">
             <img
-              src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=900&q=80"
-              alt="Puppy resting on a pet-friendly Perfa sofa"
+              src="/about/about_story_1.jpg"
+              alt="Golden Retriever and cat playing on a pet-friendly Perfa modular sofa"
               className="story-img-primary"
             />
             <img
-              src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=700&q=80"
-              alt="Close-up of Perfa washable pet-friendly weave"
+              src="/about/about_story_2.jpg"
+              alt="Close-up of Perfa zip-off machine-washable sofa cushion cover"
               className="story-img-secondary"
             />
           </div>

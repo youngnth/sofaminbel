@@ -20,7 +20,7 @@ const initialHero = {
   featuredProductPrice: '41,900,000\u00A0₫ • Algodão Organic Cotton'
 };
 
-const STORAGE_VERSION = 'v10_final_locked';
+const STORAGE_VERSION = 'v11_about_images';
 
 if (typeof window !== 'undefined') {
   try {
@@ -49,8 +49,7 @@ const initialAbout = {
   missionTitle: 'Our Mission',
   missionText:
     'To become a trusted mid-range furniture e-commerce brand in Hanoi for young families, recognized for practical design, pet- and child-friendly materials, and reliable service.',
-  image:
-    'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80'
+  image: '/about/built_for_homes.jpg'
 };
 
 const ShopContext = createContext(null);
