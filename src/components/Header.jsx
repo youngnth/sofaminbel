@@ -124,6 +124,14 @@ export default function Header() {
               Shop
             </NavLink>
             <NavLink
+              to="/portfolio"
+              className={({ isActive }) =>
+                `nav-item ${isActive ? 'active' : ''}`
+              }
+            >
+              Portfolio
+            </NavLink>
+            <NavLink
               to="/about"
               className={({ isActive }) =>
                 `nav-item ${isActive ? 'active' : ''}`
@@ -371,6 +379,9 @@ export default function Header() {
               </NavLink>
               <NavLink to="/shop" className="mobile-nav-link">
                 Shop Collection
+              </NavLink>
+              <NavLink to="/portfolio" className="mobile-nav-link">
+                Portfolio
               </NavLink>
               <NavLink to="/about" className="mobile-nav-link">
                 About Us

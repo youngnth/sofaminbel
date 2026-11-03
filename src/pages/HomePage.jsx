@@ -357,8 +357,8 @@ export default function HomePage() {
                 <span className="section-eyebrow light">Real Hanoi Living Rooms</span>
                 <h3 className="wix-portfolio-title">Our Portfolio</h3>
               </div>
-              <Link to="/shop" className="btn btn-outline-light btn-sm">
-                See Full Catalog <ArrowRight size={14} />
+              <Link to="/portfolio" className="btn btn-outline-light btn-sm">
+                View Full Portfolio <ArrowRight size={14} />
               </Link>
             </div>
             <div className="wix-portfolio-grid">

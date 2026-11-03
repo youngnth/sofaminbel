@@ -89,6 +89,9 @@ export default function Footer() {
               <Link to="/shop?material=Algod%C3%A3o">Algodão Organic Cotton</Link>
             </li>
             <li>
+              <Link to="/portfolio">Portfolio</Link>
+            </li>
+            <li>
               <Link to="/about">About Us</Link>
             </li>
             <li>
