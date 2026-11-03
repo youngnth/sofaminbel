@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   X,
@@ -18,7 +18,9 @@ import {
   MapPin,
   User,
   Mail,
-  FileText
+  FileText,
+  XCircle,
+  RotateCcw
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { formatVND } from '../data/products';
@@ -38,6 +40,11 @@ export default function CartDrawer() {
     cartTotal,
     orders,
     placeOrder,
+    cancelOrder,
+    deleteOrder,
+    reorderItems,
+    currentUser,
+    setIsAuthModalOpen,
     openConsultationModal
   } = useShop();
 
@@ -52,7 +59,37 @@ export default function CartDrawer() {
   });
   const [formError, setFormError] = useState('');
 
+  // Auto-fill checkout fields when user is logged in
+  useEffect(() => {
+    if (currentUser) {
+      setFormData((prev) => ({
+        ...prev,
+        fullName: prev.fullName || currentUser.fullName || '',
+        phone: prev.phone || currentUser.phone || '',
+        email: prev.email || currentUser.email || '',
+        address: prev.address || currentUser.address || ''
+      }));
+    }
+  }, [currentUser, cartView]);
+
   if (!isCartOpen) return null;
+
+  const handleCancelOrderClick = (ord) => {
+    if (
+      window.confirm(
+        `Bạn có chắc chắn muốn HỦY đơn hàng #${ord.id} (${formatVND(ord.total)}) không?`
+      )
+    ) {
+      cancelOrder(ord.id, 'Khách hàng yêu cầu hủy đơn');
+      if (lastOrder && lastOrder.id === ord.id) {
+        setLastOrder((prev) => ({
+          ...prev,
+          status: 'Cancelled (Đã hủy đơn)',
+          isCancelled: true
+        }));
+      }
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -177,6 +214,15 @@ export default function CartDrawer() {
                 >
                   View Order History ({orders.length})
                 </button>
+                {!lastOrder.isCancelled && (
+                  <button
+                    type="button"
+                    className="btn-cancel-order-inline"
+                    onClick={() => handleCancelOrderClick(lastOrder)}
+                  >
+                    <XCircle size={15} /> Cancel This Order (Hủy đơn hàng)
+                  </button>
+                )}
                 <button
                   type="button"
                   className="btn btn-outline btn-full"
@@ -210,12 +256,27 @@ export default function CartDrawer() {
               ) : (
                 <div className="orders-list">
                   {orders.map((ord) => (
-                    <div key={ord.id} className="saved-order-card">
+                    <div
+                      key={ord.id}
+                      className={`saved-order-card ${ord.isCancelled ? 'is-cancelled' : ''}`}
+                    >
                       <div className="saved-order-top">
                         <span className="order-id-badge">#{ord.id}</span>
                         <span className="order-date-text">{ord.createdAt}</span>
                       </div>
-                      <div className="order-status-line">{ord.status}</div>
+                      <div
+                        className={`order-status-line ${
+                          ord.isCancelled ? 'cancelled' : ''
+                        }`}
+                      >
+                        {ord.status}
+                        {ord.cancelledAt && (
+                          <span className="cancelled-time-note">
+                            {' '}
+                            • lúc {ord.cancelledAt}
+                          </span>
+                        )}
+                      </div>
                       <div className="saved-order-customer">
                         <p>
                           <strong>{ord.customer.fullName}</strong> • {ord.customer.phone}
@@ -235,6 +296,42 @@ export default function CartDrawer() {
                       <div className="saved-order-total">
                         <span>Total Paid / Due:</span>
                         <strong>{formatVND(ord.total)}</strong>
+                      </div>
+                      <div className="saved-order-actions">
+                        {!ord.isCancelled ? (
+                          <button
+                            type="button"
+                            className="btn-order-cancel"
+                            onClick={() => handleCancelOrderClick(ord)}
+                          >
+                            <XCircle size={14} /> Cancel Order (Hủy đơn)
+                          </button>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              className="btn-order-reorder"
+                              onClick={() => reorderItems(ord)}
+                            >
+                              <RotateCcw size={13} /> Đặt lại (Re-order)
+                            </button>
+                            <button
+                              type="button"
+                              className="btn-order-delete"
+                              onClick={() => {
+                                if (
+                                  window.confirm(
+                                    `Xóa vĩnh viễn đơn hàng #${ord.id} khỏi lịch sử?`
+                                  )
+                                ) {
+                                  deleteOrder(ord.id);
+                                }
+                              }}
+                            >
+                              <Trash2 size={13} /> Xóa
+                            </button>
+                          </>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -259,6 +356,26 @@ export default function CartDrawer() {
                 </div>
                 <span className="free-ship-pill">Free Hanoi Delivery</span>
               </div>
+
+              {!currentUser ? (
+                <div className="checkout-auth-prompt">
+                  <span>Bạn đã có tài khoản?</span>
+                  <button
+                    type="button"
+                    className="checkout-login-btn"
+                    onClick={() => {
+                      setIsCartOpen(false);
+                      setIsAuthModalOpen(true);
+                    }}
+                  >
+                    Đăng nhập để tự động điền thông tin
+                  </button>
+                </div>
+              ) : (
+                <div className="checkout-auth-logged">
+                  ✓ Đang đặt hàng với tài khoản <strong>{currentUser.fullName}</strong>
+                </div>
+              )}
 
               {formError && <div className="checkout-error-banner">{formError}</div>}
 

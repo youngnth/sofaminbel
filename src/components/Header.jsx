@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import {
   Search,
   ShoppingBag,
+  User,
   Menu,
   X,
   PhoneCall,
@@ -20,7 +21,14 @@ export default function Header() {
   const searchContainerRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const { cartCount, setIsCartOpen, openConsultationModal, products } = useShop();
+  const {
+    cartCount,
+    setIsCartOpen,
+    openConsultationModal,
+    products,
+    currentUser,
+    setIsAuthModalOpen
+  } = useShop();
 
   const searchResults = searchProducts(products, searchQuery);
 
@@ -285,6 +293,21 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            <button
+              type="button"
+              className={`account-trigger-btn ${currentUser ? 'logged-in' : ''}`}
+              onClick={() => setIsAuthModalOpen(true)}
+              aria-label={currentUser ? `Account: ${currentUser.fullName}` : 'Sign in'}
+              data-testid="header-account-btn"
+            >
+              <User size={18} />
+              <span className="account-btn-label">
+                {currentUser
+                  ? currentUser.fullName.split(' ').slice(-1)[0]
+                  : 'Sign In'}
+              </span>
+            </button>
 
             <button
               type="button"

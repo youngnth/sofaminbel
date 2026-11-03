@@ -76,6 +76,37 @@ export function ShopProvider({ children }) {
   const [consultationProduct, setConsultationProduct] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
 
+  // Basic Authentication State (persisted in LocalStorage)
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('perfa_react_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const [registeredUsers, setRegisteredUsers] = useState(() => {
+    try {
+      const saved = localStorage.getItem('perfa_react_users_db');
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // ignore
+    }
+    return [
+      {
+        id: 'u1',
+        fullName: 'Khách hàng Perfa',
+        email: 'khachhang@perfa.vn',
+        phone: '0912345678',
+        address: '207 Giải Phóng, Hai Bà Trưng, Hà Nội',
+        password: '123456'
+      }
+    ];
+  });
+
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
   // Edit Mode & Dynamic Site Data State
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -169,10 +200,16 @@ export function ShopProvider({ children }) {
       localStorage.setItem('perfa_react_testimonials', JSON.stringify(testimonials));
       localStorage.setItem('perfa_react_cart', JSON.stringify(cartItems));
       localStorage.setItem('perfa_react_orders', JSON.stringify(orders));
+      localStorage.setItem('perfa_react_users_db', JSON.stringify(registeredUsers));
+      if (currentUser) {
+        localStorage.setItem('perfa_react_user', JSON.stringify(currentUser));
+      } else {
+        localStorage.removeItem('perfa_react_user');
+      }
     } catch (e) {
       console.warn('LocalStorage save failed:', e);
     }
-  }, [products, heroData, aboutData, collections, portfolioItems, services, materials, testimonials, cartItems, orders]);
+  }, [products, heroData, aboutData, collections, portfolioItems, services, materials, testimonials, cartItems, orders, registeredUsers, currentUser]);
 
   const showToast = (msg) => {
     setToastMessage(msg);
@@ -244,14 +281,126 @@ export function ShopProvider({ children }) {
       id: `PF-${String(Date.now()).slice(-6)}`,
       createdAt: new Date().toLocaleString('vi-VN'),
       customer: customerInfo,
+      userId: currentUser?.id || null,
       items: [...cartItems],
       total: cartTotal,
-      status: 'Confirmed • Preparing for Delivery'
+      status: 'Confirmed • Preparing for Delivery',
+      isCancelled: false
     };
     setOrders((prev) => [newOrder, ...prev]);
     setCartItems([]);
     showToast(`🎉 Đặt hàng thành công! Mã đơn: #${newOrder.id}`);
     return newOrder;
+  };
+
+  const cancelOrder = (orderId, reason = '') => {
+    setOrders((prev) =>
+      prev.map((ord) =>
+        ord.id === orderId
+          ? {
+              ...ord,
+              status: 'Cancelled (Đã hủy đơn)',
+              isCancelled: true,
+              cancelledAt: new Date().toLocaleString('vi-VN'),
+              cancelReason: reason
+            }
+          : ord
+      )
+    );
+    showToast(`✓ Đã hủy đơn hàng #${orderId}.`);
+  };
+
+  const deleteOrder = (orderId) => {
+    setOrders((prev) => prev.filter((ord) => ord.id !== orderId));
+    showToast(`✓ Đã xóa đơn hàng #${orderId} khỏi lịch sử.`);
+  };
+
+  const reorderItems = (order) => {
+    if (!order || !order.items) return;
+    setCartItems((prev) => {
+      let updated = [...prev];
+      order.items.forEach(({ product, quantity }) => {
+        const idx = updated.findIndex((i) => i.product.id === product.id);
+        if (idx !== -1) {
+          updated[idx] = { ...updated[idx], quantity: updated[idx].quantity + quantity };
+        } else {
+          updated.push({ product, quantity });
+        }
+      });
+      return updated;
+    });
+    setCartView('cart');
+    setIsCartOpen(true);
+    showToast(`✓ Đã thêm lại sản phẩm từ đơn #${order.id} vào giỏ hàng!`);
+  };
+
+  // Basic Authentication Handlers
+  const loginUser = ({ identifier, password }) => {
+    const cleanId = (identifier || '').trim().toLowerCase();
+    const matched = registeredUsers.find(
+      (u) =>
+        (u.email && u.email.toLowerCase() === cleanId) ||
+        (u.phone && u.phone.replace(/\s+/g, '') === cleanId.replace(/\s+/g, ''))
+    );
+
+    if (!matched) {
+      return { ok: false, message: 'Không tìm thấy tài khoản với Email hoặc SĐT này.' };
+    }
+    if (matched.password !== password) {
+      return { ok: false, message: 'Mật khẩu không chính xác.' };
+    }
+
+    const { password: _pw, ...safeUser } = matched;
+    setCurrentUser(safeUser);
+    setIsAuthModalOpen(false);
+    showToast(`👋 Xin chào, ${safeUser.fullName}!`);
+    return { ok: true, user: safeUser };
+  };
+
+  const registerUser = ({ fullName, phone, email, address, password }) => {
+    const cleanEmail = (email || '').trim().toLowerCase();
+    const cleanPhone = (phone || '').trim();
+
+    const exists = registeredUsers.some(
+      (u) =>
+        (cleanEmail && u.email?.toLowerCase() === cleanEmail) ||
+        (cleanPhone && u.phone === cleanPhone)
+    );
+    if (exists) {
+      return { ok: false, message: 'Email hoặc Số điện thoại này đã được đăng ký.' };
+    }
+
+    const newUser = {
+      id: `u_${Date.now()}`,
+      fullName: fullName.trim(),
+      phone: cleanPhone,
+      email: cleanEmail,
+      address: (address || '').trim(),
+      password
+    };
+
+    setRegisteredUsers((prev) => [...prev, newUser]);
+    const { password: _pw, ...safeUser } = newUser;
+    setCurrentUser(safeUser);
+    setIsAuthModalOpen(false);
+    showToast(`🎉 Đăng ký thành công! Xin chào ${safeUser.fullName}.`);
+    return { ok: true, user: safeUser };
+  };
+
+  const logoutUser = () => {
+    setCurrentUser(null);
+    setIsAuthModalOpen(false);
+    showToast('✓ Đã đăng xuất tài khoản.');
+  };
+
+  const updateUserProfile = (updatedFields) => {
+    if (!currentUser) return;
+    const updatedUser = { ...currentUser, ...updatedFields };
+    setCurrentUser(updatedUser);
+    setRegisteredUsers((prev) =>
+      prev.map((u) => (u.id === currentUser.id ? { ...u, ...updatedFields } : u))
+    );
+    showToast('✓ Đã lưu thông tin tài khoản.');
   };
 
   const openConsultationModal = (product = null) => {
@@ -482,6 +631,19 @@ export function ShopProvider({ children }) {
         setCartView,
         orders,
         placeOrder,
+        cancelOrder,
+        deleteOrder,
+        reorderItems,
+
+        // Auth
+        currentUser,
+        isAuthModalOpen,
+        setIsAuthModalOpen,
+        loginUser,
+        registerUser,
+        logoutUser,
+        updateUserProfile,
+
         consultationProduct,
         openConsultationModal,
         closeConsultationModal,

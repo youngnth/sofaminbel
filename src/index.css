@@ -3871,6 +3871,310 @@ h3,
   background-color: #111111;
 }
 
+/* Order Cancellation & Reorder Actions */
+.saved-order-card.is-cancelled {
+  background-color: #F8F6F4;
+  border-color: #E2DBD3;
+  opacity: 0.9;
+}
+
+.order-status-line.cancelled {
+  color: #B91C1C;
+  font-weight: 700;
+}
+
+.cancelled-time-note {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.saved-order-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.btn-order-cancel,
+.btn-cancel-order-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #FCA5A5;
+  background-color: #FEF2F2;
+  color: #B91C1C;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-cancel-order-inline {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+}
+
+.btn-order-cancel:hover,
+.btn-cancel-order-inline:hover {
+  background-color: #FEE2E2;
+  border-color: #EF4444;
+}
+
+.btn-order-reorder {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--wix-sage-dark);
+  background-color: var(--wix-sage-dark);
+  color: #FFFFFF;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-order-reorder:hover {
+  background-color: var(--charcoal);
+}
+
+.btn-order-delete {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-warm);
+  background-color: #FFFFFF;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+
+.btn-order-delete:hover {
+  color: #B91C1C;
+  border-color: #FCA5A5;
+}
+
+/* Header Account Button & Auth Modal */
+.account-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-warm);
+  background-color: var(--bg-white);
+  color: var(--charcoal);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.account-trigger-btn:hover {
+  border-color: var(--wix-sage-dark);
+  background-color: var(--bg-beige);
+}
+
+.account-trigger-btn.logged-in {
+  background-color: #EBF3EE;
+  border-color: var(--wix-sage-dark);
+  color: var(--wix-sage-dark);
+}
+
+.auth-modal {
+  margin: auto;
+  background-color: var(--bg-white);
+  width: 480px;
+  max-width: 94vw;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.auth-brand-top {
+  margin-bottom: 18px;
+}
+
+.auth-brand-top h3 {
+  font-size: 1.55rem;
+  margin: 6px 0 4px;
+}
+
+.auth-brand-top p {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.auth-tabs-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background-color: var(--bg-beige);
+  padding: 5px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+}
+
+.auth-tab-item {
+  padding: 9px 12px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.auth-tab-item.active {
+  background-color: var(--bg-white);
+  color: var(--wix-sage-dark);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-demo-box {
+  margin-top: 6px;
+  padding: 12px;
+  background-color: var(--bg-beige);
+  border: 1px dashed var(--border-warm);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.btn-demo-login {
+  background: none;
+  border: none;
+  color: var(--wix-sage-dark);
+  font-weight: 700;
+  font-size: 0.83rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.auth-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-warm);
+}
+
+.auth-avatar-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: var(--wix-sage-dark);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: var(--font-serif);
+}
+
+.auth-member-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--wix-sage-dark);
+  background-color: #E3EFE7;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.auth-profile-header h3 {
+  font-size: 1.3rem;
+  margin: 2px 0;
+}
+
+.auth-profile-header p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.auth-profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.btn-logout-account {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px;
+  background: none;
+  border: 1px solid #FCA5A5;
+  color: #B91C1C;
+  border-radius: var(--radius-sm);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkout-auth-prompt,
+.checkout-auth-logged {
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.checkout-auth-prompt {
+  background-color: #F4F7F5;
+  border: 1px dashed var(--wix-sage-dark);
+}
+
+.checkout-login-btn {
+  background: none;
+  border: none;
+  color: var(--wix-sage-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.checkout-auth-logged {
+  background-color: #EBF3EE;
+  color: var(--wix-sage-dark);
+}
+
 /* Consultation Modal */
 .consultation-modal {
   margin: auto;

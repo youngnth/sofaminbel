@@ -4,6 +4,7 @@ import { ShopProvider, useShop } from './context/ShopContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
+import AuthModal from './components/AuthModal';
 import ConsultationModal from './components/ConsultationModal';
 import FloatingEditorBar from './components/FloatingEditorBar';
 import CropModal from './components/CropModal';
@@ -52,6 +53,7 @@ export default function App() {
         </main>
         <Footer />
         <CartDrawer />
+        <AuthModal />
         <ConsultationModal />
         <FloatingEditorBar />
         <CropModal />
